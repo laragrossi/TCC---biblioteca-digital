@@ -1,0 +1,70 @@
+/* Cor de fundo da página */
+body {
+    background-color: #ffeae3;
+}
+
+/* Caixa do login */
+.login-card {
+    background-color: white;
+    border-radius: 18px; /* Cantos arredondados */
+    padding: 28px 28px 28px; /* Espaçamento interno */
+    width: 360px;
+    max-width: 94vw; /* Largura máxima */
+    margin: auto;
+}
+
+.input-group {
+    display: flex;
+    gap: 8px; /* espaço entre os campos */
+}
+
+.input-ra {
+    flex: 2; /* RA ocupa mais espaço */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-digito {
+    flex: 1; /* dígito ocupa menos espaço */
+    max-width: 80px; /* limite para não ficar gigante */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center; /* centraliza o dígito */
+}
+
+
+/* Área onde fica o ícone ao lado do campo */
+.input-group-text {
+    background-color: #f7d9cf;
+    border: none;
+    cursor: pointer; /* Mostra que pode clicar */
+}
+
+/* Botões personalizados */
+.btn-custom {
+    background-color: #d87b6d;
+    color: white;
+    border-radius: 12px;
+    border: none;
+    padding: 0.6rem;
+    font-weight: bold;
+}
+
+/* Efeito ao passar o mouse no botão */
+.btn-custom:hover {
+    background-color: #c46b5e;
+}
+
+/* Link "Esqueceu sua senha?" */
+.text-link {
+    color: #d87b6d;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Quando passa o mouse no link */
+.text-link:hover {
+    text-decoration: underline;
+}

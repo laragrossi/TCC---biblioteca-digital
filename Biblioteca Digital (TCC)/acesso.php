@@ -14,7 +14,7 @@
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card text-center p-4 shadow-lg card-custom">
-            <img src= "imagens/logo.png.png" 
+            <img src= "imagens/" 
                  alt="Biblioteca" class="mx-auto mb-3 logo">
 
             <h4 class="fw-bold text-brown">Bem-Vindo à Biblioteca Digital</h4>

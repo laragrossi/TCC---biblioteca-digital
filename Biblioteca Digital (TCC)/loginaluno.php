@@ -23,7 +23,7 @@
         <div class="login-card text-center">
             
             <!-- Imagem/logo -->
-            <img src="imagens/logo.png.png" alt="Logo" class="mb-3" width="90">
+            <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="90">
             
             
             <!-- Título e subtítulo -->
@@ -53,8 +53,8 @@
 
             <!-- Botões -->
             <div class="d-flex justify-content-between">
-                <a href="cadastro-a-4.php" class="btn btn-custom w-50 me-1">Cadastrar</a>
-                <a href="home-a-6.php" class="btn btn-custom w-50 ms-1">Entrar</a>
+                <a href="cadastroaluno.php" class="btn btn-custom w-50 me-1">Cadastrar</a>
+                <a href="homealuno.php" class="btn btn-custom w-50 ms-1">Entrar</a>
             </div>
 
             <!-- Link para recuperar senha -->

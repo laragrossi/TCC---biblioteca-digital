@@ -41,7 +41,7 @@
 
     <!-- Botões principais -->
     <div class="main-buttons">
-         <a href="emprestimoaluno.php" class="btn"><i class="bi bi-book-half"></i><br>Empréstimos Ativos</a>
+         <a href="meusemprestimos.php" class="btn"><i class="bi bi-book-half"></i><br>Meus empréstimos</a>
         <a href="dadosaluno.php" class="btn"><i class="bi bi-person-vcard-fill"></i><br>Dados Cadastrais</a>
     </div>
 
@@ -49,22 +49,22 @@
     <h2>Livros em Destaque</h2>
     <div class="book-list">
         <div class="book">
-            <img src="imagens/dom_casmurro.webp" alt="Dom Casmurro">
+            <img src="imagens/livros/dom_casmurro.webp" alt="Dom Casmurro">
             <p>Dom Casmurro</p>
             <p class="author">Machado de Assis</p>
         </div>
         <div class="book">
-            <img src="imagens/o cortiço 2.jpg" alt="O Cortiço">
+            <img src="imagens/livros/o_cortiço_2.jpg" alt="O Cortiço">
             <p>O Cortiço</p>
             <p class="author">Aluísio Azevedo</p>
         </div>
         <div class="book">
-            <img src="imagens/O-pequeno-príncipe.jpg" alt="O Pequeno Príncipe">
+            <img src="imagens/livros/O-pequeno-príncipe.jpg" alt="O Pequeno Príncipe">
             <p>O Pequeno Príncipe</p>
             <p class="author">Antoine de Saint-Exupéry</p>
         </div>
         <div class="book">
-            <img src="imagens/o alienista.jpg" alt="O Alienista">
+            <img src="imagens/livros/o_alienista.jpg" alt="O Alienista">
             <p>O Alienista</p>
             <p class="author">Machado de Assis</p>
         </div>

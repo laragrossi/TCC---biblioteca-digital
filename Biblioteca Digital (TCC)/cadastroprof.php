@@ -29,7 +29,7 @@
     <!-- Caixa central -->
     <div class="box">
         <!-- Formulário de cadastro -->
-        <form action="formulario.php" method="POST">
+        <form action="controladores/cadastro.php" method="POST">
             <fieldset>
                 <legend><b>Cadastro do Professor</b></legend> <!-- Título do formulário -->
                 <br>
@@ -77,9 +77,9 @@
                 <br><br>
 
                 <!-- Botão de cadastro -->
-                <input type="submit" name="submit" id="submit" value="Cadastrar-se">
+                <input type="submit" name="submit" class="btn" value="Cadastrar-se">
                 <br><br>
-                <a href="login-p-2.php" class="btn btn-secondary">Login</a>
+                <a href="loginaluno.php"><input type="button" name="submit" class="btn" value="Voltar"></a>          
             </fieldset>
         </form>
     </div>

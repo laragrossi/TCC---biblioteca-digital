@@ -24,7 +24,7 @@
         <div class="login-card text-center">
             
             <!-- Imagem/logo -->
-            <img src="imagens/logo.png.png" alt="Logo" class="mb-3" width="80">
+            <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="80">
             
             <!-- Título e subtítulo -->
             <h5 class="fw-bold">Bem-vindo de volta</h5>
@@ -56,8 +56,8 @@
 
             <!-- Botões -->
             <div class="d-flex justify-content-between">
-                <a href="cadastro-p-5.php" class="btn btn-custom w-50 me-1">Cadastrar</a>
-                <a href="home-p-10.php" class="btn btn-custom w-50 ms-1">Entrar</a>
+                <a href="cadastroprof.php" class="btn btn-custom w-50 me-1">Cadastrar</a>
+                <a href="homeprof.php" class="btn btn-custom w-50 ms-1">Entrar</a>
             </div>
 
             <!-- Link para recuperar senha -->

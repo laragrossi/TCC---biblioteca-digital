@@ -2,12 +2,12 @@
 
 $dbhost = 'Localhost';
 $dbUsername = 'root';
-$dbPasswhord = '';
-$dbName = 'Biblioteca'
+$dbPassword = '';
+$dbName = 'bd_biblioteca';
 
-$conexao = new mysqli($dbhost,$dbUsername,$dbPasswhord,$dbName);
+$conexao = new mysqli($dbhost,$dbUsername,$dbPassword,$dbName);
 
-if($conexao->connect_errno)
+if($conexao->connect_error)
 {
     echo "Erro";
 }

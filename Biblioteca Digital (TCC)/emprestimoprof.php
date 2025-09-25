@@ -35,7 +35,7 @@
 
 <div class="cards">
     <div class="card">
-        <h3>Hendrick Manuel</h3>
+        <h3>Giovana Rosa</h3>
         <p>RA: XXXXXXXXXX-X</p>
         <p>Turma: 3ºDS</p>
         <p>Livro: O Cortiço</p>

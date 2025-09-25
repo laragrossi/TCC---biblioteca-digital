@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -31,18 +31,18 @@
           <p>Consulta de alunos</p>
         </div>
       </div>
-      <div class="col-12 col-md-4">
+      <a href="emprestimoprof.php" class="col-12 col-md-4 text-decoration-none">
         <div class="card-custom">
           <i class="bi bi-book"></i>
           <p>Empréstimos ativos</p>
         </div>
-      </div>
-      <div class="col-12 col-md-4">
+      </a>
+      <a href="statusdedisponibilidade.php" class="col-12 col-md-4 text-decoration-none">
         <div class="card-custom">
           <i class="bi bi-journal-bookmark"></i>
           <p>Status de Disponibilidade</p>
         </div>
-      </div>
+      </a>
     </div>
 
     <div class="row mt-4 g-3">

@@ -1,20 +1,4 @@
-<?php
 
-    if(isset($_POST['submit']))
-    {
-       include_once('config.php');
-
-       $nome = $_POST['nome'];
-       $ra = $_POST['ra'];
-       $digito = $_POST['digito'];
-       $senha = $_POST['senha'];
-       $escola = $_POST['escola'];
-
-       $result = mysqli_query($conexao, "INSERT INTO tabela(nome,ra,digito,senha,escola,) 
-       VALUES ('$nome','$ra','$digito','$senha','$escola')");
-    }
-
-?>
 <!DOCTYPE html>
 <html lang="en"> <!-- Define o tipo de documento e a linguagem -->
 <head>
@@ -29,7 +13,7 @@
     <!-- Caixa central -->
     <div class="box">
         <!-- Formulário de cadastro -->
-        <form action="formulario.php" method="POST">
+        <form action="controladores/cadastro.php" method="POST">
             <fieldset>
                 <legend><b>Cadastro do Aluno</b></legend> <!-- Título do formulário -->
                 <br>
@@ -77,9 +61,9 @@
                 <br><br>
 
                 <!-- Botão de cadastro -->
-                <input type="submit" name="submit" id="submit" value="Cadastrar-se">
+                <input type="submit" name="submit" class="btn" value="Cadastrar-se">
                 <br><br>
-                <input href="loginaluno.php" type="submit" name="submit" id="submit" value="Login">             
+                <a href="loginaluno.php"><input type="button" name="submit" class="btn" value="Voltar"></a>          
             </fieldset>
         </form>
     </div>

@@ -66,7 +66,7 @@
         }
 
         /* Botão de envio */
-        #submit{
+        .btn{
             background-image: linear-gradient(to right,#8c2d21, #8c2d21);
             width: 100%;
             border: none;
@@ -78,6 +78,6 @@
         }
 
         /* Efeito hover no botão */
-        #submit:hover{
+        .btn:hover{
             background-image: linear-gradient(to right,#db8a80, #db8a80);
         }

@@ -35,11 +35,11 @@
 
 <div class="cards">
     <div class="card">
-        <h3>Hendrick Manuel</h3>
+        <h3>Giovana Rosa</h3>
         <p>RA: XXXXXXXXXX-X</p>
         <p>Turma: 3ºDS</p>
         <p>Livro: O Cortiço</p>
-        <span class="status em-andamento">Em andamento</span>
+        <span class="status em-Andamento">Andamento</span>
         <p>Devolução: xx/xx/xxxx</p>
     </div>
 

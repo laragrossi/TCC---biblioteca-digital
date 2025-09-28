@@ -1,0 +1,69 @@
+/* Estilo geral do corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #fff1e7;
+        }
+/* Cabeçalho principal */
+        header {
+            display: flex; /* Elementos lado a lado */
+            justify-content: space-between; /* Espaço entre título e ícones */
+            align-items: center; /* Centraliza verticalmente */
+            padding: 10px 20px;
+            background-color: #db8a80;
+            position: relative;
+        }
+        /* Título do cabeçalho */
+        header h1 {
+            font-size: 24px;
+            color: #000000;
+        }
+        /* Container dos ícones no cabeçalho */
+        .icons {
+            display: flex;
+            gap: 15px; /* Espaçamento entre ícones */
+            position: relative;
+        }
+
+
+        /* Estilo dos ícones */
+        .icons i {
+            font-size: 24px;
+            color: #3b1f1f;
+            cursor: pointer; /* Muda o cursor ao passar */
+        }
+        /* Caixa cinza */
+.info-card {
+    background-color: #e6ded6; /* cinza/bege igual ao print */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 1000px;
+    height: 400px;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
+/* Ícone */
+.icon-area i {
+    font-size: 70px;
+    color: black;
+}
+
+
+/* Títulos */
+.section-title {
+    color: #8b2720; /* vermelho escuro do print */
+font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+/* Texto ano letivo */
+.ano-letivo {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 5px;
+}

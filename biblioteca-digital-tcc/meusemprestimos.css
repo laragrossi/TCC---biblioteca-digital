@@ -1,0 +1,54 @@
+body {
+    background-color: #fbece2;
+    font-family: Arial, sans-serif;
+}
+
+.bg-navbar {
+    background-color: #eaa89c;
+}
+
+.nav-icon {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.custom-card {
+    background-color: #e7dcd3;
+    border: none;
+    border-radius: 12px;
+}
+
+.icon-lg {
+    font-size: 3rem;
+    color: #7c3a2c;
+}
+
+.img-livro {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.btn-todos {
+    background-color: #eaa89c;
+    color: white;
+    border-radius: 20px;
+    padding: 5px 15px;
+    border: none;
+    margin-right: 5px;
+}
+
+.btn-devolvidos {
+    background-color: #cdd3d9;
+    color: white;
+    border-radius: 20px;
+    padding: 5px 15px;
+    border: none;
+}
+
+.btn-todos:hover,
+.btn-devolvidos:hover {
+    opacity: 0.85;
+    transition: 0.3s;
+}

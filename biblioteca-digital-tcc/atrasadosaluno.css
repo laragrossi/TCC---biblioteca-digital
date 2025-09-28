@@ -1,0 +1,148 @@
+
+    /* Estilo geral do corpo */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fcefe8;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Cabeçalho */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #dba59b;
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .icons {
+        display: flex;
+        gap: 15px;
+        font-size: 26px;
+    }
+
+    .icons i {
+        cursor: pointer;
+    }
+
+    /* Barra de pesquisa */
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin: 15px;
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        background: #f3d8d0;
+        border-radius: 20px;
+        padding: 12px 50px;
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .search-box input {
+        border: none;
+        outline: none;
+        background: none;
+        flex: 1;
+        font-size: 15px;
+    }
+
+    .search-box i {
+        color: gray;
+        margin-right: 8px;
+    }
+
+    /* Botões de filtro */
+    .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 150px;
+        margin-bottom: 15px;
+    }
+
+    .filter-btn {
+        padding: 8px 20px;
+        border-radius: 20px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .filter-btn.active {
+        background-color: #e88f80;
+        color: white;
+    }
+
+    .filter-btn.disabled {
+        background-color: #e6d3cc;
+        color: gray;
+        cursor: not-allowed;
+    }
+
+    /* Container dos cartões */
+    .cards {
+        display: flex;           /* Flexbox para centralização */
+        flex-wrap: wrap;         /* Permite quebrar linha */
+        justify-content: center; /* Centraliza horizontalmente */
+        gap: 20px;               /* Espaçamento entre cartões */
+        padding: 10px;
+    }
+
+    /* Cartão */
+    .card {
+        background: white;
+        border-radius: 12px;
+        padding: 12px;
+        width: 100%;
+        max-width: 500px;
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+        margin: 0 0 5px;
+        font-size: 16px;
+    }
+
+    .card p {
+        margin: 3px 0;
+        font-size: 14px;
+    }
+
+    .status {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+        color: white;
+        margin-top: 5px;
+    }
+
+    .em-andamento {
+        background-color: #50b27e;
+    }
+
+    .em-atraso {
+        background: linear-gradient(to right, red, orange);
+    }
+
+    /* Responsivo para celular */
+    @media (max-width: 900px) {
+        .card {
+            max-width: 100%;
+        }
+    }

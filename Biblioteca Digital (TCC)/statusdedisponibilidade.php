@@ -214,7 +214,7 @@
     </div>
 
     <!-- Lista de livros em destaque -->
-    <h2>Livros em Destaque</h2>
+    <h2>Livros disponíveis</h2>
     <div class="book-list">
         <div class="book">
             <img src="imagens/livros/dom_casmurro.webp" alt="Dom Casmurro">

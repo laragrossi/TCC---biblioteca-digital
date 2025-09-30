@@ -20,9 +20,9 @@
             <h4 class="fw-bold text-brown">Bem-Vindo à Biblioteca Digital</h4>
             <p class="text-muted">Inicie seu acesso:</p>
 
-            <a href="cadastroaluno.php" class="btn btn-custom w-50 me-1">Aluno</a>
+            <a href="loginaluno.php" class="btn btn-custom w-50 me-1">Aluno</a>
             <br>
-            <a href="cadastroprof.php" class="btn btn-custom w-50 me-1">Professor</a>
+            <a href="loginprof.php" class="btn btn-custom w-50 me-1">Professor</a>
         </div>
     </div>
 
@@ -31,5 +31,44 @@
     
     <!-- JS personalizado -->
     <script src="script.js"></script>
+<style> 
+    body {
+    background-color: #ffefe6; /* cor suave igual da imagem */
+}
+
+/* Caixa acesso */
+.card{
+      width:360px;
+      max-width:94vw;
+      background-color: white;
+      border-radius:18px;
+      padding:28px 28px 20px;
+      text-align:center;
+    }
+/* logotipo */
+.logo {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.text-brown {
+    color: #b10606;
+}
+
+.btn-custom {
+    background-color: #d97a6a;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #c76857;
+}
+</style>
+
 </body>
 </html>

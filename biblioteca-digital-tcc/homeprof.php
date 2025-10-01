@@ -7,7 +7,8 @@
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Ícones Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" 
+  rel="stylesheet">
   <!-- CSS externo -->
   <link rel="stylesheet" href="homeprof.css">
 </head>
@@ -36,6 +37,13 @@
           <i class="bi bi-book"></i>
           <p>Empréstimos ativos</p>
         </div>
+      </a>
+       <a href="cadastrolivro.php" class="col-12 col-md-4 text-decoration-none">
+        <div class="card-custom">
+          <i class="bi bi-book"></i>
+          <p>Cadastro de Livros</p>
+        </div>
+        
       </a>
       <a href="statusdedisponibilidade.php" class="col-12 col-md-4 text-decoration-none">
         <div class="card-custom">

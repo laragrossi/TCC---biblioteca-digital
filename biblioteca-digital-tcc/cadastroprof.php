@@ -12,7 +12,9 @@
 
        $result = mysqli_query($conexao, "INSERT INTO tabela(nome,email,senha,escola,cidade) 
        VALUES ('$nome','$email','$senha','$escola','$cidade')");
-    }
+    
+}
+
 
 ?>
 <!DOCTYPE html>

@@ -51,7 +51,7 @@
           <p>Status de Disponibilidade</p>
         </div>
       </a>
-    </div>
+</div>
 
     <div class="row mt-4 g-3">
       <!-- Status atual -->

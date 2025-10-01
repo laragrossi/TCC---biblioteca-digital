@@ -13,10 +13,33 @@
        $result = mysqli_query($conexao, "INSERT INTO tabela(nome,email,senha,escola,cidade) 
        VALUES ('$nome','$email','$senha','$escola','$cidade')");
     
+    
+    // Verifica se login/email já existe
+    $sqlCheck = "SELECT * FROM Professor WHERE login=?";
+    $stmtCheck = $conn->prepare($sqlCheck);
+    $stmtCheck->bind_param("s", $login);
+    $stmtCheck->execute();
+    $resultCheck = $stmtCheck->get_result();
+
+    if ($resultCheck->num_rows > 0) {
+        $error = "Este e-mail já está cadastrado!";
+    } else {
+        // Insere usuário
+        $sqlInsert = "INSERT INTO professor (id, nome, email, senha, escola, cidade)
+                      VALUES (?, ?, ?, ?, ?, ?)";
+        $stmtInsert = $conn->prepare($sqlInsert);
+        $stmtInsert->bind_param("ssssis", $id, $nome, $email, $senha, $escola, $cidade);
+
+        if ($stmtInsert->execute()) {
+            $success = "Usuário cadastrado com sucesso!";
+        } else {
+            $error = "Erro ao cadastrar: " . $stmtInsert->error;
+        }
+    }
+
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en"> <!-- Define o tipo de documento e a linguagem -->
 <head>

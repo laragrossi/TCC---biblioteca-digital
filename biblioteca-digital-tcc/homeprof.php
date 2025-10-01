@@ -38,7 +38,7 @@
           <p>Empréstimos ativos</p>
         </div>
       </a>
-       <a href="cadastrolivro.php" class="col-12 col-md-4 text-decoration-none">
+       <a href="cadastrolivros.php" class="col-12 col-md-4 text-decoration-none">
         <div class="card-custom">
           <i class="bi bi-book"></i>
           <p>Cadastro de Livros</p>

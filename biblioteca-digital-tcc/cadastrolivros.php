@@ -12,6 +12,7 @@
     <!-- Caixa central -->
     <div class="box">
         <!-- Formulário de cadastro -->
+        <form action="conexãodelivros.php" method="POST">
             <fieldset>
                 <legend><b>Cadastro de Livros</b></legend> <!-- Título do formulário -->
                 <br>

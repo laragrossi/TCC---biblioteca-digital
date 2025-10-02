@@ -52,7 +52,7 @@
     </head>
 <body>
     <!-- Caixa central -->
-    <div class="box">
+    <div class="login-card">
         <!-- Formulário de cadastro -->
         <form action="controladores/cadastro.php" method="POST">
             <fieldset>

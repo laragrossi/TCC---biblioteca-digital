@@ -12,7 +12,6 @@
     <!-- Caixa central -->
     <div class="box">
         <!-- Formulário de cadastro -->
-        <form action="controladores/cadastro.php" method="POST">
             <fieldset>
                 <legend><b>Cadastro de Livros</b></legend> <!-- Título do formulário -->
                 <br>

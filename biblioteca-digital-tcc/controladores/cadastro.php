@@ -13,7 +13,7 @@
 
        $result = mysqli_query($conexao, "INSERT INTO aluno(nome,ra,digito,senha,escola) 
        VALUES ('$nome','$ra','$digito','$senha','$escola')");
-       header('Location: ../homealuno.php');
+       header('Location: ../loginaluno.php');
        } else {
         $nome = $_POST['nome'];
        $email = $_POST['email'];
@@ -23,8 +23,9 @@
 
        $result = mysqli_query($conexao, "INSERT INTO professor(nome, email,senha,escola, cidade) 
        VALUES ('$nome','$email','$senha','$escola','$cidade')");
-       header('Location: ../homeprof.php');
+       header('Location: ../loginprof.php');
        }
     }
 
 ?>
+

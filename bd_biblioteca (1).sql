@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01/10/2025 às 18:53
+-- Tempo de geração: 02/10/2025 às 18:07
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -49,6 +49,7 @@ INSERT INTO `aluno` (`ra`, `turma`, `nome`, `digito`, `senha`, `escola`) VALUES
 ('12345', NULL, 'teste', '1', '123', 'jmc'),
 ('123456', NULL, 'teste', '1', '123', 'jmc'),
 ('1234567', NULL, 'teste', '1', '123', 'jmc'),
+('nnb', NULL, 'nbbv', 'n', 'mnmbh', 'nmbnv'),
 ('vtry6r', NULL, 'ygyty', 'x', 'sadsa', 'xsa'),
 ('zzzzzz', NULL, 'iiiiiiiiii', 'a', 'zzzzzzzz', 'aaaaa');
 
@@ -81,13 +82,6 @@ CREATE TABLE `atraso` (
 -- (Veja abaixo para a visão atual)
 --
 CREATE TABLE `devolucoesatrasadas` (
-`IDEmprestimo` int(11)
-,`Titulo` varchar(255)
-,`RA` varchar(20)
-,`Turma` varchar(50)
-,`DataDevolucaoPrevista` date
-,`DiasAtraso` int(11)
-,`Ocorrencia` text
 );
 
 -- --------------------------------------------------------
@@ -140,14 +134,15 @@ CREATE TABLE `historicolivroslidos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `livro`
+-- Estrutura para tabela `livros`
 --
 
-CREATE TABLE `livro` (
-  `IDLivro` int(11) NOT NULL,
-  `Titulo` varchar(255) NOT NULL,
-  `Autor` varchar(255) DEFAULT NULL,
-  `Status` enum('Disponível','Emprestado','Reservado') DEFAULT 'Disponível'
+CREATE TABLE `livros` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `editora` varchar(100) NOT NULL,
+  `autor` varchar(100) NOT NULL,
+  `ano` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -157,9 +152,6 @@ CREATE TABLE `livro` (
 -- (Veja abaixo para a visão atual)
 --
 CREATE TABLE `livrosdisponiveis` (
-`IDLivro` int(11)
-,`Titulo` varchar(255)
-,`Autor` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -169,11 +161,6 @@ CREATE TABLE `livrosdisponiveis` (
 -- (Veja abaixo para a visão atual)
 --
 CREATE TABLE `livrosemprestados` (
-`IDLivro` int(11)
-,`Titulo` varchar(255)
-,`RA_Aluno` varchar(20)
-,`DataEmprestimo` date
-,`DataDevolucaoPrevista` date
 );
 
 -- --------------------------------------------------------
@@ -265,7 +252,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `devolucoesatrasadas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `devolucoesatrasadas`  AS SELECT `e`.`IDEmprestimo` AS `IDEmprestimo`, `l`.`Titulo` AS `Titulo`, `a`.`ra` AS `RA`, `a`.`turma` AS `Turma`, `e`.`DataDevolucaoPrevista` AS `DataDevolucaoPrevista`, `atr`.`DiasAtraso` AS `DiasAtraso`, `atr`.`Ocorrencia` AS `Ocorrencia` FROM (((`emprestimo` `e` join `livro` `l` on(`e`.`IDLivro` = `l`.`IDLivro`)) join `aluno` `a` on(`e`.`RA_Aluno` = `a`.`ra`)) join `atraso` `atr` on(`e`.`IDEmprestimo` = `atr`.`IDEmprestimo`)) WHERE `e`.`Status` = 'Atrasado' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `devolucoesatrasadas`  AS SELECT `e`.`IDEmprestimo` AS `IDEmprestimo`, `l`.`Titulo` AS `Titulo`, `a`.`RA` AS `RA`, `a`.`Turma` AS `Turma`, `e`.`DataDevolucaoPrevista` AS `DataDevolucaoPrevista`, `atr`.`DiasAtraso` AS `DiasAtraso`, `atr`.`Ocorrencia` AS `Ocorrencia` FROM (((`emprestimo` `e` join `livro` `l` on(`e`.`IDLivro` = `l`.`IDLivro`)) join `aluno` `a` on(`e`.`RA_Aluno` = `a`.`RA`)) join `atraso` `atr` on(`e`.`IDEmprestimo` = `atr`.`IDEmprestimo`)) WHERE `e`.`Status` = 'Atrasado' ;
 
 -- --------------------------------------------------------
 
@@ -292,7 +279,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `livrosreservados`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `livrosreservados`  AS SELECT `l`.`IDLivro` AS `IDLivro`, `l`.`Titulo` AS `Titulo`, `r`.`DataReserva` AS `DataReserva`, coalesce(`a`.`ra`,`p`.`IdentificadorProfessor`) AS `Usuario`, CASE WHEN `a`.`RA` is not null THEN 'Aluno' ELSE 'Professor' END AS `TipoUsuario` FROM (((`livro` `l` join `reserva` `r` on(`l`.`IDLivro` = `r`.`IDLivro`)) left join `aluno` `a` on(`r`.`RA_Aluno` = `a`.`RA`)) left join `professor` `p` on(`r`.`IdentificadorProfessor` = `p`.`IdentificadorProfessor`)) WHERE `r`.`Status` = 'Ativa' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `livrosreservados`  AS SELECT `l`.`IDLivro` AS `IDLivro`, `l`.`Titulo` AS `Titulo`, `r`.`DataReserva` AS `DataReserva`, coalesce(`a`.`RA`,`p`.`IdentificadorProfessor`) AS `Usuario`, CASE WHEN `a`.`RA` is not null THEN 'Aluno' ELSE 'Professor' END AS `TipoUsuario` FROM (((`livro` `l` join `reserva` `r` on(`l`.`IDLivro` = `r`.`IDLivro`)) left join `aluno` `a` on(`r`.`RA_Aluno` = `a`.`RA`)) left join `professor` `p` on(`r`.`IdentificadorProfessor` = `p`.`IdentificadorProfessor`)) WHERE `r`.`Status` = 'Ativa' ;
 
 --
 -- Índices para tabelas despejadas
@@ -328,10 +315,10 @@ ALTER TABLE `historicolivroslidos`
   ADD KEY `idx_historico_aluno` (`RA_Aluno`);
 
 --
--- Índices de tabela `livro`
+-- Índices de tabela `livros`
 --
-ALTER TABLE `livro`
-  ADD PRIMARY KEY (`IDLivro`);
+ALTER TABLE `livros`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `login`
@@ -377,10 +364,10 @@ ALTER TABLE `historicolivroslidos`
   MODIFY `IDHistorico` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `livro`
+-- AUTO_INCREMENT de tabela `livros`
 --
-ALTER TABLE `livro`
-  MODIFY `IDLivro` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `livros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `login`

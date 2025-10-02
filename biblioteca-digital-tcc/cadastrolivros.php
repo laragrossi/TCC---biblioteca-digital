@@ -12,7 +12,7 @@
     <!-- Caixa central -->
     <div class="login-card">
         <!-- Formulário de cadastro -->
-        <form action="controladores/cadastro.php" method="POST">
+        <form action="conexãodelivros.php" method="POST">
             <fieldset>
                 <legend><b>Cadastro de Livros</b></legend> <!-- Título do formulário -->
                 <br>

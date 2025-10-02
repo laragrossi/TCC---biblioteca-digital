@@ -1,0 +1,83 @@
+ /* Estilo do corpo da página */
+        body{
+            font-family: Arial, Helvetica, sans-serif; /* Fonte padrão */
+            background-image: linear-gradient(to right, #ede3d7,#ede3d7); /* Fundo com gradiente */
+        }
+
+        /* Caixa central do formulário */
+        .box{
+            color: white; /* Cor do texto */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%); /* Centraliza a caixa na tela */
+            background-color: #e9b3a9; /* Fundo semi-transparente */
+            padding: 15px;
+            border-radius: 15px; /* Bordas arredondadas */
+            width: 25%; /* Largura da caixa */
+        }
+
+        /* Borda do formulário */
+        fieldset{
+            border: 3px solid #8c2d21; /* Borda */
+        }
+
+        /* Título dentro da borda */
+        legend{
+            border: 1px solid #8c2d21;
+            padding: 10px;
+            text-align: center;
+            background-color: #8c2d21;
+            border-radius: 5px;
+        }
+
+        /* Container para inputs */
+        .inputBox{
+            position: relative;
+        }
+
+        /* Estilo dos campos de entrada */
+        .inputUser{
+            background: none; /* Sem fundo */
+            border: none; /* Sem borda */
+            border-bottom: 1px solid #8c2d21; /* Apenas linha inferior */
+            outline: none; /* Remove a borda padrão ao clicar */
+            color: white;
+            font-size: 15px;
+            width: 100%;
+            letter-spacing: 2px; /* Espaçamento entre letras */
+        }
+
+        /* Estilo dos rótulos (labels) */
+        .labelInput{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            pointer-events: none; /* Impede clique no label */
+            transition: .5s; /* Animação suave */
+        }
+
+        /* Efeito flutuante no label quando o input está preenchido ou em foco */
+        .inputUser:focus ~ .labelInput,
+        .inputUser:valid ~ .labelInput{
+            top: -20px;
+            font-size: 12px;
+            color: #8c2d21;
+        }
+
+        /* Botão de envio */
+        .btn{
+            background-image: linear-gradient(to right,#8c2d21, #8c2d21);
+            width: 100%;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer; /* Muda o cursor ao passar o mouse */
+            border-radius: 10px;
+        }
+
+        /* Efeito hover no botão */
+        .btn:hover{
+            background-image: linear-gradient(to right,#db8a80, #db8a80);
+        }

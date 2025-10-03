@@ -1,3 +1,9 @@
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+include("conexaoDelivros.php");
+?>
+<?php include("conexaoDelivros.php"); ?>
 <!DOCTYPE html>
 <html lang="en"> <!-- Define o tipo de documento e a linguagem -->
 <head>
@@ -12,7 +18,7 @@
     <!-- Caixa central -->
     <div class="login-card">
         <!-- Formulário de cadastro -->
-        <form action="conexãodelivros.php" method="POST">
+        <form action="conexaoDelivros.php" method="POST">
             <fieldset>
                 <legend><b>Cadastro de Livros</b></legend> <!-- Título do formulário -->
                 <br>

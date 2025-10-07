@@ -63,7 +63,7 @@
             </div>
             <!-- Link para consultar RA -->
             <div class="mt-3">
-                <a href="#" class="text-link">Esqueceu seu RA?</a>
+                <a href="https://sed.educacao.sp.gov.br/NCA/CadastroAluno/ConsultaRAAluno/" class="text-link">Esqueceu seu RA?</a>
             </div>
         </div>
     </div>

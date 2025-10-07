@@ -23,7 +23,7 @@
         <div class="login-card text-center">
             
             <!-- Imagem/logo -->
-            <img src="imagens/logotcc.png.png" alt="Logo" class="mb-3" width="90">
+            <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="90">
             
             
             <!-- Título e subtítulo -->

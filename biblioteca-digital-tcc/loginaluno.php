@@ -56,11 +56,7 @@
                 <a href="cadastroaluno.php" class="btn btn-custom w-50 me-1">Cadastrar</a>
                 <a href="homealuno.php" class="btn btn-custom w-50 ms-1">Entrar</a>
             </div>
-
-            <!-- Link para recuperar senha -->
-            <div class="mt-3">
-                <a href="#" class="text-link">Esqueceu sua senha?</a>
-            </div>
+            
             <!-- Link para consultar RA -->
             <div class="mt-3">
                 <a href="https://sed.educacao.sp.gov.br/NCA/CadastroAluno/ConsultaRAAluno/" class="text-link">Esqueceu seu RA?</a>

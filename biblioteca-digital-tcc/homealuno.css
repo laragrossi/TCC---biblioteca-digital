@@ -12,7 +12,7 @@
             justify-content: space-between; /* Espaço entre título e ícones */
             align-items: center; /* Centraliza verticalmente */
             padding: 10px 20px;
-            background-color: #db8a80;
+            background-color: #d87b6d;
             position: relative;
         }
 
@@ -121,7 +121,7 @@
 
         /* Estilo dos botões */
         .btn {
-            background-color: #d36b5e;
+            background-color: #d87b6d;
             color: white;
             padding: 25px 40px;
             border-radius: 10px;

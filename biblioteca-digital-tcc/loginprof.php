@@ -62,7 +62,7 @@
 
             <!-- Link para recuperar senha -->
             <div class="mt-3">
-                <a href="#" class="text-link">Esqueceu sua senha?</a>
+                <a href="recuperacaosenha.php" class="text-link">Esqueceu sua senha?</a>
             </div>
         </div>
     </div>

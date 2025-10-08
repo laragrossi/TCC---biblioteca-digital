@@ -34,8 +34,8 @@
             <div class="mb-3 text-start">
                 <label class="fw-bold">Digite seu RA</label> <!-- Rótulo do campo -->
                 <div class="input-group">
-    <input type="text" name="ra" placeholder="RA" class="input-ra">
-    <input type="text" name="digito" placeholder="Dígito" class="input-digito">
+    <input type="text" name="ra" placeholder="RA" class="input-ra" required>
+    <input type="text" name="digito" placeholder="Dígito" class="input-digito" required>
 </div>
 
             </div>

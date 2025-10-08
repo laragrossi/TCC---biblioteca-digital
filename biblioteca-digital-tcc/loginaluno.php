@@ -43,7 +43,7 @@
             <div class="mb-3 text-start">
                 <label class="fw-bold">Senha</label> <!-- Rótulo do campo -->
                 <div class="input-group">
-                    <input type="password" id="senha" class="form-control" placeholder="Digite sua senha">
+                    <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" required>
                     <!-- Ícone de olho para mostrar/ocultar senha -->
                     <span class="input-group-text" id="toggleSenha">
                         <i class="bi bi-eye-fill"></i>

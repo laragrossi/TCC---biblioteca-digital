@@ -23,7 +23,7 @@
             justify-content: space-between; /* Espaço entre título e ícones */
             align-items: center; /* Centraliza verticalmente */
             padding: 10px 20px;
-            background-color: #db8a80;
+            background-color: #d87b6d;
             position: relative;
         }
 
@@ -215,7 +215,7 @@
     </div>
 
     <!-- Lista de livros em destaque -->
-    <h2>Livros em Destaque</h2>
+    <h2>Livros disponíveis</h2>
     <div class="book-list">
         <div class="book">
             <img src="imagens/livros/dom_casmurro.webp" alt="Dom Casmurro">

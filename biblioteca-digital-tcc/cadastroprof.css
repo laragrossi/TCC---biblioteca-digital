@@ -6,7 +6,7 @@
 
         /* Caixa do login */
         .login-card {
-        background-color: #e9b3a9;
+        background-color: #ffffff;
         border-radius: 18px; /* Cantos arredondados */
         padding: 28px 28px 28px; /* Espaçamento interno */
         width: 360px;
@@ -39,7 +39,7 @@
             border: none; /* Sem borda */
             border-bottom: 1px solid #d87b6d; /* Apenas linha inferior */
             outline: none; /* Remove a borda padrão ao clicar */
-            color: white;
+            color: rgb(0, 0, 0);
             font-size: 15px;
             width: 100%;
             letter-spacing: 2px; /* Espaçamento entre letras */

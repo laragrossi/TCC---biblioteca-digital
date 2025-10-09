@@ -40,7 +40,7 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
             <div class="mb-3 text-start">
                 <label class="fw-bold">Digite seu email</label> <!-- Rótulo do campo -->
                 <div class="input-group">
-                    <input type="email" class="form-control" placeholder="Digite seu email">
+                    <input type="email" class="form-control" placeholder="Digite seu email" required>
                     <!-- Ícone de email -->
                     <span class="input-group-text">
                         <i class="bi bi-envelope-fill"></i>
@@ -52,7 +52,7 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
             <div class="mb-3 text-start">
                 <label class="fw-bold">Senha</label> <!-- Rótulo do campo -->
                 <div class="input-group">
-                    <input type="password" id="senha" class="form-control" placeholder="Digite sua senha">
+                    <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" required>
                     <!-- Ícone de olho para mostrar/ocultar senha -->
                     <span class="input-group-text" id="toggleSenha">
                         <i class="bi bi-eye-fill"></i>

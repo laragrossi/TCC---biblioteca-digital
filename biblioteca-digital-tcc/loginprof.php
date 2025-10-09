@@ -77,7 +77,29 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Nosso arquivo JavaScript -->
-    <script src="script.js"> </script>
+    <script>
+        // Pega o elemento do ícone do olho
+const toggleSenha = document.getElementById('toggleSenha');
+
+// Pega o campo da senha
+const senha = document.getElementById('senha');
+
+// Quando clicar no ícone, executa essa função
+toggleSenha.addEventListener('click', () => {
+    // Se o tipo do campo for "password" troca para "text" (mostra senha)
+    if (senha.type === 'password') {
+        senha.type = 'text';
+        // Muda o ícone para o olho fechado
+        toggleSenha.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+    } 
+    // Se já estiver como texto, troca de volta para "password"
+    else {
+        senha.type = 'password';
+        // Muda o ícone para o olho aberto
+        toggleSenha.innerHTML = '<i class="bi bi-eye-fill"></i>';
+    }
+});
+    </script>
 
 </body>
 </html>

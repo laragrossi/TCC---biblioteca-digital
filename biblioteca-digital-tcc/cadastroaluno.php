@@ -41,14 +41,14 @@
 
                 <!-- Campo Senha -->
                 <div class="inputBox">
-                    <input type="text" name="senha" id="senha" class="inputUser" required>
+                    <input type="password" name="senha" id="senha" class="inputUser" required>
                     <label for="senha" class="labelInput">Senha</label>
                 </div>
                 <br><br>
 
                 <!-- Campo csenha -->
                 <div class="inputBox">
-                    <input type="text" name="csenha" id="csenha" class="inputUser" required>
+                    <input type="password" name="csenha" id="csenha" class="inputUser" required>
                     <label for="csenha" class="labelInput">Confirmar Senha</label>
                 </div>
                 <br><br>

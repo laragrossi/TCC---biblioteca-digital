@@ -21,7 +21,10 @@
         
         <!-- Cartão de login -->
         <div class="login-card text-center">
-            
+
+         <!-- Imagem/logo -->
+            <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="90"
+
             <!-- Título e subtítulo -->
 <h5 class="fw-bold">Bem-vindo de volta</h5>
 <p class="text-muted mb-4">Entre com seus dados</p>
@@ -31,14 +34,6 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
     echo '<div class="alert alert-success" role="alert">Você foi cadastrado com sucesso!</div>';
 }
 ?>
-            <!-- Imagem/logo -->
-            <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="90">
-            
-            
-            <!-- Título e subtítulo -->
-            <h5 class="fw-bold">Bem-vindo de volta</h5>
-            <p class="text-muted mb-4">Entre com seus dados</p>
-
             <!-- Campo de RA -->
             <div class="mb-3 text-start">
                 <label class="fw-bold">Digite seu RA</label> <!-- Rótulo do campo -->

@@ -23,22 +23,18 @@
         <!-- Cartão de login -->
         <div class="login-card text-center">
             
-             <!-- Título e subtítulo -->
-<h5 class="fw-bold">Bem-vindo de volta</h5>
-<p class="text-muted mb-4">Entre com seus dados</p>
-
-<?php
-if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
-    echo '<div class="alert alert-success" role="alert">Você foi cadastrado com sucesso!</div>';
-}
-?>
-            
-            <!-- Imagem/logo -->
+ <!-- Imagem/logo -->
             <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="80">
             
             <!-- Título e subtítulo -->
             <h5 class="fw-bold">Bem-vindo de volta</h5>
             <p class="text-muted mb-4">Entre com seus dados</p>
+
+        <?php
+if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
+    echo '<div class="alert alert-success" role="alert">Você foi cadastrado com sucesso!</div>';
+}
+?>
 
             <!-- Campo de Email -->
             <div class="mb-3 text-start">

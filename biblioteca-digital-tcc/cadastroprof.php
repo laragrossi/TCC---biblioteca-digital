@@ -48,7 +48,7 @@
     <title>Cadastro</title> <!-- Título da aba do navegador -->
 
     <!-- Link para o nosso arquivo de CSS personalizado -->
-    <link rel="stylesheet" href="cadastroprof.css">
+    <link rel="stylesheet" href="css/cadastroprof.css">
     </head>
 <body>
     <!-- Caixa central -->

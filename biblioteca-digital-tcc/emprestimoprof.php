@@ -7,7 +7,7 @@
 
 <!-- Importando ícones do Bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<link rel="stylesheet" href="emprestimoprof.css">
+<link rel="stylesheet" href="css/emprestimoprof.css">
 
 </head>
 <body>

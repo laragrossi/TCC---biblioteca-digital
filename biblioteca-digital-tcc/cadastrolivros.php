@@ -12,7 +12,7 @@ include("conexaoDelivros.php");
     <title>Cadastro</title> <!-- Título da aba do navegador -->
     
     <!-- Link para o nosso arquivo de CSS personalizado -->
-    <link rel="stylesheet" href="cadastrolivros.css">
+    <link rel="stylesheet" href="css/cadastrolivros.css">
 </head>
 <body>
     <!-- Caixa central -->

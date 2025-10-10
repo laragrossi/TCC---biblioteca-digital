@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     
     <!-- Link para o nosso arquivo de CSS personalizado -->
-    <link rel="stylesheet" href="loginaluno.css">
+    <link rel="stylesheet" href="css/loginaluno.css">
 </head>
 <body>
 

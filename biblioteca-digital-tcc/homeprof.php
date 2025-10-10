@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" 
   rel="stylesheet">
   <!-- CSS externo -->
-  <link rel="stylesheet" href="homeprof.css">
+  <link rel="stylesheet" href="css/homeprof.css">
 </head>
 <body>
   <!-- Topbar -->

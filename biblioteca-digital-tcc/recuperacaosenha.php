@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- CSS personalizado -->
-    <link rel="stylesheet" href="loginprof.css">
+    <link rel="stylesheet" href="css/loginprof.css">
 </head>
 <body>
 

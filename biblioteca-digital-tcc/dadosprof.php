@@ -8,7 +8,7 @@
     <!-- Link para o pacote de ícones Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="dadosprof.css">
+    <link rel="stylesheet" href="css/dadosprof.css">
     <script src="dadoscadastrados.js"></script>
 </head>
 <body>

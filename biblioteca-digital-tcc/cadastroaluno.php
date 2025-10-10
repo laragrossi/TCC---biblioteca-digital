@@ -7,7 +7,7 @@
     <title>Cadastro</title> <!-- Título da aba do navegador -->
     
     <!-- Link para o nosso arquivo de CSS personalizado -->
-    <link rel="stylesheet" href="cadastroaluno.css">
+    <link rel="stylesheet" href="css/cadastroaluno.css">
 </head>
 <body>
     <!-- Caixa central -->

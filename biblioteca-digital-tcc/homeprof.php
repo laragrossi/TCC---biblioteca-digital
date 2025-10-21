@@ -18,7 +18,7 @@
         <div class="icons">
             <i class="bi bi-house-door-fill" title="Início"></i>
             <i class="bi bi-bell-fill" id="notification-btn" title="Notificações"></i>
-            <a href="dadosaluno.php"><i class="bi bi-person-fill" title="Perfil"></i></a>
+            <a href="dadosprof.php"><i class="bi bi-person-fill" title="Perfil"></i></a>
 
   <div class="container mt-4">
     <div class="row g-3">

@@ -62,7 +62,7 @@
       <a href="statusdedisponibilidade.php" class="col-12 col-md-4 text-decoration-none">
         <div class="card-custom">
           <i class="bi bi-journal-bookmark"></i>
-          <p>Status de Disponibilidade</p>
+          <p>Acervo de livros</p>
         </div>
       </a>
     </div>

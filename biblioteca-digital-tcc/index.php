@@ -23,6 +23,7 @@
             <a href="loginaluno.php" class="btn btn-custom w-100 me-1">Aluno</a>
             <br>
             <a href="loginprof.php" class="btn btn-custom w-100 me-1">Professor</a>
+        <a href="loginadm.php" class="btn btn-custom w-100 me-1">Administrador</a>
         </div>
     </div>
 

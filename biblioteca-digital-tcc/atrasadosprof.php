@@ -7,7 +7,7 @@
 
 <!-- Importando ícones do Bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<link rel="stylesheet" href="css/atrasadosaluno.css">
+<link rel="stylesheet" href="css/atrasadosprof.css">
 
 </head>
 <body>
@@ -15,9 +15,9 @@
 <header>
     <h1>Empréstimos ativos</h1>
     <div class="icons">
-        <a href="homealuno.php"><i class="bi bi-house-door"></i></a>
+        <a href="homeprof.php"><i class="bi bi-house-door"></i></a>
         <i class="bi bi-bell"></i>
-        <a href="dadosaluno.php"><i class="bi bi-person"></i></a>
+        <a href="dadosprof.php"><i class="bi bi-person"></i></a>
     </div>
 </header>
 

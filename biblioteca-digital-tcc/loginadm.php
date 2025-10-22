@@ -1,104 +1,112 @@
+<?php
+include('conexao.php'); 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $sql = "SELECT * FROM administrador WHERE email = '$email' AND senha = '$senha'";
+    $resultado = mysqli_query($conexao, $sql);
+
+    if (mysqli_num_rows($resultado) > 0) {
+        header("Location: homeadm.php");
+        exit;
+    } else {
+        echo "<div class='alert alert-danger text-center'>Email ou senha incorretos!</div>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Faz o site se ajustar em celulares -->
-    <title>Página de Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do Administrador</title>
     
-    <!-- Link do Bootstrap CSS para usar classes prontas de layout e design -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Link para os ícones do Bootstrap (para usar o ícone de email e olho) -->
+
+    <!-- Ícones Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- Link para o nosso arquivo de CSS personalizado -->
+
+    <!-- CSS personalizado -->
     <link rel="stylesheet" href="css/loginprof.css">
-    
 </head>
 <body>
 
-    <!-- Container centraliza o conteúdo e d-flex ajuda no alinhamento -->
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        
-        <!-- Cartão de login -->
         <div class="login-card text-center">
             
- <!-- Imagem/logo -->
+            <!-- Logo -->
             <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="80">
-            
-            <!-- Título e subtítulo -->
+
+            <!-- Título -->
             <h5 class="fw-bold">Bem-vindo de volta</h5>
-            <p class="text-muted mb-4">Entre com seus dados</p>
+            <p class="text-muted mb-4">Entre com seus dados de administrador</p>
 
-        <?php
-if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
-    echo '<div class="alert alert-success" role="alert">Você foi cadastrado com sucesso!</div>';
-}
-?>
+            <!-- Mensagem de sucesso (exemplo de cadastro anterior) -->
+            <?php
+            if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
+                echo '<div class="alert alert-success" role="alert">Você foi cadastrado com sucesso!</div>';
+            }
 
-            <!-- Campo de Email -->
-            <div class="mb-3 text-start">
-                <label class="fw-bold">Digite seu email</label> <!-- Rótulo do campo -->
-                <div class="input-group">
-                    <input type="email" class="form-control" placeholder="Digite seu email" required>
-                    <!-- Ícone de email -->
-                    <span class="input-group-text">
-                        <i class="bi bi-envelope-fill"></i>
-                    </span>
+            if (isset($erro)) {
+                echo "<div class='alert alert-danger' role='alert'>$erro</div>";
+            }
+            ?>
+
+            <!-- Formulário funcional -->
+            <form method="POST">
+                <!-- Campo de Email -->
+                <div class="mb-3 text-start">
+                    <label class="fw-bold">Digite seu email</label>
+                    <div class="input-group">
+                        <input type="email" name="email" class="form-control" placeholder="Digite seu email" required>
+                        <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Campo de Senha -->
-            <div class="mb-3 text-start">
-                <label class="fw-bold">Senha</label> <!-- Rótulo do campo -->
-                <div class="input-group">
-                    <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" required>
-                    <!-- Ícone de olho para mostrar/ocultar senha -->
-                    <span class="input-group-text" id="toggleSenha">
-                        <i class="bi bi-eye-fill"></i>
-                    </span>
+                <!-- Campo de Senha -->
+                <div class="mb-3 text-start">
+                    <label class="fw-bold">Senha</label>
+                    <div class="input-group">
+                        <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+                        <span class="input-group-text" id="toggleSenha">
+                            <i class="bi bi-eye-fill"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Botões -->
-            <div class="d-flex justify-content-between">
-                <a href="cadastroprof.php" class="btn btn-custom w-50 me-1">Cadastrar</a>
-                <a href="colocar a pagina inicial do adm" class="btn btn-custom w-50 ms-1">Entrar</a>
-            </div>
+                <!-- Botões -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-custom w-50 ms-1">Entrar</button>
+                </div>
+            </form>
 
-            <!-- Link para recuperar senha -->
+            <!-- Link de recuperação -->
             <div class="mt-3">
                 <a href="recuperacaosenha.php" class="text-link">Esqueceu sua senha?</a>
             </div>
         </div>
     </div>
 
-    <!-- Script do Bootstrap (necessário para algumas funções dele) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Nosso arquivo JavaScript -->
+
+    <!-- Mostrar/Ocultar senha -->
     <script>
-        // Pega o elemento do ícone do olho
-const toggleSenha = document.getElementById('toggleSenha');
+    const toggleSenha = document.getElementById('toggleSenha');
+    const senha = document.getElementById('senha');
 
-// Pega o campo da senha
-const senha = document.getElementById('senha');
-
-// Quando clicar no ícone, executa essa função
-toggleSenha.addEventListener('click', () => {
-    // Se o tipo do campo for "password" troca para "text" (mostra senha)
-    if (senha.type === 'password') {
-        senha.type = 'text';
-        // Muda o ícone para o olho fechado
-        toggleSenha.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
-    } 
-    // Se já estiver como texto, troca de volta para "password"
-    else {
-        senha.type = 'password';
-        // Muda o ícone para o olho aberto
-        toggleSenha.innerHTML = '<i class="bi bi-eye-fill"></i>';
-    }
-});
+    toggleSenha.addEventListener('click', () => {
+        if (senha.type === 'password') {
+            senha.type = 'text';
+            toggleSenha.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+        } else {
+            senha.type = 'password';
+            toggleSenha.innerHTML = '<i class="bi bi-eye-fill"></i>';
+        }
+    });
     </script>
 
 </body>

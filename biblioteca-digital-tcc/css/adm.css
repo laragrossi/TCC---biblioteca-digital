@@ -1,0 +1,56 @@
+:root {
+    --cor1: #fff1e7;
+    --cor2: #db8a80;
+    --cor3: #ecdfd7;
+    --cor4: #e9b3a9;
+    --cor5: #8c2d21;
+    --cor6: #a3a5a7;
+}
+
+/* === LOGIN === */
+.login-bg {
+    background-color: var(--cor1);
+}
+
+.login-card {
+    background-color: var(--cor3);
+    border-radius: 15px;
+    width: 350px;
+}
+
+.text-titulo {
+    color: var(--cor5);
+}
+
+.btn-login {
+    background-color: var(--cor2);
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background-color: var(--cor5);
+}
+
+/* === HOME === */
+.home-bg {
+    background-color: var(--cor1);
+    min-height: 100vh;
+}
+
+.form-section {
+    background-color: var(--cor4);
+    border-radius: 15px;
+}
+
+.card {
+    border: none;
+}
+
+input.form-control {
+    border: 1px solid var(--cor6);
+}
+
+.navbar-brand {
+    color: #fff !important;
+}

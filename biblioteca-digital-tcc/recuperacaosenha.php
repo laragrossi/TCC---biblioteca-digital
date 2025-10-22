@@ -1,3 +1,39 @@
+<?php
+include('conexao.php'); // seu arquivo de conexão com o banco
+
+$mensagem = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Pega e limpa os dados do formulário
+    $email = trim($_POST['email']);
+    $nova_senha = trim($_POST['nova_senha']);
+
+    // SQL: ignora maiúsculas/minúsculas
+    $stmt = $conexao->prepare("SELECT id FROM professor WHERE LOWER(email) = LOWER(?)");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $res = $stmt->get_result();
+
+    if ($res->num_rows > 0) {
+        $user = $res->fetch_assoc();
+        $id = $user['id'];
+
+        // Cria hash da nova senha
+        $senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
+
+        // Atualiza senha no banco
+        $update = $conexao->prepare("UPDATE professor SET senha = ? WHERE id = ?");
+        $update->bind_param("si", $senha_hash, $id);
+        if ($update->execute()) {
+            $mensagem = '<div class="alert alert-success">Senha atualizada com sucesso!</div>';
+        } else {
+            $mensagem = '<div class="alert alert-danger">Erro ao atualizar senha. Tente novamente.</div>';
+        }
+    } else {
+        $mensagem = '<div class="alert alert-danger">Email não encontrado.</div>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

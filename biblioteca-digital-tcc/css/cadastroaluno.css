@@ -1,4 +1,4 @@
-  /* Estilo do corpo da página */
+/* Estilo do corpo da página */
         body{
             font-family: Arial, Helvetica, sans-serif; /* Fonte padrão */
             background-image: linear-gradient(to right, #ede3d7,#ede3d7); /* Fundo com gradiente */
@@ -11,10 +11,12 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%); /* Centraliza a caixa na tela */
-            background-color: #e9b3a9; /* Fundo semi-transparente */
-            padding: 15px;
-            border-radius: 15px; /* Bordas arredondadas */
-            width: 25%; /* Largura da caixa */
+            background-color: #ffffff; /* Fundo semi-transparente */
+            padding: 28px 28px 28px; /* Espaçamento interno */
+            border-radius: 18px; /* Bordas arredondadas */
+            margin-top: 10px;
+            width: 360px;
+            height: 550px;
         }
 
         /* Borda do formulário */
@@ -42,7 +44,7 @@
             border: none; /* Sem borda */
             border-bottom: 1px solid #d87b6d; /* Apenas linha inferior */
             outline: none; /* Remove a borda padrão ao clicar */
-            color: white;
+            color: rgb(0, 0, 0);
             font-size: 15px;
             width: 100%;
             letter-spacing: 2px; /* Espaçamento entre letras */
@@ -62,7 +64,7 @@
         .inputUser:valid ~ .labelInput{
             top: -20px;
             font-size: 12px;
-            color: #8c2d21;
+            color: #d87b6d;
         }
 
         /* Botão de envio */
@@ -79,5 +81,5 @@
 
         /* Efeito hover no botão */
         .btn:hover{
-            background-image: linear-gradient(to right,#db8a80, #db8a80);
+            background-image: linear-gradient(to right,#8c2d21, #8c2d21);
         }

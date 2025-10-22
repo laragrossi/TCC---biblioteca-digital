@@ -104,7 +104,7 @@
                 <!-- Botão de cadastro -->
                 <input type="submit" name="submit" class="btn" value="Cadastrar-se">
                 <br><br>
-                <a href="loginprof.php"><input type="button" name="submit" class="btn" value="Voltar"></a>          
+                <a href="homeadm.php"><input type="button" name="submit" class="btn" value="Voltar"></a>          
             </fieldset>
         </form>
     </div>

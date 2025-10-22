@@ -77,11 +77,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <!-- Botões -->
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-custom w-50 ms-1">Entrar</button>
                 </div>
             </form>
+=======
+            <!-- Botões -->
+            <div class="d-flex justify-content-center">
+            <a href="homeadm.php" class="btn btn-custom w-100 ms-1">Entrar</a>
+            </div>
+>>>>>>> 2799dcc05e7ce006b217efb753fcec135557e6d5
 
             <!-- Link de recuperação -->
             <div class="mt-3">

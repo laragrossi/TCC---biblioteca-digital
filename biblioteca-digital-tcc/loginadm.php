@@ -62,7 +62,7 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
 
             <!-- Botões -->
             <div class="d-flex justify-content-center">
-            <a href="homeprof.php" class="btn btn-custom w-100 ms-1">Entrar</a>
+            <a href="homeadm.php" class="btn btn-custom w-100 ms-1">Entrar</a>
             </div>
 
             <!-- Link para recuperar senha -->

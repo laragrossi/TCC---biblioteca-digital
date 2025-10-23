@@ -69,7 +69,7 @@
   </div>
   <div class="col-12 col-md-6">
         <div class="notifications">
-          <h5>Notificações recentes</h5>
+          <h5>Livros emprestados</h5>
           <p><strong>O Cortiço</strong><br>
             Nome do aluno - Série <br>
           </p>

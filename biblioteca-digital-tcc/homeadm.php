@@ -67,6 +67,20 @@
     </div>
 
   </div>
+  <div class="col-12 col-md-6">
+        <div class="notifications">
+          <h5>Notificações recentes</h5>
+          <p><strong>O Cortiço</strong><br>
+            Nome do aluno - Série <br>
+          </p>
+          <p><strong>O pequeno prícipe</strong><br>
+            Nome do aluno - Série <br>
+          </p>
+          <p><strong>O Alienista</strong><br>
+            Nome do aluno - Série <br>
+          </p>
+        </div>
+      </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

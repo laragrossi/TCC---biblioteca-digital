@@ -40,11 +40,8 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
             <div class="mb-3 text-start">
                 <label class="fw-bold">Digite seu email</label> <!-- Rótulo do campo -->
                 <div class="input-group">
-                    <input type="email" class="form-control" placeholder="Digite seu email" required>
-                    <!-- Ícone de email -->
-                    <span class="input-group-text">
-                        <i class="bi bi-envelope-fill"></i>
-                    </span>
+                    <input type="email" name="email" class="form-control" placeholder="Digite seu email" required>
+                        <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
                 </div>
             </div>
 

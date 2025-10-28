@@ -14,7 +14,6 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-navbar px-3">
         <a class="navbar-brand fw-bold" href="#">Meus Empréstimos</a>
         <div class="ms-auto d-flex align-items-center position-relative">
-            <i class="bi bi-search nav-icon" aria-label="Pesquisar"></i>
             <i class="bi bi-house nav-icon" aria-label="Página inicial"></i>
             <i class="bi bi-bell nav-icon" aria-label="Notificações"></i>
             
@@ -22,13 +21,17 @@
             <i class="bi bi-person nav-icon" aria-label="Perfil" id="user-icon"></i>
             
             <!-- Menu do usuário -->
-            <div id="user-menu" class="card custom-card position-absolute end-0 mt-3" style="width: 220px; display: none; z-index: 10;">
+            <div id="user-menu" class="card custom-card position-absolute end-0 mt-0" style="width: 220px; display: none; z-index: 10;">
                 <div class="card-body">
                     <h6 class="fw-bold mb-2">Dados Cadastrais</h6>
                     <p class="mb-1"><strong>Nome:</strong> Giovana Rosa Greco</p>
                     <p class="mb-1"><strong>Email:</strong> giovana@example.com</p>
                     <hr>
-                    <button class="btn btn-danger w-100" id="logout-btn">Sair da conta</button>
+                    <div class="d-flex gap-2">
+                        <a href="dadosaluno.php" class="btn btn-dark">Perfil</a>
+                        <a href="index.php" class="btn btn-dark">Sair</a>
+                    </div>
+
                 </div>
             </div>
         </div>

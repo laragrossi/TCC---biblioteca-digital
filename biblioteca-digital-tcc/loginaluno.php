@@ -86,31 +86,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
             ?>
 
-            <!-- FORMULÁRIO CORRETO -->
-            <form action="loginaluno.php" method="POST">
+           <form action="homealuno.php" method="POST">
 
-                <!-- RA -->
-                <div class="mb-3 text-start">
-                    <label class="fw-bold">Digite seu RA</label>
-                    <input type="text" name="ra" placeholder="Seu RA" class="form-control" required>
-                </div>
+    <!-- Campo de RA -->
+    <div class="mb-3 text-start">
+        <label class="fw-bold">Digite seu RA</label>
+        <div class="input-group">
+            <input type="text" name="ra" placeholder="RA" class="input-ra" required>
+            <input type="text" name="digito" placeholder="Dígito" class="input-digito" required>
+        </div>
+    </div>
 
-                <!-- Senha -->
-                <div class="mb-3 text-start">
-                    <label class="fw-bold">Senha</label>
-                    <div class="input-group">
-                        <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
-                        <span class="input-group-text" id="toggleSenha">
-                            <i class="bi bi-eye-fill"></i>
-                        </span>
-                    </div>
-                </div>
+    <!-- Campo de Senha -->
+    <div class="mb-3 text-start">
+        <label class="fw-bold">Senha</label>
+        <div class="input-group">
+            <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+            <span class="input-group-text" id="toggleSenha">
+                <i class="bi bi-eye-fill"></i>
+            </span>
+        </div>
+    </div>
 
-                <!-- Botão -->
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-custom w-100">Entrar</button>
-                </div>
-            </form>
+    <!-- Botão Entrar -->
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-custom w-100 ms-1">Entrar</button>
+    </div>
+
+</form>
+
 
             <div class="mt-3">
                 <a href="https://sed.educacao.sp.gov.br/NCA/CadastroAluno/ConsultaRAAluno/" class="text-link">Esqueceu seu RA?</a>

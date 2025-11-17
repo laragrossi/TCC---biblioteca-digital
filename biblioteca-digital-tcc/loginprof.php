@@ -36,31 +36,32 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
 }
 ?>
 
-            <!-- Campo de Email -->
-            <div class="mb-3 text-start">
-                <label class="fw-bold">Digite seu email</label> <!-- Rótulo do campo -->
-                <div class="input-group">
-                    <input type="email" name="email" class="form-control" placeholder="Digite seu email" required>
-                        <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                </div>
-            </div>
+           <form action="homeprof.php" method="POST">
 
-            <!-- Campo de Senha -->
-            <div class="mb-3 text-start">
-                <label class="fw-bold">Senha</label> <!-- Rótulo do campo -->
-                <div class="input-group">
-                    <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" required>
-                    <!-- Ícone de olho para mostrar/ocultar senha -->
-                    <span class="input-group-text" id="toggleSenha">
-                        <i class="bi bi-eye-fill"></i>
-                    </span>
-                </div>
-            </div>
+    <!-- Campo de Email -->
+    <div class="mb-3 text-start">
+        <label class="fw-bold">Digite seu email</label>
+        <div class="input-group">
+            <input type="email" name="email" class="form-control" placeholder="Digite seu email" required>
+            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+        </div>
+    </div>
 
-            <!-- Botões -->
-            <div class="d-flex justify-content-center">
-                <a href="homeprof.php" class="btn btn-custom w-100">Entrar</a>
-            </div>
+    <!-- Campo de Senha -->
+    <div class="mb-3 text-start">
+        <label class="fw-bold">Senha</label>
+        <div class="input-group">
+            <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+            <span class="input-group-text" id="toggleSenha">
+                <i class="bi bi-eye-fill"></i>
+            </span>
+        </div>
+    </div>
+    <!-- Botão Entrar -->
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-custom w-100">Entrar</button>
+    </div>
+
 
 
             <!-- Link para recuperar senha -->

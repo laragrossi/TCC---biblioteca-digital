@@ -34,31 +34,35 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
     echo '<div class="alert alert-success" role="alert">Você foi cadastrado com sucesso!</div>';
 }
 ?>
-            <!-- Campo de RA -->
-            <div class="mb-3 text-start">
-                <label class="fw-bold">Digite seu RA</label> <!-- Rótulo do campo -->
-                <div class="input-group">
-    <input type="text" name="ra" placeholder="RA" class="input-ra" required>
-    <input type="text" name="digito" placeholder="Dígito" class="input-digito" required>
-</div>
+          <form action="homealuno.php" method="POST">
 
-            </div>
-            <!-- Campo de Senha -->
-            <div class="mb-3 text-start">
-                <label class="fw-bold">Senha</label> <!-- Rótulo do campo -->
-                <div class="input-group">
-                    <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" required>
-                    <!-- Ícone de olho para mostrar/ocultar senha -->
-                    <span class="input-group-text" id="toggleSenha">
-                        <i class="bi bi-eye-fill"></i>
-                    </span>
-                </div>
-            </div>
+    <!-- Campo de RA -->
+    <div class="mb-3 text-start">
+        <label class="fw-bold">Digite seu RA</label>
+        <div class="input-group">
+            <input type="text" name="ra" placeholder="RA" class="input-ra" required>
+            <input type="text" name="digito" placeholder="Dígito" class="input-digito" required>
+        </div>
+    </div>
 
-            <!-- Botões -->
-            <div class="d-flex justify-content-center">
-                <a href="homealuno.php" class="btn btn-custom w-100 ms-1">Entrar</a>
-            </div>
+    <!-- Campo de Senha -->
+    <div class="mb-3 text-start">
+        <label class="fw-bold">Senha</label>
+        <div class="input-group">
+            <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+            <span class="input-group-text" id="toggleSenha">
+                <i class="bi bi-eye-fill"></i>
+            </span>
+        </div>
+    </div>
+
+    <!-- Botão Entrar -->
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-custom w-100 ms-1">Entrar</button>
+    </div>
+
+</form>
+
             
             <!-- Link para consultar RA -->
             <div class="mt-3">

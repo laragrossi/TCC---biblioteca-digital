@@ -1,102 +1,139 @@
+<?php
+session_start();
+include "conexao.php";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $ra = trim($_POST['ra']);
+    $senha = trim($_POST['senha']);
+
+    if (empty($ra) || empty($senha)) {
+        header("Location: loginaluno.php?erro=vazio");
+        exit();
+    }
+
+    $sql = "SELECT * FROM login WHERE RA_Aluno = ? AND TipoUsuario = 'Aluno'";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("s", $ra);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+
+        $dados = $result->fetch_assoc();
+
+        if (password_verify($senha, $dados['Senha'])) {
+
+            $_SESSION['AlunoID'] = $dados['IDLogin'];
+            $_SESSION['RA'] = $dados['RA_Aluno'];
+
+            header("Location: homealuno.php");
+            exit();
+
+        } else {
+            header("Location: loginaluno.php?erro=senha");
+            exit();
+        }
+
+    } else {
+        header("Location: loginaluno.php?erro=invalido");
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Faz o site se ajustar em celulares -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Login</title>
-    
-    <!-- Link do Bootstrap CSS para usar classes prontas de layout e design -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Link para os ícones do Bootstrap (para usar o ícone de email e olho) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- Link para o nosso arquivo de CSS personalizado -->
+
     <link rel="stylesheet" href="css/loginaluno.css">
+
 </head>
 <body>
 
-    <!-- Container centraliza o conteúdo e d-flex ajuda no alinhamento -->
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        
-        <!-- Cartão de login -->
+
         <div class="login-card text-center">
 
-         <!-- Imagem/logo -->
-            <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="90"
+            <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="90">
 
-            <!-- Título e subtítulo -->
-<h5 class="fw-bold">Bem-vindo de volta</h5>
-<p class="text-muted mb-4">Entre com seus dados</p>
+            <h5 class="fw-bold">Bem-vindo de volta</h5>
+            <p class="text-muted mb-4">Entre com seus dados</p>
 
-<?php
-if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
-    echo '<div class="alert alert-success" role="alert">Você foi cadastrado com sucesso!</div>';
-}
-?>
-          <form action="homealuno.php" method="POST">
+            <?php
+            if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
+                echo '<div class="alert alert-success" role="alert">Você foi cadastrado com sucesso!</div>';
+            }
 
-    <!-- Campo de RA -->
-    <div class="mb-3 text-start">
-        <label class="fw-bold">Digite seu RA</label>
-        <div class="input-group">
-            <input type="text" name="ra" placeholder="RA" class="input-ra" required>
-            <input type="text" name="digito" placeholder="Dígito" class="input-digito" required>
-        </div>
-    </div>
+            if (isset($_GET['erro'])) {
+                if ($_GET['erro'] === "vazio") {
+                    echo '<div class="alert alert-danger">Preencha todos os campos!</div>';
+                }
+                if ($_GET['erro'] === "invalido") {
+                    echo '<div class="alert alert-danger">RA não encontrado!</div>';
+                }
+                if ($_GET['erro'] === "senha") {
+                    echo '<div class="alert alert-danger">Senha incorreta!</div>';
+                }
+                if ($_GET['erro'] === "proibido") {
+                    echo '<div class="alert alert-warning">Faça login para acessar!</div>';
+                }
+            }
+            ?>
 
-    <!-- Campo de Senha -->
-    <div class="mb-3 text-start">
-        <label class="fw-bold">Senha</label>
-        <div class="input-group">
-            <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
-            <span class="input-group-text" id="toggleSenha">
-                <i class="bi bi-eye-fill"></i>
-            </span>
-        </div>
-    </div>
+            <!-- FORMULÁRIO CORRETO -->
+            <form action="loginaluno.php" method="POST">
 
-    <!-- Botão Entrar -->
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-custom w-100 ms-1">Entrar</button>
-    </div>
+                <!-- RA -->
+                <div class="mb-3 text-start">
+                    <label class="fw-bold">Digite seu RA</label>
+                    <input type="text" name="ra" placeholder="Seu RA" class="form-control" required>
+                </div>
 
-</form>
+                <!-- Senha -->
+                <div class="mb-3 text-start">
+                    <label class="fw-bold">Senha</label>
+                    <div class="input-group">
+                        <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+                        <span class="input-group-text" id="toggleSenha">
+                            <i class="bi bi-eye-fill"></i>
+                        </span>
+                    </div>
+                </div>
 
-            
-            <!-- Link para consultar RA -->
+                <!-- Botão -->
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-custom w-100">Entrar</button>
+                </div>
+            </form>
+
             <div class="mt-3">
                 <a href="https://sed.educacao.sp.gov.br/NCA/CadastroAluno/ConsultaRAAluno/" class="text-link">Esqueceu seu RA?</a>
             </div>
+
         </div>
     </div>
 
-    <!-- Script do Bootstrap (necessário para algumas funções dele) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-   
+
     <script>
-    // Pega o elemento do ícone do olho
-const toggleSenha = document.getElementById('toggleSenha');
+    const toggleSenha = document.getElementById('toggleSenha');
+    const senha = document.getElementById('senha');
 
-// Pega o campo da senha
-const senha = document.getElementById('senha');
-
-// Quando clicar no ícone, executa essa função
-toggleSenha.addEventListener('click', () => {
-    // Se o tipo do campo for "password" troca para "text" (mostra senha)
-    if (senha.type === 'password') {
-        senha.type = 'text';
-        // Muda o ícone para o olho fechado
-        toggleSenha.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
-    } 
-    // Se já estiver como texto, troca de volta para "password"
-    else {
-        senha.type = 'password';
-        // Muda o ícone para o olho aberto
-        toggleSenha.innerHTML = '<i class="bi bi-eye-fill"></i>';
-    }
-});
+    toggleSenha.addEventListener('click', () => {
+        if (senha.type === 'password') {
+            senha.type = 'text';
+            toggleSenha.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+        } else {
+            senha.type = 'password';
+            toggleSenha.innerHTML = '<i class="bi bi-eye-fill"></i>';
+        }
+    });
     </script>
 
 </body>

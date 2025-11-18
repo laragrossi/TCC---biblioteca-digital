@@ -4,7 +4,6 @@ include('conexao.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-
     $sql = "SELECT * FROM administrador WHERE email = '$email' AND senha = '$senha'";
     $resultado = mysqli_query($conexao, $sql);
 

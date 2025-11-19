@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conexao.php";
+include "conexaoconsulta.php";  // ✅ CORREÇÃO AQUI
 
 // Verificar se o aluno está logado
 if (!isset($_SESSION['AlunoID'])) {
@@ -36,7 +36,7 @@ if (isset($_GET['pesquisa'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisar Livros</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/homealuno.css"> <!-- ✅ MESMO CSS DA HOME -->
+    <link rel="stylesheet" href="css/homealuno.css">
 </head>
 <body>
     <!-- Cabeçalho igual ao da home -->
@@ -103,7 +103,7 @@ if (isset($_GET['pesquisa'])) {
 
     <script>
         function verDetalhes(livroId) {
-            window.location.href = 'detalhes_livro.php?id=' + livroId;
+            window.location.href = 'detalhes_livros.php?id=' + livroId;  // ✅ CORREÇÃO: detalhes_livros.php
         }
     </script>
 </body>

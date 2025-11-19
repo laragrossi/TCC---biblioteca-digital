@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conexao.php";
+include "conexaoconsulta.php";
 
 if (!isset($_SESSION['AlunoID'])) {
     header("Location: loginaluno.php");

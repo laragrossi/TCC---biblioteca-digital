@@ -4,38 +4,37 @@ include "conexao.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // Juntar RA + Dígito
-    $ra = trim($_POST['ra']) . '-' . trim($_POST['digito']);
+    $ra = trim($_POST['ra']);
+    $digito = trim($_POST['digito']);
     $senha = trim($_POST['senha']);
 
-    if (empty($ra) || empty($senha)) {
+    if (empty($ra) || empty($senha) || empty($digito)) {
         header("Location: loginaluno.php?erro=vazio");
         exit();
     }
 
-    $sql = "SELECT * FROM login WHERE RA_Aluno = ? AND TipoUsuario = 'Aluno'";
+    // Usar tabela ALUNO
+    $ra_completo = $ra . '-' . $digito;
+    
+    $sql = "SELECT * FROM aluno WHERE ra_completo = ? AND ativo = true";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("s", $ra);
+    $stmt->bind_param("s", $ra_completo);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
-
         $dados = $result->fetch_assoc();
 
-        if (password_verify($senha, $dados['Senha'])) {
-
-            $_SESSION['AlunoID'] = $dados['IDLogin'];
-            $_SESSION['RA'] = $dados['RA_Aluno'];
-
+        if (password_verify($senha, $dados['senha'])) {
+            $_SESSION['AlunoID'] = $dados['id'];
+            $_SESSION['RA'] = $dados['ra_completo'];
+            $_SESSION['NomeAluno'] = $dados['nome'];
             header("Location: homealuno.php");
             exit();
-
         } else {
             header("Location: loginaluno.php?erro=senha");
             exit();
         }
-
     } else {
         header("Location: loginaluno.php?erro=invalido");
         exit();
@@ -48,16 +47,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Login</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
     <link rel="stylesheet" href="css/loginaluno.css">
+
 </head>
 <body>
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
+
         <div class="login-card text-center">
 
             <img src="imagens/logotcc.png" alt="Logo" class="mb-3" width="90">
+
             <h5 class="fw-bold">Bem-vindo de volta</h5>
             <p class="text-muted mb-4">Entre com seus dados</p>
 
@@ -82,7 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
             ?>
 
-            <!-- CORREÇÃO AQUI ↓ -->
             <form action="loginaluno.php" method="POST">
 
                 <!-- Campo de RA -->
@@ -120,6 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
     const toggleSenha = document.getElementById('toggleSenha');
     const senha = document.getElementById('senha');

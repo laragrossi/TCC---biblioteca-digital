@@ -24,29 +24,29 @@ error_reporting(E_ALL);
 
                 <!-- Campo Número de tombo -->
                 <div class="inputBox">
-                    <input type="text" name="número de tombo" id="número de tombo" class="inputUser" required>
-                    <label for="número de tombo" class="labelInput">Número de tombo</label>
+                    <input type="text" name="numero_tombo" id="numero_tombo" class="inputUser" required>
+                    <label for="numero_tombo" class="labelInput">Número de tombo</label>
                 </div>
                 <br><br>
 
                 <!-- Campo ISBN -->
                 <div class="inputBox">
-                    <input type="text" name="ISBN" id="ISBN" class="inputUser" required>
-                    <label for="ISBN" class="labelInput">ISBN</label>
+                    <input type="text" name="isbn" id="isbn" class="inputUser" required>
+                    <label for="isbn" class="labelInput">ISBN</label>
                 </div>
                 <br><br>
 
                 <!-- Campo Título -->
                 <div class="inputBox">
-                    <input type="text" name="título" id="título" class="inputUser" required>
-                    <label for="título" class="labelInput">Título</label>
+                    <input type="text" name="titulo" id="titulo" class="inputUser" required>
+                    <label for="titulo" class="labelInput">Título</label>
                 </div>
                 <br><br>
 
                 <!-- Campo Subtítulo -->
                 <div class="inputBox">
-                    <input type="text" name="subtítulo" id="subtítulo" class="inputUser">
-                    <label for="subtítulo" class="labelInput">Subtítulo</label>
+                    <input type="text" name="subtitulo" id="subtitulo" class="inputUser">
+                    <label for="subtitulo" class="labelInput">Subtítulo</label>
                 </div>
                 <br><br>
 
@@ -73,15 +73,15 @@ error_reporting(E_ALL);
 
                 <!-- Campo Ano de publicação -->
                 <div class="inputBox">
-                    <input type="number" name="ano de publicação" id="ano de publicação" class="inputUser" required>
-                    <label for="ano de publicação" class="labelInput">Ano de publicação</label>
+                    <input type="number" name="ano_publicacao" id="ano_publicacao" class="inputUser" required>
+                    <label for="ano_publicacao" class="labelInput">Ano de publicação</label>
                 </div>
                 <br><br>
 
                 <!-- Campo Número de páginas -->
                 <div class="inputBox">
-                    <input type="number" name="número de páginas" id="número de páginas" class="inputUser" required>
-                    <label for="número de páginas" class="labelInput">Número de páginas</label>
+                    <input type="number" name="numero_paginas" id="numero_paginas" class="inputUser" required>
+                    <label for="numero_paginas" class="labelInput">Número de páginas</label>
                 </div>
                 <br><br>
 
@@ -94,15 +94,15 @@ error_reporting(E_ALL);
 
                 <!-- Campo Gênero -->
                 <div class="inputBox">
-                    <input type="text" name="gênero" id="gênero" class="inputUser" required>
-                    <label for="gênero" class="labelInput">Gênero</label>
+                    <input type="text" name="genero" id="genero" class="inputUser" required>
+                    <label for="genero" class="labelInput">Gênero</label>
                 </div>
                 <br><br>
 
                 <!-- Campo Área de conhecimento -->
                 <div class="inputBox">
-                    <input type="text" name="área de conhecimento" id="área de conhecimento" class="inputUser" required>
-                    <label for="área de conhecimento" class="labelInput">Área de conhecimento</label>
+                    <input type="text" name="area_conhecimento" id="area_conhecimento" class="inputUser" required>
+                    <label for="area_conhecimento" class="labelInput">Área de conhecimento</label>
                 </div>
                 <br><br>
 

@@ -35,7 +35,8 @@
     <div class="search-container">
         <div class="search-box">
             <i class="bi bi-search"></i>
-            <input type="text" placeholder="Pesquisar livros, autores...">
+            <!-- ✅ LINK ADICIONADO: Ao clicar na barra de pesquisa, vai para a página de pesquisa -->
+            <input type="text" placeholder="Pesquisar livros, autores..." onclick="window.location.href='pesquisar_livros.php'">
         </div>
     </div>
 
@@ -43,6 +44,8 @@
     <div class="main-buttons">
          <a href="meusemprestimos.php" class="btn"><i class="bi bi-book-half"></i><br>Meus empréstimos</a>
         <a href="dadosaluno.php" class="btn"><i class="bi bi-person-vcard-fill"></i><br>Dados Cadastrais</a>
+        <!-- ✅ NOVO BOTÃO: Pesquisar Livros -->
+        <a href="pesquisar_livros.php" class="btn"><i class="bi bi-search"></i><br>Pesquisar Livros</a>
     </div>
 
     <!-- Lista de livros em destaque -->
@@ -69,5 +72,12 @@
             <p class="author">Machado de Assis</p>
         </div>
     </div>
+
+    <script>
+        // ✅ Opcional: Se quiser que a barra de pesquisa seja clicável
+        document.querySelector('.search-box').addEventListener('click', function() {
+            window.location.href = 'pesquisar_livros.php';
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #faece4;
+}
+
+/* ====== HEADER ====== */
+header {
+    background: #cc6f5e;
+    padding: 20px 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .icons i {
+    font-size: 22px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: black;
+}
+
+/* ====== SEARCH ====== */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #eec8bb;
+    padding: 10px 15px;
+    border-radius: 30px;
+    width: 50%;
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    margin-left: 10px;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+}
+
+/* ====== FILTER BUTTONS ====== */
+.filter-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.filter-btn {
+    background: #dd7c6a;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    margin: 0 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.filter-btn.disabled {
+    background: #c9b5b5;
+}
+
+/* ====== TABLE ====== */
+.table-container {
+    width: 90%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f5d1c6;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    font-size: 15px;
+}
+
+tbody tr:nth-child(even) {
+    background: #fef4f1;
+}
+
+tbody tr:hover {
+    background: #f5e4df;
+}
+
+/* ====== STATUS BADGES ====== */
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.em-andamento {
+    background: #4caf50;
+}
+
+.em-atraso {
+    background: linear-gradient(to right, #ff0000, #ffa500);
+}

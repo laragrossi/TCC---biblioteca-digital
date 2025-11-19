@@ -38,26 +38,42 @@
   <!-- Conteúdo principal -->
   <div class="container mt-4">
     <div class="row g-3">
+      
       <div class="col-12 col-md-4">
-        <div class="card-custom">
-          <i class="bi bi-people"></i>
-          <p>Consulta de alunos</p>
-        </div>
+        <a href="consulta.php" style="text-decoration: none; color: inherit; display: block;">
+          <div class="card-custom" style="cursor: pointer;">
+            <i class="bi bi-people"></i>
+            <p>Consulta de alunos</p>
+          </div>
+        </a>
       </div>
 
-      <a href="emprestimoprof.php" class="col-12 col-md-4 text-decoration-none">
-        <div class="card-custom">
-          <i class="bi bi-book"></i>
-          <p>Empréstimos ativos</p>
-        </div>
-      </a>
+    </div>
+</div>
 
-      <a href="statusdedisponibilidade.php" class="col-12 col-md-4 text-decoration-none">
-        <div class="card-custom">
-          <i class="bi bi-journal-bookmark"></i>
-          <p>Acervo de livros</p>
-        </div>
-      </a>
+      <div class="container mt-4">
+    <div class="row g-3">
+      
+      <div class="col-12 col-md-4">
+        <a href="emprestimoprof.php" style="text-decoration: none; color: inherit; display: block;">
+          <div class="card-custom" style="cursor: pointer;">
+            <i class="bi bi-people"></i>
+            <p>Empréstimos Ativos</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="container mt-4">
+    <div class="row g-3">
+      
+      <div class="col-12 col-md-4">
+        <a href="statusdedisponibilidade.php" style="text-decoration: none; color: inherit; display: block;">
+          <div class="card-custom" style="cursor: pointer;">
+            <i class="bi bi-people"></i>
+            <p>Acervo de livros</p>
+          </div>
+        </a>
+      </div>
     </div>
 
     <div class="row mt-4 g-3">

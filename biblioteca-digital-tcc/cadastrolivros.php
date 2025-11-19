@@ -1,29 +1,28 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-include("conexaoDelivros.php");
 ?>
-<?php include("conexaoDelivros.php"); ?>
 <!DOCTYPE html>
-<html lang="en"> <!-- Define o tipo de documento e a linguagem -->
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Deixa o site responsivo -->
-    <title>Cadastro</title> <!-- Título da aba do navegador -->
-    
-    <!-- Link para o nosso arquivo de CSS personalizado -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livros</title>
     <link rel="stylesheet" href="css/cadastrolivros.css">
 </head>
 <body>
-    <!-- Caixa central -->
     <div class="login-card">
-        <!-- Formulário de cadastro -->
-        <form action="conexaoDelivros.php" method="POST">
+        <!-- ATUALIZE O FORM PARA ENCTYPE -->
+        <form action="conexaoDelivros.php" method="POST" enctype="multipart/form-data">
             <fieldset>
-                <legend><b>Cadastro de Livros</b></legend> <!-- Título do formulário -->
+                <legend><b>Cadastro de Livros</b></legend>
                 <br>
 
-                <!-- Campo Número de tombo  -->
+                <?php if (isset($_GET['sucesso'])): ?>
+                    <div style="color: green; margin-bottom: 15px;">Livro cadastrado com sucesso!</div>
+                <?php endif; ?>
+
+                <!-- Campo Número de tombo -->
                 <div class="inputBox">
                     <input type="text" name="número de tombo" id="número de tombo" class="inputUser" required>
                     <label for="número de tombo" class="labelInput">Número de tombo</label>
@@ -46,14 +45,14 @@ include("conexaoDelivros.php");
 
                 <!-- Campo Subtítulo -->
                 <div class="inputBox">
-                    <input type="text" name="subtítulo" id="subtítulo" class="inputUser" required>
+                    <input type="text" name="subtítulo" id="subtítulo" class="inputUser">
                     <label for="subtítulo" class="labelInput">Subtítulo</label>
                 </div>
                 <br><br>
 
                 <!-- Campo Sinopse -->
                 <div class="inputBox">
-                    <input type="text" name="sinopse" id="sinopse" class="inputUser" required>
+                    <textarea name="sinopse" id="sinopse" class="inputUser" required></textarea>
                     <label for="sinopse" class="labelInput">Sinopse</label>
                 </div>
                 <br><br>
@@ -74,14 +73,14 @@ include("conexaoDelivros.php");
 
                 <!-- Campo Ano de publicação -->
                 <div class="inputBox">
-                    <input type="text" name=" ano de publicação" id="ano de publicação" class="inputUser" required>
+                    <input type="number" name="ano de publicação" id="ano de publicação" class="inputUser" required>
                     <label for="ano de publicação" class="labelInput">Ano de publicação</label>
                 </div>
                 <br><br>
 
                 <!-- Campo Número de páginas -->
                 <div class="inputBox">
-                    <input type="text" name="número de páginas" id="número de páginas" class="inputUser" required>
+                    <input type="number" name="número de páginas" id="número de páginas" class="inputUser" required>
                     <label for="número de páginas" class="labelInput">Número de páginas</label>
                 </div>
                 <br><br>
@@ -100,17 +99,24 @@ include("conexaoDelivros.php");
                 </div>
                 <br><br>
 
-                 <!-- Campo Área de conhecimento -->
+                <!-- Campo Área de conhecimento -->
                 <div class="inputBox">
                     <input type="text" name="área de conhecimento" id="área de conhecimento" class="inputUser" required>
                     <label for="área de conhecimento" class="labelInput">Área de conhecimento</label>
                 </div>
                 <br><br>
 
-                <!-- Botão de cadastro -->
-                <input type="submit" name="submit" class="btn" value="Cadastrar-se">
+                <!-- CAMPO NOVO: Foto do Livro -->
+                <div class="inputBox">
+                    <input type="file" name="foto" id="foto" class="inputUser" accept="image/*">
+                    <label for="foto" class="labelInput">Foto do Livro</label>
+                </div>
                 <br><br>
-                <a href="homeadm.php"><input type="button" name="submit" class="btn" value="Voltar"></a>          
+
+                <!-- Botão de cadastro -->
+                <input type="submit" name="submit" class="btn" value="Cadastrar Livro">
+                <br><br>
+                <a href="homeadm.php"><input type="button" class="btn" value="Voltar"></a>          
             </fieldset>
         </form>
     </div>

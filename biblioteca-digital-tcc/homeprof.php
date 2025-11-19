@@ -21,7 +21,21 @@
       <div class="icons">
           <i class="bi bi-house-door-fill" title="Início"></i>
           <i class="bi bi-bell-fill" id="notification-btn" title="Notificações"></i>
-          <a href="dadosprof.php"><i class="bi bi-person-fill" title="Perfil"></i></a>
+
+          <!-- ÍCONE DO USUÁRIO -->
+          <i class="bi bi-person-fill" id="user-icon" title="Perfil"></i>
+
+          <!-- MENU DO USUÁRIO (PERFIL + LOGOUT) -->
+          <div class="notification-box" id="user-menu" style="width:220px; display:none;">
+              <div class="notification-title">Usuário</div>
+              <div class="notification-content">
+                  <p><strong>Nome:</strong> Professor</p>
+                  <p><strong>Email:</strong> professor@example.com</p>
+                  <hr>
+                  <a href="dadosprof.php" class="btn-logout">Perfil</a><br><br>
+                  <a href="index.php" class="btn-logout">Sair</a>
+              </div>
+          </div>
 
           <!-- Caixa de notificações -->
           <div class="notification-box" id="notification-box">
@@ -88,14 +102,17 @@
       <div class="col-12 col-md-6">
         <div class="notifications">
           <h5>Notificações recentes</h5>
+
           <p><strong>Novo empréstimo solicitado</strong><br>
             Nome do aluno - nome do livro <br>
             <small>Há 5 minutos</small>
           </p>
+
           <p><strong>Devolução atrasada</strong><br>
             Nome do aluno - nome do livro <br>
             <small>Há 2 horas</small>
           </p>
+
           <p><strong>Reserva confirmada</strong><br>
             Nome do aluno - nome do livro <br>
             <small>Há 4 horas</small>
@@ -105,23 +122,37 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
-  <!-- Script de notificações -->
   <script>
+    // NOTIFICAÇÕES
     const btn = document.getElementById('notification-btn');
     const box = document.getElementById('notification-box');
 
     btn.addEventListener('click', () => {
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
+      userMenu.style.display = "none";
     });
 
-    document.addEventListener('click', (e) => {
-      if (!btn.contains(e.target) && !box.contains(e.target)) {
-        box.style.display = 'none';
+    // MENU DO USUÁRIO
+    const userIcon = document.getElementById("user-icon");
+    const userMenu = document.getElementById("user-menu");
+
+    userIcon.addEventListener("click", () => {
+      userMenu.style.display = userMenu.style.display === "none" ? "block" : "none";
+      box.style.display = "none";
+    });
+
+    // FECHAR AO CLICAR FORA
+    document.addEventListener("click", (e) => {
+      if (!userMenu.contains(e.target) && e.target !== userIcon &&
+          !box.contains(e.target) && e.target !== btn) {
+        userMenu.style.display = "none";
+        box.style.display = "none";
       }
     });
   </script>
 </body>
 </html>
+

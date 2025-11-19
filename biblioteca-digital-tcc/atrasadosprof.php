@@ -29,7 +29,7 @@
 </div>
 
 <div class="filter-buttons">
-    <a href="emprestimoaluno.php" class="filter-btn active">Todos</a>
+    <a href="emprestimoprof.php" class="filter-btn active">Todos</a>
     <button class="filter-btn disabled">Atrasados</button>
 </div>
 

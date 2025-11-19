@@ -1,201 +1,191 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Torna o site responsivo -->
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Digital</title>
     
-    <!-- Link para o pacote de ícones Bootstrap Icons -->
+    <!-- Ícones Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link rel="styleheet" href="css/statusdedisponibilidade.css">
+    <link rel="stylesheet" href="css/statusdedisponibilidade.css">
 </head>
 
 <style>
-    /* Estilo geral do corpo da página */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #fff1e7;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #fff1e7;
+    }
 
-        /* Cabeçalho principal */
-        header {
-            display: flex; /* Elementos lado a lado */
-            justify-content: space-between; /* Espaço entre título e ícones */
-            align-items: center; /* Centraliza verticalmente */
-            padding: 10px 20px;
-            background-color: #db8a80;
-            position: relative;
-        }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #db8a80;
+        position: relative;
+    }
 
-        /* Título do cabeçalho */
-        header h1 {
-            font-size: 24px;
-            color: #3b1f1f;
-        }
+    header h1 {
+        font-size: 24px;
+        color: #3b1f1f;
+    }
 
-        /* Container dos ícones no cabeçalho */
-        .icons {
-            display: flex;
-            gap: 15px; /* Espaçamento entre ícones */
-            position: relative;
-        }
+    .icons {
+        display: flex;
+        gap: 15px;
+        position: relative;
+    }
 
-        /* Estilo dos ícones */
-        .icons i {
-            font-size: 24px;
-            color: #3b1f1f;
-            cursor: pointer; /* Muda o cursor ao passar */
-        }
+    .icons i {
+        font-size: 24px;
+        color: #3b1f1f;
+        cursor: pointer;
+    }
 
-        /* Caixa de notificações */
-        .notification-box {
-            display: none; /* Escondida por padrão */
-            position: absolute;
-            top: 40px;
-            right: 0;
-            background-color: #f8c7b1;
-            border-radius: 10px;
-            padding: 10px;
-            width: 220px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
+    .notification-box {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: #f8c7b1;
+        border-radius: 10px;
+        padding: 10px;
+        width: 220px;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+        z-index: 10;
+    }
 
-        /* Setinha da caixa de notificações */
-        .notification-box::before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            border-width: 10px;
-            border-style: solid;
-            border-color: transparent transparent #f8c7b1 transparent;
-        }
+    .notification-box::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        right: 15px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent #f8c7b1 transparent;
+    }
 
-        /* Título da caixa de notificações */
-        .notification-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            border-bottom: 1px solid rgba(0,0,0,0.2);
-            padding-bottom: 5px;
-        }
+    .notification-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        padding-bottom: 5px;
+    }
 
-        /* Conteúdo das notificações */
-        .notification-content {
-            background-color: #ffe4d6;
-            border-radius: 5px;
-            padding: 5px;
-            font-size: 14px;
-        }
+    .notification-content {
+        background-color: #ffe4d6;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 14px;
+    }
 
-        /* Container da barra de pesquisa */
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin: 15px;
-        }
+    .btn-logout {
+        display: block;
+        text-align: center;
+        padding: 6px;
+        background: #db7c6f;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 5px;
+    }
 
-        /* Estilo da barra de pesquisa */
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: white;
-            border-radius: 25px;
-            padding: 8px 23px;
-            width: 90%;
-            max-width: 500px;
-        }
+    .btn-logout:hover {
+        background-color: #c56f63;
+    }
 
-        /* Ícone de lupa dentro da pesquisa */
-        .search-box i {
-            color: gray;
-            font-size: 18px;
-            margin-right: 10px;
-        }
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin: 15px;
+    }
 
-        /* Campo de entrada de texto da pesquisa */
-        .search-box input {
-            border: none;
-            outline: none;
-            flex: 1;
-            font-size: 16px;
-            background: none;
-        }
+    .search-box {
+        display: flex;
+        align-items: center;
+        background: white;
+        border-radius: 25px;
+        padding: 8px 23px;
+        width: 90%;
+        max-width: 500px;
+    }
 
-        /* Botões principais */
-        .main-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
+    .search-box i {
+        color: gray;
+        font-size: 18px;
+        margin-right: 10px;
+    }
 
-        /* Estilo dos botões */
-        .btn {
-            background-color: #d36b5e;
-            color: white;
-            padding: 25px 40px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            width: 180px;
-        }
+    .search-box input {
+        border: none;
+        outline: none;
+        flex: 1;
+        font-size: 16px;
+        background: none;
+    }
 
-        /* Subtítulos da página */
-        h2 {
-            margin-left: 20px;
-            color: #3b1f1f;
-        }
+    h2 {
+        margin-left: 20px;
+        color: #3b1f1f;
+    }
 
-        /* Lista de livros */
-        .book-list {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            padding: 0 20px 20px;
-            flex-wrap: wrap; /* Permite quebrar linha */
-        }
+    .book-list {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        padding: 0 20px 20px;
+        flex-wrap: wrap;
+    }
 
-        /* Estilo de cada livro */
-        .book {
-            background-color: white;
-            border-radius: 10px;
-            padding: 10px;
-            flex: 1 1 160px;
-            max-width: 180px;
-            text-align: center;
-        }
+    .book {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        flex: 1 1 160px;
+        max-width: 180px;
+        text-align: center;
+    }
 
-        /* Imagem do livro */
-        .book img {
-            width: 100%;
-            border-radius: 5px;
-        }
+    .book img {
+        width: 100%;
+        border-radius: 5px;
+    }
 
-        /* Nome do livro */
-        .book p {
-            margin: 5px 0 0;
-            font-size: 14px;
-        }
+    .author {
+        font-size: 12px;
+        color: gray;
+    }
+</style>
 
-        /* Nome do autor */
-        .author {
-            font-size: 12px;
-            color: gray;
-        }
-  </style>
 <body>
-    <!-- Cabeçalho com título e ícones -->
     <header>
         <h1>Biblioteca Digital</h1>
         <div class="icons">
-            <i class="bi bi-house-door-fill" title="Início"></i>
-            <i class="bi bi-bell-fill" id="notification-btn" title="Notificações"></i>
-            <i class="bi bi-person-fill" title="Perfil"></i>
+            <!-- Voltar para a home do professor -->
+            <a href="homeprof.php" title="Início">
+                <i class="bi bi-house-door-fill"></i>
+            </a>
 
-            <!-- Caixa de Notificações -->
+            <!-- Notificações -->
+            <i class="bi bi-bell-fill" id="notification-btn" title="Notificações"></i>
+
+            <!-- Perfil / Usuário -->
+            <i class="bi bi-person-fill" id="user-icon" title="Perfil"></i>
+
+            <!-- Menu do usuário -->
+            <div class="notification-box" id="user-menu" style="width:220px;">
+                <div class="notification-title">Usuário</div>
+                <div class="notification-content">
+                    <p><strong>Nome:</strong> Professor</p>
+                    <p><strong>Email:</strong> professor@example.com</p>
+                    <hr>
+                    <a href="dadosprof.php" class="btn-logout">Perfil</a>
+                    <a href="logout.php" class="btn-logout">Sair</a>
+                </div>
+            </div>
+
+            <!-- Caixa de notificações -->
             <div class="notification-box" id="notification-box">
                 <div class="notification-title">Notificações</div>
                 <div class="notification-content">
@@ -215,7 +205,6 @@
         </div>
     </div>
 
-    <!-- Lista de livros em destaque -->
     <h2>Livros disponíveis</h2>
     <div class="book-list">
         <div class="book">
@@ -240,19 +229,28 @@
         </div>
     </div>
 
-    <!-- Script para abrir/fechar caixa de notificações -->
     <script>
-        const notificationBtn = document.getElementById('notification-btn'); // Botão do sino
-        const notificationBox = document.getElementById('notification-box'); // Caixa de notificações
+        const notificationBtn = document.getElementById('notification-btn');
+        const notificationBox = document.getElementById('notification-box');
+        const userIcon = document.getElementById('user-icon');
+        const userMenu = document.getElementById('user-menu');
 
-        // Ao clicar no sino, mostra/esconde a caixa
         notificationBtn.addEventListener('click', () => {
-            notificationBox.style.display = notificationBox.style.display === 'block' ? 'none' : 'block';
+            const isVisible = notificationBox.style.display === 'block';
+            notificationBox.style.display = isVisible ? 'none' : 'block';
+            userMenu.style.display = 'none';
         });
 
-        // Fecha a caixa se clicar fora dela
-        document.addEventListener('click', (event) => {
-            if (!notificationBtn.contains(event.target) && !notificationBox.contains(event.target)) {
+        userIcon.addEventListener('click', () => {
+            const isVisible = userMenu.style.display === 'block';
+            userMenu.style.display = isVisible ? 'none' : 'block';
+            notificationBox.style.display = 'none';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!userMenu.contains(e.target) && e.target !== userIcon &&
+                !notificationBox.contains(e.target) && e.target !== notificationBtn) {
+                userMenu.style.display = 'none';
                 notificationBox.style.display = 'none';
             }
         });

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conexaoconsulta.php";  // ✅ CORREÇÃO AQUI
+include "conexaoconsulta.php";
 
 // Verificar se o aluno está logado
 if (!isset($_SESSION['AlunoID'])) {
@@ -70,14 +70,16 @@ if (isset($_GET['pesquisa'])) {
             
             <?php if (empty($livros)): ?>
                 <div style="text-align: center; color: #666; font-size: 18px; margin-top: 50px;">
-                    Nenhum livro encontrado.
+                    <i class="bi bi-book" style="font-size: 48px; margin-bottom: 15px;"></i>
+                    <p>Nenhum livro encontrado.</p>
                 </div>
             <?php else: ?>
                 <div class="book-list">
                     <?php foreach ($livros as $livro): ?>
                         <div class="book" onclick="verDetalhes(<?= $livro['id'] ?>)">
                             <?php if (!empty($livro['foto'])): ?>
-                                <img src="<?= $livro['foto'] ?>" alt="<?= $livro['titulo'] ?>">
+                                <!-- ✅ CORREÇÃO FEITA AQUI: caminho da foto -->
+                                <img src="fotos_livros/<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>">
                             <?php else: ?>
                                 <div style="width: 120px; height: 160px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #6c757d;">
                                     <i class="bi bi-book" style="font-size: 24px;"></i>
@@ -87,7 +89,7 @@ if (isset($_GET['pesquisa'])) {
                             <p class="author"><?= htmlspecialchars($livro['autor']) ?></p>
                             <div style="padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-top: 5px; 
                                 <?= $livro['quantidade_disponivel'] > 0 ? 'background: #d4edda; color: #155724;' : 'background: #f8d7da; color: #721c24;' ?>">
-                                <?= $livro['quantidade_disponivel'] > 0 ? 'Disponível' : 'Emprestado' ?>
+                                <?= $livro['quantidade_disponivel'] > 0 ? 'Disponível' : 'Indisponível' ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -103,7 +105,7 @@ if (isset($_GET['pesquisa'])) {
 
     <script>
         function verDetalhes(livroId) {
-            window.location.href = 'detalhes_livros.php?id=' + livroId;  // ✅ CORREÇÃO: detalhes_livros.php
+            window.location.href = 'detalhes_livros.php?id=' + livroId;
         }
     </script>
 </body>

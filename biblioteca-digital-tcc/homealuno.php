@@ -87,32 +87,31 @@ $notificacao = $result_notificacoes->fetch_assoc();
         <a href="pesquisar_livros.php" class="btn"><i class="bi bi-search"></i><br>Pesquisar Livros</a>
     </div>
 
-    <!-- Lista de livros em destaque -->
-    <h2>Livros em Destaque</h2>
-    <div class="book-list">
-        <?php if (empty($livros_destaque)): ?>
-            <div style="text-align: center; color: #666; grid-column: 1 / -1;">
-                <i class="bi bi-book" style="font-size: 48px; margin-bottom: 15px;"></i>
-                <p>Nenhum livro disponível no momento</p>
+   <!-- Lista de livros em destaque -->
+<h2>Livros em Destaque</h2>
+<div class="book-list">
+    <?php if (empty($livros_destaque)): ?>
+        <div style="text-align: center; color: #666; grid-column: 1 / -1;">
+            <i class="bi bi-book" style="font-size: 48px; margin-bottom: 15px;"></i>
+            <p>Nenhum livro disponível no momento</p>
+        </div>
+    <?php else: ?>
+        <?php foreach ($livros_destaque as $livro): ?>
+            <div class="book" onclick="window.location.href='detalhes_livros.php?id=<?= $livro['id'] ?>'">
+                <?php if (!empty($livro['foto'])): ?>
+                    <!-- ✅ CORREÇÃO FEITA AQUI -->
+                    <img src="fotos_livros/<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>">
+                <?php else: ?>
+                    <div style="width: 120px; height: 160px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        <i class="bi bi-book" style="font-size: 24px; color: #6c757d;"></i>
+                    </div>
+                <?php endif; ?>
+                <p><?= htmlspecialchars($livro['titulo']) ?></p>
+                <p class="author"><?= htmlspecialchars($livro['autor']) ?></p>
             </div>
-        <?php else: ?>
-            <?php foreach ($livros_destaque as $livro): ?>
-                <div class="book" onclick="window.location.href='detalhes_livros.php?id=<?= $livro['id'] ?>'">
-                    <?php if (!empty($livro['foto'])): ?>
-                        <!-- ✅ CAMINHO CORRIGIDO: foto_livros/ adicionado -->
-                        <img src="foto_livros/<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>">
-                    <?php else: ?>
-                        <div style="width: 120px; height: 160px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-                            <i class="bi bi-book" style="font-size: 24px; color: #6c757d;"></i>
-                        </div>
-                    <?php endif; ?>
-                    <p><?= htmlspecialchars($livro['titulo']) ?></p>
-                    <p class="author"><?= htmlspecialchars($livro['autor']) ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
-
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
     <script>
         // Barra de pesquisa clicável
         document.querySelector('.search-box').addEventListener('click', function() {

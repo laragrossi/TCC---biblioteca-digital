@@ -58,54 +58,55 @@ if (!$livro) {
             </div>
         <?php endif; ?>
 
-        <div style="display: flex; gap: 30px; margin-bottom: 30px;">
-            <!-- Foto do Livro -->
-            <div>
-                <?php if (!empty($livro['foto'])): ?>
-                    <img src="<?= $livro['foto'] ?>" alt="<?= $livro['titulo'] ?>" 
-                         style="width: 200px; height: 280px; object-fit: cover; border-radius: 8px;">
-                <?php else: ?>
-                    <div style="width: 200px; height: 280px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-                        <i class="bi bi-book" style="font-size: 48px; color: #6c757d;"></i>
-                    </div>
-                <?php endif; ?>
+       <div style="display: flex; gap: 30px; margin-bottom: 30px;">
+    <!-- Foto do Livro -->
+    <div>
+        <?php if (!empty($livro['foto'])): ?>
+            <!-- ✅ CORREÇÃO FEITA AQUI -->
+            <img src="fotos_livros/<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>" 
+                 style="width: 200px; height: 280px; object-fit: cover; border-radius: 8px;">
+        <?php else: ?>
+            <div style="width: 200px; height: 280px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                <i class="bi bi-book" style="font-size: 48px; color: #6c757d;"></i>
             </div>
-            
-            <!-- Informações -->
-            <div style="flex: 1;">
-                <h2 style="margin: 0 0 10px 0;"><?= htmlspecialchars($livro['titulo']) ?></h2>
-                <?php if (!empty($livro['subtitulo'])): ?>
-                    <h3 style="margin: 0 0 20px 0; color: #666; font-size: 18px;"><?= htmlspecialchars($livro['subtitulo']) ?></h3>
-                <?php endif; ?>
-                
-                <p><strong>Autor:</strong> <?= htmlspecialchars($livro['autor']) ?></p>
-                <p><strong>Editora:</strong> <?= htmlspecialchars($livro['editora']) ?></p>
-                <p><strong>Ano:</strong> <?= $livro['ano_publicacao'] ?></p>
-                <p><strong>Páginas:</strong> <?= $livro['numero_paginas'] ?></p>
-                <p><strong>Gênero:</strong> <?= htmlspecialchars($livro['genero']) ?></p>
-                <p><strong>ISBN:</strong> <?= htmlspecialchars($livro['isbn']) ?></p>
-                
-                <!-- Status -->
-                <div style="margin: 20px 0;">
-                    <?php if ($livro['quantidade_disponivel'] > 0): ?>
-                        <div style="background: #d4edda; color: #155724; padding: 10px; border-radius: 8px; display: inline-block;">
-                            🟢 DISPONÍVEL - <?= $livro['quantidade_disponivel'] ?> exemplar(es)
-                        </div>
-                        <form method="POST" action="solicitar_emprestimo.php" style="margin-top: 15px;">
-                            <input type="hidden" name="livro_id" value="<?= $livro['id'] ?>">
-                            <button type="submit" name="solicitar_emprestimo" 
-                                    style="background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold;">
-                                📚 Solicitar Empréstimo
-                            </button>
-                        </form>
-                    <?php else: ?>
-                        <div style="background: #f8d7da; color: #721c24; padding: 10px; border-radius: 8px; display: inline-block;">
-                            🔴 INDISPONÍVEL - Todos os exemplares estão emprestados
-                        </div>
-                    <?php endif; ?>
+        <?php endif; ?>
+    </div>
+    
+    <!-- Informações -->
+    <div style="flex: 1;">
+        <h2 style="margin: 0 0 10px 0;"><?= htmlspecialchars($livro['titulo']) ?></h2>
+        <?php if (!empty($livro['subtitulo'])): ?>
+            <h3 style="margin: 0 0 20px 0; color: #666; font-size: 18px;"><?= htmlspecialchars($livro['subtitulo']) ?></h3>
+        <?php endif; ?>
+        
+        <p><strong>Autor:</strong> <?= htmlspecialchars($livro['autor']) ?></p>
+        <p><strong>Editora:</strong> <?= htmlspecialchars($livro['editora']) ?></p>
+        <p><strong>Ano:</strong> <?= $livro['ano_publicacao'] ?></p>
+        <p><strong>Páginas:</strong> <?= $livro['numero_paginas'] ?></p>
+        <p><strong>Gênero:</strong> <?= htmlspecialchars($livro['genero']) ?></p>
+        <p><strong>ISBN:</strong> <?= htmlspecialchars($livro['isbn']) ?></p>
+        
+        <!-- Status -->
+        <div style="margin: 20px 0;">
+            <?php if ($livro['quantidade_disponivel'] > 0): ?>
+                <div style="background: #d4edda; color: #155724; padding: 10px; border-radius: 8px; display: inline-block;">
+                    🟢 DISPONÍVEL - <?= $livro['quantidade_disponivel'] ?> exemplar(es)
                 </div>
-            </div>
+                <form method="POST" action="solicitar_emprestimo.php" style="margin-top: 15px;">
+                    <input type="hidden" name="livro_id" value="<?= $livro['id'] ?>">
+                    <button type="submit" name="solicitar_emprestimo" 
+                            style="background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold;">
+                        📚 Solicitar Empréstimo
+                    </button>
+                </form>
+            <?php else: ?>
+                <div style="background: #f8d7da; color: #721c24; padding: 10px; border-radius: 8px; display: inline-block;">
+                    🔴 INDISPONÍVEL - Todos os exemplares estão emprestados
+                </div>
+            <?php endif; ?>
         </div>
+    </div>
+</div>
         
         <!-- Sinopse -->
         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">

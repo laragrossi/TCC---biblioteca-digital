@@ -64,7 +64,7 @@ $notificacao = $result_notificacoes->fetch_assoc();
                         Livro: <?= htmlspecialchars($notificacao['titulo']) ?><br>
                         Data: <?= date('d/m/Y', strtotime($notificacao['DataDevolucaoPrevista'])) ?>
                     <?php else: ?>
-                        ✅ Nenhuma notificação<br>
+                        Nenhuma notificação<br>
                         Todos os empréstimos em dia!
                     <?php endif; ?>
                 </div>

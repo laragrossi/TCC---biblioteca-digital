@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/11/2025 às 01:02
+-- Tempo de geração: 20/11/2025 às 19:11
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -216,7 +216,7 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`id`, `nome`, `email`, `senha`, `escola`, `cidade`) VALUES
-(10, 'Fabricia Gonsavlves ', 'professor@biblioteca.com', '$2y$10$i1W', 'Joaquim de moura Candelaria ', 'São josé dos campos ');
+(10, 'Fabricia Gonsavlves ', 'professor@biblioteca.com', 'prof123', 'Joaquim de moura Candelaria ', 'São josé dos campos ');
 
 -- --------------------------------------------------------
 

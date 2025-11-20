@@ -17,7 +17,7 @@
     <div class="icons">
 
         <!-- Home -->
-        <a href="home.php" class="icon-link">
+        <a href="homealuno.php" class="icon-link">
             <i class="bi bi-house-door-fill" title="Início"></i>
         </a>
 
@@ -37,10 +37,7 @@
 
         <!-- Menu do Usuário -->
         <div class="notification-box" id="user-menu" style="width:220px;">
-            <div class="notification-title">Usuário</div>
             <div class="notification-content">
-                <p><strong>Nome:</strong> Professor</p>
-                <p><strong>Email:</strong> professor@example.com</p>
                 <hr>
                 <a href="dadosprof.php" class="btn-logout">Perfil</a>
                 <a href="logout.php" class="btn-logout">Sair</a>

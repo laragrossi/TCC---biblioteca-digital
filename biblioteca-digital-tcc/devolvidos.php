@@ -1,9 +1,46 @@
+
+<?php
+session_start();
+include "conexaoconsulta.php"; 
+
+// Verifica se o aluno está logado
+if (!isset($_SESSION['AlunoID'])) {
+    header("Location: loginaluno.php");
+    exit();
+}
+
+/* ============================
+   CONSULTA DOS DEVOLVIDOS
+   ============================ */
+// Exemplo fixo. Troque pelo seu SELECT real:
+$livros_devolvidos = [
+    [
+        "titulo" => "Dom Casmurro",
+        "autor" => "Machado de Assis",
+        "emprestimo" => "05/07/2025",
+        "devolucao"  => "05/08/2025",
+        "foto" => "https://m.media-amazon.com/images/I/71n5p+taH4L._AC_UF1000,1000_QL80_.jpg"
+    ],
+    [
+        "titulo" => "Capitães da Areia",
+        "autor" => "Jorge Amado",
+        "emprestimo" => "10/06/2025",
+        "devolucao"  => "10/07/2025",
+        "foto" => "https://m.media-amazon.com/images/I/81QGj0VQGYL._AC_UF1000,1000_QL80_.jpg"
+    ]
+];
+
+// PARA USAR O BANCO:
+// $sql = "SELECT ... somente devolvidos";
+// $result = $conexao->query($sql);
+// $livros_devolvidos = $result->fetch_all(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meus Empréstimos</title>
+<title>Livros Devolvidos</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="css/meusemprestimos.css">
 </head>
@@ -50,12 +87,10 @@
     </div>
 </header>
 
-
-
 <!-- FILTROS -->
 <div class="filter-container">
-    <a href="meusemprestimos.php" class="btn active">Todos</a>
-    <a href="devolvidos.php" class="btn">Devolvidos</a>
+    <a href="meusemprestimos.php" class="btn">Todos</a>
+    <a href="devolvidos.php" class="btn active">Devolvidos</a>
 </div>
 
 <!-- CONTEÚDO PRINCIPAL -->
@@ -64,24 +99,35 @@
     <!-- CARD TOTAL -->
     <div class="total-card">
         <div>
-            <h2>Total de empréstimos</h2>
-            <p class="number">1</p>
-            <p class="label">Livro emprestado</p>
+            <h2>Livros devolvidos</h2>
+            <p class="number"><?= count($livros_devolvidos) ?></p>
+            <p class="label">Devolvidos ao todo</p>
         </div>
-        <i class="bi bi-book icon-big"></i>
+        <i class="bi bi-check2-square icon-big"></i>
     </div>
 
-    <!-- CARD DO LIVRO -->
-    <div class="loan-card">
-        <img src="https://m.media-amazon.com/images/I/81lRWMvYpKL._AC_UF1000,1000_QL80_.jpg" alt="Capa do livro">
-
-        <div class="info">
-            <h3>O Cortiço</h3>
-            <p><strong>Autor:</strong> Aluísio de Azevedo</p>
-            <p><strong>Data do empréstimo:</strong> 01/08/2025</p>
-            <p><strong>Data de devolução:</strong> 01/09/2025</p>
+    <!-- LISTA DE LIVROS DEVOLVIDOS -->
+    <?php if (empty($livros_devolvidos)): ?>
+        <div style="text-align:center; margin-top:40px; font-size:18px; color:#555;">
+            Nenhum livro devolvido ainda.
         </div>
-    </div>
+    <?php else: ?>
+        <?php foreach ($livros_devolvidos as $livro): ?>
+        <div class="loan-card">
+            <img src="<?= $livro['foto'] ?>" alt="Capa do livro">
+
+            <div class="info">
+                <h3><?= $livro['titulo'] ?></h3>
+                <p><strong>Autor:</strong> <?= $livro['autor'] ?></p>
+                <p><strong>Data do empréstimo:</strong> <?= $livro['emprestimo'] ?></p>
+                <p><strong>Data da devolução:</strong> <?= $livro['devolucao'] ?></p>
+                <p style="color:green; font-weight:bold; margin-top:5px;">
+                    ✔ Livro devolvido
+                </p>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
 
     <!-- CARD INFORMAÇÕES -->
     <div class="info-card">
@@ -91,6 +137,7 @@
     </div>
 
 </main>
+
 <script>
     const notificationBtn = document.getElementById("notification-btn");
     const notificationBox = document.getElementById("notification-box");
@@ -125,5 +172,6 @@
         }
     });
 </script>
+
 </body>
 </html>

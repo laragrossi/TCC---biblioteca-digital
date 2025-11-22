@@ -107,14 +107,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </span>
                     </div>
                 </div>
-
                 <!-- Botão Entrar -->
-                <div class="d-flex justify-content-center">
+                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-custom w-100 ms-1">Entrar</button>
+                </div>
+               <!-- Botão Voltar -->
+                <div class="d-flex justify-content-center mt-3">
+                    <a href="index.php" class="btn-voltar">Voltar</a>
                 </div>
 
             </form>
-
             <div class="mt-3">
                 <a href="https://sed.educacao.sp.gov.br/NCA/CadastroAluno/ConsultaRAAluno/" class="text-link">Esqueceu seu RA?</a>
             </div>

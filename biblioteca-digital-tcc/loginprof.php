@@ -58,9 +58,14 @@ if (isset($_GET['mensagem']) && $_GET['mensagem'] === 'sucesso') {
         </div>
     </div>
     <!-- Botão Entrar -->
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-custom w-100">Entrar</button>
-    </div>
+                 <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-custom w-100 ms-1">Entrar</button>
+                </div>
+               <!-- Botão Voltar -->
+                <div class="d-flex justify-content-center mt-3">
+                    <a href="index.php" class="btn-voltar">Voltar</a>
+                </div>
+
 
 
 

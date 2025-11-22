@@ -53,3 +53,22 @@ body {
 .text-link:hover {
     text-decoration: underline;
 }
+/* Botão Voltar */
+.btn-voltar {
+    width: 90%;
+    padding: 0.6px;
+    border-radius: 12px;
+    border: 2px solid #6c757d;
+    background-color: transparent;
+    color: #6c757d;
+    font-weight: bold;
+    transition: 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-voltar:hover {
+    background-color: #6c757d;
+    color: white;
+}

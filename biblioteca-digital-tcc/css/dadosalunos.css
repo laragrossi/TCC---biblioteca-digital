@@ -33,17 +33,17 @@
             cursor: pointer; /* Muda o cursor ao passar */
         }
         /* Caixa cinza */
-.info-card {
-    background-color: #e6ded6; /* cinza/bege igual ao print */
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 1000px;
-    height: 400px;
-    margin: 20px auto;
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-}
+        .info-card {
+            background-color: #e6ded6; /* cinza/bege igual ao print */
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 1000px;
+            height: 400px;
+            margin: 20px auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
 
 
 /* Ícone */
@@ -67,3 +67,154 @@ font-weight: bold;
     color: #777;
     margin-bottom: 5px;
 }
+#user-menu {
+    display: none;
+    position: absolute;
+    top: 55px;
+    right: 10px;
+    background: #f8c7b1;
+    border-radius: 10px;
+    width: 170px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+#user-menu a {
+    display: block;
+    text-decoration: none;
+    padding: 8px;
+    color: #3b1f1f;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#user-menu a:hover {
+    background: #ffe4d6;
+}
+
+.btn-logout {
+    background: #db7c6f;
+    color: white !important;
+    font-weight: bold;
+}
+
+.btn-logout:hover {
+    background: #c56f63;
+}
+/* --- MENU DO USUÁRIO (Perfil / Logout) --- */
+#user-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #f8c7b1;
+    border-radius: 10px;
+    padding: 10px;
+    width: 170px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 20;
+}
+
+#user-menu::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 18px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #f8c7b1 transparent;
+}
+
+#user-menu a {
+    display: block;
+    padding: 6px;
+    background: #ffe4d6;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #3b1f1f;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.btn-logout {
+    background: #db7c6f !important;
+    color: white !important;
+}
+
+.btn-logout:hover {
+    background: #c56f63 !important;
+}
+/* Ícones */
+.icons {
+    display: flex;
+    gap: 15px;
+    position: relative;
+}
+
+.icons i {
+    font-size: 24px;
+    color: #3b1f1f;
+    cursor: pointer;
+}
+
+/* Caixa de notificações */
+.notification-box {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #f8c7b1;
+    border-radius: 10px;
+    padding: 10px;
+    width: 230px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 20;
+}
+
+.notification-box::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #f8c7b1 transparent;
+}
+
+.notification-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 5px;
+}
+
+.notification-content {
+    background-color: #ffe4d6;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* Menu do usuário */
+#user-menu {
+    display: none;
+}
+
+/* Botões dentro da caixa */
+.btn-logout {
+    display: block;
+    text-align: center;
+    padding: 7px;
+    background: #db7c6f;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.btn-logout:hover {
+    background-color: #c56f63;
+}
+

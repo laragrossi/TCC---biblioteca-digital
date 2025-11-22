@@ -1,0 +1,128 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fbece2;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d87b6d;
+    padding: 15px 20px;
+    position: relative;
+}
+
+header h1 {
+    color: #3b1f1f;
+    font-size: 24px;
+    margin: 0;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+    position: relative;
+}
+
+.icons i {
+    font-size: 24px;
+    color: #3b1f1f;
+    cursor: pointer;
+}
+
+/* Caixa de Notificações */
+.notification-box {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #f8c7b1;
+    border-radius: 10px;
+    padding: 10px;
+    width: 230px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* Menu do Usuário */
+#user-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: #f8c7b1;
+    padding: 10px;
+    width: 220px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 20;
+}
+
+/* Conteúdo do menu */
+.notification-content {
+    background-color: #ffe4d6;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/* Botão Perfil / Logout */
+.btn-logout {
+    display: block;
+    text-align: center;
+    padding: 6px;
+    background: #db7c6f;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.btn-logout:hover {
+    background-color: #c56f63;
+}
+
+/* Barra de pesquisa */
+.search-container {
+    padding: 20px;
+}
+
+.search-box {
+    background: #fff;
+    padding: 12px 15px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+    border: 1px solid #ddd;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.book {
+    background: #e7dcd3;
+    width: 150px;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.book img {
+    width: 120px;
+    border-radius: 10px;
+}
+
+.author {
+    font-size: 14px;
+    color: #555;
+}

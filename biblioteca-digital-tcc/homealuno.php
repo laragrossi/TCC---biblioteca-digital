@@ -49,28 +49,48 @@ $notificacao = $result_notificacoes->fetch_assoc();
 <body>
     <!-- Cabeçalho com título e ícones -->
     <header>
-        <h1>Biblioteca Digital</h1>
-        <div class="icons">
-            <i class="bi bi-house-door-fill" title="Início"></i>
-            <i class="bi bi-bell-fill" id="notification-btn" title="Notificações"></i>
-            <a href="dadosaluno.php"><i class="bi bi-person-fill" title="Perfil"></i></a>
+    <h1>Biblioteca Digital</h1>
 
-            <!-- Caixa de Notificações -->
-            <div class="notification-box" id="notification-box">
-                <div class="notification-title">Notificações</div>
-                <div class="notification-content">
-                    <?php if ($notificacao): ?>
-                        ⚠️ Empréstimo em atraso<br>
-                        Livro: <?= htmlspecialchars($notificacao['titulo']) ?><br>
-                        Data: <?= date('d/m/Y', strtotime($notificacao['DataDevolucaoPrevista'])) ?>
-                    <?php else: ?>
-                        Nenhuma notificação<br>
-                        Todos os empréstimos em dia!
-                    <?php endif; ?>
-                </div>
+    <div class="icons">
+
+        <!-- Home -->
+        <a href="homealuno.php" class="icon-link">
+            <i class="bi bi-house-door-fill" title="Início"></i>
+        </a>
+
+        <!-- Notificações -->
+        <i class="bi bi-bell-fill" id="notification-btn" title="Notificações"></i>
+
+        <!-- Caixa de Notificações -->
+        <div class="notification-box" id="notification-box">
+            <div class="notification-title">Notificações</div>
+            <div class="notification-content">
+                <?php if ($notificacao): ?>
+                    ⚠️ Empréstimo em atraso<br>
+                    Livro: <?= htmlspecialchars($notificacao['titulo']) ?><br>
+                    Data: <?= date('d/m/Y', strtotime($notificacao['DataDevolucaoPrevista'])) ?>
+                <?php else: ?>
+                    Nenhuma notificação<br>
+                    Todos os empréstimos em dia!
+                <?php endif; ?>
             </div>
         </div>
-    </header>
+
+        <!-- Ícone do usuário (abre menu) -->
+        <i class="bi bi-person-fill" id="user-icon" title="Perfil"></i>
+
+        <!-- Menu do usuário (igual ao da outra página) -->
+        <div class="notification-box" id="user-menu" style="width:220px;">
+            <div class="notification-content">
+                <hr>
+                <a href="dadosaluno.php" class="btn-logout">Perfil</a>
+                <a href="logout.php" class="btn-logout">Sair</a>
+            </div>
+        </div>
+
+    </div>
+</header>
+
 
     <!-- Barra de pesquisa -->
     <div class="search-container">
@@ -112,30 +132,40 @@ $notificacao = $result_notificacoes->fetch_assoc();
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
-    <script>
-        // Barra de pesquisa clicável
-        document.querySelector('.search-box').addEventListener('click', function() {
-            window.location.href = 'pesquisar_livros.php';
-        });
+   <script>
+    const notificationBtn = document.getElementById("notification-btn");
+    const notificationBox = document.getElementById("notification-box");
+    const userIcon = document.getElementById("user-icon");
+    const userMenu = document.getElementById("user-menu");
 
-        // Notificações
-        const notificationBtn = document.getElementById('notification-btn');
-        const notificationBox = document.getElementById('notification-box');
+    function closeAll() {
+        notificationBox.style.display = "none";
+        userMenu.style.display = "none";
+    }
 
-        notificationBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            notificationBox.style.display = notificationBox.style.display === 'block' ? 'none' : 'block';
-        });
+    notificationBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = notificationBox.style.display === "block";
+        closeAll();
+        notificationBox.style.display = isOpen ? "none" : "block";
+    });
 
-        // Fechar notificações ao clicar fora
-        document.addEventListener('click', function() {
-            notificationBox.style.display = 'none';
-        });
+    userIcon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = userMenu.style.display === "block";
+        closeAll();
+        userMenu.style.display = isOpen ? "none" : "block";
+    });
 
-        // Evitar que clique na notificação feche
-        notificationBox.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-    </script>
+    // Fechar ao clicar fora
+    document.addEventListener("click", () => {
+        closeAll();
+    });
+
+    // Evita fechar quando clicar dentro
+    notificationBox.addEventListener("click", (e) => e.stopPropagation());
+    userMenu.addEventListener("click", (e) => e.stopPropagation());
+</script>
+
 </body>
 </html>

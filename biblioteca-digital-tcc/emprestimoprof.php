@@ -53,7 +53,9 @@ $emprestimos = $result_emprestimos->fetch_all(MYSQLI_ASSOC);
     <div class="icons" style="position: relative; display:flex; gap:15px; align-items:center;">
 
         <!-- HOME -->
-        <a href="homeprof.php"><i class="bi bi-house-door-fill" title="Início"></i></a>
+    <a href="homeprof.php" class="icon-link">
+        <i class="bi bi-house-door-fill" title="Início"></i>
+    </a>
 
         <!-- NOTIFICAÇÕES -->
         <i class="bi bi-bell-fill" id="notification-btn" title="Notificações" style="cursor:pointer;"></i>

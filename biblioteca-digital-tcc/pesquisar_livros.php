@@ -99,7 +99,10 @@ if (isset($_GET['pesquisa'])) {
                 <?php foreach ($livros as $livro): ?>
                     <div class="book" onclick="verDetalhes(<?= $livro['id'] ?>)">
                         <?php if (!empty($livro['foto'])): ?>
-                            <img src="fotos_livros/<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>">
+                            <!-- CORREÇÃO APLICADA AQUI: removido "fotos_livros/" extra -->
+                            <img src="<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>" 
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDEyMCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiByeD0iOCIgZmlsbD0iI2Y4ZjlmYSIvPgo8cGF0aCBkPSJNNzUgNjBINDUgTTYwIDQ1Vjc1IiBzdHJva2U9IiM2Yzc1N2QiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00NSA1MEg1NVY2MEg0NVoiIGZpbGw9IiM2Yzc1N2QiLz4KPC9zdmc+'" 
+                                 style="width: 120px; height: 160px; object-fit: cover; border-radius: 8px;">
                         <?php else: ?>
                             <div style="width: 120px; height: 160px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #6c757d;">
                                 <i class="bi bi-book" style="font-size: 24px;"></i>

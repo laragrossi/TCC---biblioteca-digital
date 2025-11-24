@@ -1,39 +1,131 @@
 /* Estilo geral do corpo da página */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #fff1e7;
-        }
-/* Cabeçalho principal */
-        header {
-            display: flex; /* Elementos lado a lado */
-            justify-content: space-between; /* Espaço entre título e ícones */
-            align-items: center; /* Centraliza verticalmente */
-            padding: 10px 20px;
-            background-color: #d87b6d;
-            position: relative;
-        }
-        /* Título do cabeçalho */
-        header h1 {
-            font-size: 24px;
-            color: #000000;
-        }
-        /* Container dos ícones no cabeçalho */
-        .icons {
-            display: flex;
-            gap: 15px; /* Espaçamento entre ícones */
-            position: relative;
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #fff1e7;
+}
 
-        /* Estilo dos ícones */
-        .icons i {
-            font-size: 24px;
-            color: #3b1f1f;
-            cursor: pointer; /* Muda o cursor ao passar */
-        }
-        /* Caixa cinza */
+/* Cabeçalho principal */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #d87b6d;
+    position: relative;
+}
+
+/* Título */
+header h1 {
+    font-size: 24px;
+    color: #000000;
+}
+
+/* Container dos ícones */
+.icons {
+    display: flex;
+    gap: 15px;
+    position: relative;
+}
+
+.icons i {
+    font-size: 24px;
+    color: #3b1f1f;
+    cursor: pointer;
+}
+
+/* ------------------------- */
+/*     MENU DE NOTIFICAÇÕES  */
+/* ------------------------- */
+.notification-box {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #f8c7b1;
+    border-radius: 10px;
+    padding: 10px;
+    width: 230px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 20;
+}
+
+.notification-box::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #f8c7b1 transparent;
+}
+
+.notification-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 5px;
+}
+
+.notification-content {
+    background-color: #ffe4d6;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+
+/* ------------------------- */
+/*       MENU DO USUÁRIO     */
+/* ------------------------- */
+#user-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #f8c7b1;
+    border-radius: 10px;
+    padding: 10px;
+    width: 170px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 20;
+}
+
+#user-menu::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 18px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #f8c7b1 transparent;
+}
+
+#user-menu a {
+    display: block;
+    padding: 6px;
+    background: #ffe4d6;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #3b1f1f;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.btn-logout {
+    background: #db7c6f !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.btn-logout:hover {
+    background: #c56f63 !important;
+}
+
+/*     CONTEÚDO PRINCIPAL    */
+
 .info-card {
-    background-color: #e6ded6; /* cinza/bege igual ao print */
+    background-color: #e6ded6;
     border-radius: 10px;
     padding: 20px;
     max-width: 1000px;
@@ -44,7 +136,6 @@
     gap: 20px;
 }
 
-/* Ícone */
 .icon-area i {
     font-size: 70px;
     color: black;
@@ -52,8 +143,8 @@
 
 /* Títulos */
 .section-title {
-    color: #8b2720; /* vermelho escuro do print */
-font-weight: bold;
+    color: #8b2720;
+    font-weight: bold;
     margin-bottom: 5px;
 }
 

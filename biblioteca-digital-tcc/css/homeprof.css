@@ -70,24 +70,34 @@ header h1 {
   font-size: 14px;
 }
 
-/* Cards */
 .card-custom {
-  background-color: #d88c7b;
-  color: #fff;
-  border-radius: 12px;
-  text-align: center;
-  padding: 30px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.card-custom:hover {
-  background-color: #bf7767;
+    background-color: #d88a7b;     /* cor dos cards */
+    border-radius: 20px;
+    text-align: center;
+    padding: 40px 20px;
+    height: 150px;                 /* ALTURA IGUAL PARA TODOS */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
 }
 
 .card-custom i {
-  font-size: 2rem;
-  margin-bottom: 10px;
+    font-size: 50px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.card-custom p {
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+}
+
+.card-custom:hover {
+    background-color: #c97d6f;
+    transform: scale(1.03);
 }
 
 /* Caixas de status e notificações */

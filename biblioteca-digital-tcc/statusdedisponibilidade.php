@@ -22,7 +22,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 20px;
-        background-color: #db8a80;
+        background-color: #d87b6d;
         position: relative;
     }
 

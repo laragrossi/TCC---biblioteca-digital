@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conexaoconsulta.php";  // ✅ CONEXÃO ADICIONADA
+include "conexaoconsulta.php";  // CONEXÃO ADICIONADA
 
 // Verificar se o professor está logado - CORRIGIDO
 if (!isset($_SESSION['ProfID'])) {
@@ -107,7 +107,7 @@ $emprestimos = $result_emprestimos->fetch_all(MYSQLI_ASSOC);
                 <p><strong>Email:</strong> <?= htmlspecialchars($professor['email']) ?></p>
                 <hr>
                 <a href="dadosprof.php">Perfil</a><br><br>
-                <a href="logout.php">Sair</a>  <!-- ✅ LOGOUT CORRETO -->
+                <a href="logout.php">Sair</a>  <!--LOGOUT CORRETO -->
             </div>
         </div>
 
@@ -148,7 +148,7 @@ $emprestimos = $result_emprestimos->fetch_all(MYSQLI_ASSOC);
                 
                 <?php if ($emp['status'] == 'em-atraso'): ?>
                     <div style="color: #dc3545; font-weight: bold; margin-top: 8px;">
-                        ⚠️ Atraso: <?= floor((time() - strtotime($emp['DataDevolucaoPrevista'])) / (60 * 60 * 24)) ?> dias
+                         Atraso: <?= floor((time() - strtotime($emp['DataDevolucaoPrevista'])) / (60 * 60 * 24)) ?> dias
                     </div>
                 <?php endif; ?>
             </div>

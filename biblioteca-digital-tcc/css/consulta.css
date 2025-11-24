@@ -1,118 +1,100 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Fundo */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #faece4;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fcefe8, #fcefe8);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
 }
 
-/* ====== HEADER ====== */
+/* Container principal */
+.container {
+  width: 90%;
+  max-width: 900px;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Cabeçalho */
 header {
-    background: #cc6f5e;
-    padding: 20px 30px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
-header .icons i {
-    font-size: 22px;
-    margin-left: 15px;
-    cursor: pointer;
-    color: black;
+header h1 {
+  color: #d87b6d;
+  font-size: 1.8rem;
 }
 
-/* ====== SEARCH ====== */
-.search-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
+.voltar {
+  text-decoration: none;
+  color: #d87b6d;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 2px solid #d87b6d;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.search-box {
-    display: flex;
-    align-items: center;
-    background: #eec8bb;
-    padding: 10px 15px;
-    border-radius: 30px;
-    width: 50%;
+.voltar:hover {
+  background-color: #d87b6d;
+  color: #fff;
 }
 
-.search-box input {
-    border: none;
-    background: none;
-    margin-left: 10px;
-    width: 100%;
-    font-size: 16px;
-    outline: none;
-}
-
-/* ====== FILTER BUTTONS ====== */
-.filter-buttons {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.filter-btn {
-    background: #dd7c6a;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 20px;
-    margin: 0 10px;
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-.filter-btn.disabled {
-    background: #c9b5b5;
-}
-
-/* ====== TABLE ====== */
-.table-container {
-    width: 90%;
-    margin: 30px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
+/* Tabela estilizada */
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  background-color: #fefefe;
 }
 
 thead {
-    background: #f5d1c6;
+  background-color: #d87b6d;
+  color: #fff;
+  font-weight: bold;
 }
 
 th, td {
-    text-align: left;
-    padding: 12px;
-    font-size: 15px;
-}
-
-tbody tr:nth-child(even) {
-    background: #fef4f1;
+  padding: 14px 20px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
 }
 
 tbody tr:hover {
-    background: #f5e4df;
+  background-color: #d87b6d;
 }
 
-/* ====== STATUS BADGES ====== */
-.status {
-    padding: 6px 12px;
-    border-radius: 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 13px;
+/* Mensagem quando não há dados */
+.mensagem {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 40px;
 }
 
-.em-andamento {
-    background: #4caf50;
-}
-
-.em-atraso {
-    background: linear-gradient(to right, #ff0000, #ffa500);
+/* Texto especial para total de reservas */
+.total-reservas {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #333;
 }

@@ -2,14 +2,14 @@
 session_start();
 include "conexaoconsulta.php";  // ✅ CONEXÃO ADICIONADA
 
-// Verificar se o professor está logado
-if (!isset($_SESSION['ProfessorID'])) {
+// Verificar se o professor está logado - CORRIGIDO
+if (!isset($_SESSION['ProfID'])) {
     header("Location: loginprof.php");
     exit();
 }
 
 // Buscar dados do professor para exibir no menu
-$professor_id = $_SESSION['ProfessorID'];
+$professor_id = $_SESSION['ProfID'];
 $sql_professor = "SELECT nome, email FROM professor WHERE id = ?";
 $stmt_professor = $conexao->prepare($sql_professor);
 $stmt_professor->bind_param("i", $professor_id);

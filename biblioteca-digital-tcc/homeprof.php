@@ -1,8 +1,8 @@
 <?php
 session_start();
-include "conexaoconsulta.php";  // ✅ CONEXÃO ADICIONADA
+include "conexaoconsulta.php";  // CONEXÃO ADICIONADA
 
-// Verificar se o professor está logado - CORRIGIDO
+// Autorizar login - verificação 
 if (!isset($_SESSION['ProfID'])) {
     header("Location: loginprof.php");
     exit();

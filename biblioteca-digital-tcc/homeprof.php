@@ -55,10 +55,11 @@ $emprestimos_ativos = $result_emprestimos->fetch_assoc()['total'];
               <div class="notification-content">
                   <p><strong>Nome:</strong> <?= htmlspecialchars($professor['nome']) ?></p>
                   <p><strong>Email:</strong> <?= htmlspecialchars($professor['email']) ?></p>
-                  <hr>
-                  <a href="dadosprof.php" class="btn-logout">Perfil</a><br><br>
-                  <a href="logout.php" class="btn-logout">Sair</a>
-              </div>
+                    <hr>
+                    <a href="dadosprof.php" class="btn-logout">Perfil</a>
+                    <a href="logout.php" class="btn-logout">Sair</a>
+            </div>
+
           </div>
 
           <!-- Caixa de notificações -->

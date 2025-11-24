@@ -175,14 +175,9 @@
 
             <!-- Menu do usuário -->
             <div class="notification-box" id="user-menu" style="width:220px;">
-                <div class="notification-title">Usuário</div>
-                <div class="notification-content">
-                    <p><strong>Nome:</strong> Professor</p>
-                    <p><strong>Email:</strong> professor@example.com</p>
                     <hr>
                     <a href="dadosprof.php" class="btn-logout">Perfil</a>
                     <a href="logout.php" class="btn-logout">Sair</a>
-                </div>
             </div>
 
             <!-- Caixa de notificações -->

@@ -9,10 +9,7 @@ if (!isset($_SESSION['AlunoID'])) {
     exit();
 }
 
-/* ============================
-   CONSULTA DOS DEVOLVIDOS
-   ============================ */
-// Exemplo fixo. Troque pelo seu SELECT real:
+/* CONSULTA DOS DEVOLVIDOS */
 $livros_devolvidos = [
     [
         "titulo" => "Dom Casmurro",

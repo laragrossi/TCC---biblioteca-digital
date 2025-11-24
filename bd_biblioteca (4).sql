@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/11/2025 às 19:11
+-- Tempo de geração: 24/11/2025 às 17:58
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -67,7 +67,7 @@ CREATE TABLE `aluno` (
 INSERT INTO `aluno` (`id`, `nome`, `ra`, `digito`, `ra_completo`, `senha`, `escola`, `serie`, `turma`, `ativo`, `created_at`) VALUES
 (1, 'lara lima ', '11204728', '4', '11204728-4', '$2y$10$I2/wVnW/dEKupB2lkToXA.c8TzPo0IFQw1ANgPd427/SdZedY26Sm', 'Joaquim de moura Candelaria ', NULL, NULL, 1, '2025-11-18 17:40:15'),
 (2, 'Giovana Rosa Greco', '110054535', '9', '110054535-9', '$2y$10$l1gNHswIokRr56XfqU.ggO/MnFgRx/2p.CpjZfiV7VOqMVzgBWF5i', 'Joaquim de moura Candelaria ', NULL, NULL, 1, '2025-11-18 17:45:55'),
-(4, 'Matheus rosa ', '342789', '7', '342789-7', '$2y$10$L8F6WFUKY1feq8Wf4KzYa.8OcySyDeuR0XX3W8jWexlyjbnWJEwVW', 'Joaquim de Moura Candelária ', NULL, NULL, 1, '2025-11-19 21:46:20');
+(3, 'Giovana Rosa Greco', '000110054535', '9', '000110054535-9', '$2y$10$AEYO/O7Trm12ZDwIhg1L2e8Pit/6h9vVQGEp2YnZy4Ry4I5MZzdH2', 'Joaquim de moura Candelaria ', NULL, NULL, 1, '2025-11-19 17:11:56');
 
 -- --------------------------------------------------------
 
@@ -179,8 +179,7 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`id`, `numero_tombo`, `isbn`, `titulo`, `subtitulo`, `sinopse`, `autor`, `editora`, `ano_publicacao`, `numero_paginas`, `idioma`, `genero`, `area_conhecimento`, `foto`, `quantidade_total`, `quantidade_disponivel`, `disponivel`, `created_at`) VALUES
-(1, '974552233', '232446', 'Perto do coração selvagem ', 'Clarice ', 'Perto do Coração Selvagem é uma obra escrita por Clarice Lispector em 1944. O livro mostra o cotidiano de Joana, menina criada pelo pai, já que a mãe, Elza, morrera muito cedo. O pai passado alguns anos também morre, então ela vai morar com a irmã de seu pai. A tia não gostava de Joana, pois a presença da menina a sufocava e a enviou para um internato, lá ocorre uma paixão avassaladora por seu professor um pouco mais velho. Um ponto culminante que a enviou para o internato foi dias antes acompanhando à tia as compras, como um teste para si mesma e causa espanto aos outros, Joana roubou um livro, trazendo mais dificuldades a sua convivência com a família da tia.\r\n\r\nFora do internato casa-se com Otávio. Joana fica grávida, para a maioria das mulheres a gravidez é uma felicidade, mas para ela não foi assim. Descobre que o marido tem uma amante, Lívia, sua ex-noiva que estava também grávida. Com o tempo ocorre a separação entre Joana e o marido.', 'Clarice Lispector ', 'Brasil ', 1943, 200, 'Português', 'Romance ', 'auto conhecimento ', 'fotos_livros/691e3d8668315_Perto do Coração Selvagem.jpg', 1, 1, 1, '2025-11-19 21:58:30'),
-(2, '1234', '7658', 'Como eu era antes de você ', 'Como eu era antes de você ', 'Como eu era antes de você conta a história de Louisa Clark, uma mulher de 26 anos que mora com a sua família em uma cidade na Inglaterra. Para ajudar com as despesas da casa, Lou trabalha em um café da região, mas, posteriormente, acaba perdendo esse emprego.\r\n\r\nPor conta desse acontecimento, Lou decide procurar um novo trabalho em um Centro de Desempregados. Lá, ela encontra apenas um cargo temporário de cuidadora, que contava com uma duração de seis meses. Sem opções, acaba se candidatando para a vaga.\r\n\r\nSeguidamente, a protagonista é convidada para fazer uma entrevista em uma mansão e, por conta da sua energia encantadora, acaba sendo aceita para assumir o cargo. Assim, Lou fica encarregada de cuidar de um homem de 35 anos, Will Traynor, que sofreu um acidente e ficou tetraplégico.', 'Jojo Moyes.', 'moop', 2017, 222, 'Português', 'Romance ', 'auto conhecimento ', 'fotos_livros/691e597cd86e4_Como eu era antes de você.jpg', 1, 1, 1, '2025-11-19 23:57:48');
+(1, '090908', '8787', 'Como eu era Antes de você ', 'Como eu era antes', '\"Como Eu Era Antes de Você\" é um romance da autora Jojo Moyes sobre a relação entre Louisa Clark, uma jovem que perde o emprego e se torna cuidadora, e Will Traynor, um homem rico e ativo que ficou tetraplégico após um acidente de moto. O livro explora temas como deficiência, qualidade de vida e o direito à eutanásia, provocando reflexões sobre o que torna a vida digna de ser vivida, com a narrativa focando em como a chegada de Lou muda a perspectiva de Will e, por sua vez, a dele para Lou. ', ' Jojo Moyes ', ' Intrínseca        ', 2017, 322, 'Português ', 'Romance ', 'Romance ', 'fotos_livros/691df7f56a6a7_691df5811d1ce_Como eu era antes de você.jpg', 1, 1, 1, '2025-11-19 17:01:41');
 
 -- --------------------------------------------------------
 
@@ -203,20 +202,22 @@ CREATE TABLE `login` (
 --
 
 CREATE TABLE `professor` (
-  `id` int(20) NOT NULL,
-  `nome` varchar(256) NOT NULL,
-  `email` varchar(256) NOT NULL,
-  `senha` varchar(10) NOT NULL,
-  `escola` varchar(256) NOT NULL,
-  `cidade` varchar(256) NOT NULL
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `escola` varchar(100) NOT NULL,
+  `cidade` varchar(50) NOT NULL,
+  `ativo` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `professor`
 --
 
-INSERT INTO `professor` (`id`, `nome`, `email`, `senha`, `escola`, `cidade`) VALUES
-(10, 'Fabricia Gonsavlves ', 'professor@biblioteca.com', 'prof123', 'Joaquim de moura Candelaria ', 'São josé dos campos ');
+INSERT INTO `professor` (`id`, `nome`, `email`, `senha`, `escola`, `cidade`, `ativo`, `created_at`) VALUES
+(1, 'Fabricia Gonsavlves', 'professor@biblioteca.com', '12345', 'Joaquim de moura Candelaria', 'São josé dos campos', 1, '2025-11-24 16:44:28');
 
 -- --------------------------------------------------------
 
@@ -324,7 +325,8 @@ ALTER TABLE `login`
 -- Índices de tabela `professor`
 --
 ALTER TABLE `professor`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Índices de tabela `reserva`
@@ -357,7 +359,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `alunos`
@@ -387,7 +389,7 @@ ALTER TABLE `historicolivroslidos`
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `login`
@@ -399,7 +401,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de tabela `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `reserva`

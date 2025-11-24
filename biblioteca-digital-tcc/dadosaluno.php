@@ -1,41 +1,43 @@
 <?php
-session_start();
-include "conexaoconsulta.php";
+session_start(); // Inicia a sessão para acessar variáveis de login
+include "conexaoconsulta.php"; // Conexão com o banco de dados
 
-// Verificar login
+// Verifica se o aluno está logado
 if (!isset($_SESSION['AlunoID'])) {
-    header("Location: loginaluno.php");
+    header("Location: loginaluno.php"); // Se não tiver sessão, volta para login
     exit();
 }
 
-// Buscar dados do aluno
+// Buscar dados do aluno logado
 $aluno_id = $_SESSION['AlunoID'];
 $sql = "SELECT * FROM aluno WHERE id = ?";
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("i", $aluno_id);
+$stmt->bind_param("i", $aluno_id); // "i" significa inteiro
 $stmt->execute();
 $result = $stmt->get_result();
-$aluno = $result->fetch_assoc();
+$aluno = $result->fetch_assoc(); // Armazena os dados do aluno
 
+// Caso o ID não exista no banco
 if (!$aluno) {
     die("Aluno não encontrado.");
 }
 
-// 🔔 Buscar notificações do aluno (empréstimos em atraso)
+// Buscar notificação: empréstimos atrasados
 $sql_notificacoes = "SELECT l.titulo, e.DataDevolucaoPrevista 
                      FROM emprestimo e 
                      INNER JOIN livros l ON e.IDLivro = l.id 
                      WHERE e.RA_Aluno = ? 
-                     AND e.DataDevolucaoPrevista < CURDATE() 
+                     AND e.DataDevolucaoPrevista < CURDATE()  -- Se está atrasado
                      AND e.Status = 'Ativo' 
-                     LIMIT 1";
+                     LIMIT 1"; // Traz apenas 1 notificação
 
 $stmt_notificacoes = $conexao->prepare($sql_notificacoes);
-$stmt_notificacoes->bind_param("s", $_SESSION['RA']);
+$stmt_notificacoes->bind_param("s", $_SESSION['RA']); // RA do aluno
 $stmt_notificacoes->execute();
 $result_notificacoes = $stmt_notificacoes->get_result();
-$notificacao = $result_notificacoes->fetch_assoc();
+$notificacao = $result_notificacoes->fetch_assoc(); // Notificação (se existir)
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

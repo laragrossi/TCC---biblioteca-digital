@@ -62,11 +62,11 @@ if (!$livro) {
     <!-- Foto do Livro -->
     <div>
         <?php if (!empty($livro['foto'])): ?>
-            <!-- ✅ CORREÇÃO FEITA AQUI -->
-            <img src="fotos_livros/<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>" 
-                 style="width: 200px; height: 280px; object-fit: cover; border-radius: 8px;">
+            <!-- ✅ CORREÇÃO DEFINITIVA: Removido "fotos_livros/" duplicado -->
+            <img src="<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>" 
+                 style="width: 200px; height: 280px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd;">
         <?php else: ?>
-            <div style="width: 200px; height: 280px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+            <div style="width: 200px; height: 280px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #ddd;">
                 <i class="bi bi-book" style="font-size: 48px; color: #6c757d;"></i>
             </div>
         <?php endif; ?>

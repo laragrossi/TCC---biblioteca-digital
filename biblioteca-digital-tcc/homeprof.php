@@ -55,10 +55,11 @@ $emprestimos_ativos = $result_emprestimos->fetch_assoc()['total'];
               <div class="notification-content">
                   <p><strong>Nome:</strong> <?= htmlspecialchars($professor['nome']) ?></p>
                   <p><strong>Email:</strong> <?= htmlspecialchars($professor['email']) ?></p>
-                  <hr>
-                  <a href="dadosprof.php" class="btn-logout">Perfil</a><br><br>
-                  <a href="logout.php" class="btn-logout">Sair</a>
-              </div>
+                    <hr>
+                    <a href="dadosprof.php" class="btn-logout">Perfil</a>
+                    <a href="logout.php" class="btn-logout">Sair</a>
+            </div>
+
           </div>
 
           <!-- Caixa de notificações -->
@@ -80,7 +81,6 @@ $emprestimos_ativos = $result_emprestimos->fetch_assoc()['total'];
       <div class="col-12 col-md-4">
         <a href="consulta.php" style="text-decoration: none; color: inherit; display: block;">
           <div class="card-custom" style="cursor: pointer;">
-            <i class="bi bi-people"></i>
             <p>Consulta de alunos</p>
           </div>
         </a>
@@ -89,7 +89,6 @@ $emprestimos_ativos = $result_emprestimos->fetch_assoc()['total'];
       <div class="col-12 col-md-4">
         <a href="emprestimoprof.php" style="text-decoration: none; color: inherit; display: block;">
           <div class="card-custom" style="cursor: pointer;">
-            <i class="bi bi-book"></i>
             <p>Empréstimos Ativos</p>
           </div>
         </a>
@@ -98,7 +97,6 @@ $emprestimos_ativos = $result_emprestimos->fetch_assoc()['total'];
       <div class="col-12 col-md-4">
         <a href="statusdedisponibilidade.php" style="text-decoration: none; color: inherit; display: block;">
           <div class="card-custom" style="cursor: pointer;">
-            <i class="bi bi-library"></i>
             <p>Acervo de livros</p>
           </div>
         </a>

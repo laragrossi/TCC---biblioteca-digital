@@ -70,24 +70,34 @@ header h1 {
   font-size: 14px;
 }
 
-/* Cards */
 .card-custom {
-  background-color: #d88c7b;
-  color: #fff;
-  border-radius: 12px;
-  text-align: center;
-  padding: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.card-custom:hover {
-  background-color: #bf7767;
+    background-color: #d88a7b;     /* cor dos cards */
+    border-radius: 20px;
+    text-align: center;
+    padding: 40px 20px;
+    height: 150px;                 /* ALTURA IGUAL PARA TODOS */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
 }
 
 .card-custom i {
-  font-size: 2rem;
-  margin-bottom: 10px;
+    font-size: 50px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.card-custom p {
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+}
+
+.card-custom:hover {
+    background-color: #c97d6f;
+    transform: scale(1.03);
 }
 
 /* Caixas de status e notificações */
@@ -126,56 +136,35 @@ header h1 {
     padding: 15px;
   }
 }
-/* Ícone */
-#user-icon {
-    cursor: pointer;
-    font-size: 1.7rem;
-    padding: 6px;
-    border-radius: 50%;
-}
 
-#user-icon:hover {
-    background-color: rgba(0,0,0,0.1);
-}
-
-/* Menu do perfil */
-.user-menu {
-    position: absolute;
-    right: 20px;
-    top: 70px;
-    width: 180px;
-    background: #fff;
-    border-radius: 10px;
-    padding: 8px 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+/* Caixa suspensa do usuário (Perfil / Logout) */
+#user-menu {
     display: none;
-    z-index: 1000;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #f8c7b1;
+    border-radius: 10px;
+    padding: 10px;
+    width: 220px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 10;
 }
 
-.user-menu a {
+/* Botões do menu do usuário */
+.btn-logout {
     display: block;
-    padding: 12px 15px;
-    font-size: 15px;
-    text-decoration: none;
-    color: #333;
-    border-bottom: 1px solid #eee;
-}
-
-.user-menu a:hover {
-    background: #f5f5f5;
-}
-
-.user-menu .logout {
-    color: #d9534f;
-    font-weight: bold;
-}
-
-.user-menu .logout:hover {
-    background: #d9534f;
+    text-align: center;
+    padding: 6px;
+    background: #db7c6f;
     color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 8px;
 }
 
-.user-menu a:last-child {
-    border-bottom: none;
+.btn-logout:hover {
+    background-color: #c56f63;
 }
+
 

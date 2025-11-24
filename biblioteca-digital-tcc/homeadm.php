@@ -193,7 +193,7 @@
 
 
 <div class="container mt-4">
-  <div class="row g-3">
+  <div class="row g-3 justify-content-center">
 
     <div class="col-12 col-md-4">
       <a href="cadastroprof.php" class="text-decoration-none">
@@ -222,18 +222,20 @@
       </a>
     </div>
 
+    <!-- LIVROS EMPRESTADOS -->
+    <div class="col-12 col-md-6">
+        <div class="notifications">
+            <h5>Livros emprestados</h5>
+            <p><strong>O Cortiço</strong><br> Nome do aluno - Série</p>
+            <p><strong>O Pequeno Príncipe</strong><br> Nome do aluno - Série</p>
+            <p><strong>O Alienista</strong><br> Nome do aluno - Série</p>
+        </div>
+    </div>
+
   </div>
 </div>
 
-<!-- LIVROS EMPRESTADOS -->
-<div class="col-12 col-md-6">
-    <div class="notifications">
-        <h5>Livros emprestados</h5>
-        <p><strong>O Cortiço</strong><br> Nome do aluno - Série</p>
-        <p><strong>O Pequeno Príncipe</strong><br> Nome do aluno - Série</p>
-        <p><strong>O Alienista</strong><br> Nome do aluno - Série</p>
-    </div>
-</div>
+
 
 
 <!-- JS -->

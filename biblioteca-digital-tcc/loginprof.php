@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         ?>
 
-        <!-- Agora o formulário envia para ele mesmo -->
+        <!-- O formulário envia para ele mesmo -->
         <form action="loginprof.php" method="POST">
 
             <!-- Email -->

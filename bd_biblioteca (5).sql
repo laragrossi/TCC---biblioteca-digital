@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/11/2025 às 17:58
+-- Tempo de geração: 24/11/2025 às 19:37
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -67,7 +67,8 @@ CREATE TABLE `aluno` (
 INSERT INTO `aluno` (`id`, `nome`, `ra`, `digito`, `ra_completo`, `senha`, `escola`, `serie`, `turma`, `ativo`, `created_at`) VALUES
 (1, 'lara lima ', '11204728', '4', '11204728-4', '$2y$10$I2/wVnW/dEKupB2lkToXA.c8TzPo0IFQw1ANgPd427/SdZedY26Sm', 'Joaquim de moura Candelaria ', NULL, NULL, 1, '2025-11-18 17:40:15'),
 (2, 'Giovana Rosa Greco', '110054535', '9', '110054535-9', '$2y$10$l1gNHswIokRr56XfqU.ggO/MnFgRx/2p.CpjZfiV7VOqMVzgBWF5i', 'Joaquim de moura Candelaria ', NULL, NULL, 1, '2025-11-18 17:45:55'),
-(3, 'Giovana Rosa Greco', '000110054535', '9', '000110054535-9', '$2y$10$AEYO/O7Trm12ZDwIhg1L2e8Pit/6h9vVQGEp2YnZy4Ry4I5MZzdH2', 'Joaquim de moura Candelaria ', NULL, NULL, 1, '2025-11-19 17:11:56');
+(3, 'Giovana Rosa Greco', '000110054535', '9', '000110054535-9', '$2y$10$AEYO/O7Trm12ZDwIhg1L2e8Pit/6h9vVQGEp2YnZy4Ry4I5MZzdH2', 'Joaquim de moura Candelaria ', NULL, NULL, 1, '2025-11-19 17:11:56'),
+(5, 'Matheus Rosa Greco ', '22009876', '6', '22009876-6', '$2y$10$/Cvfj0mTqgyCnL.K/SvvveccgBfHA1RH4GORhBhqSAXwJpBUr6/NK', 'Joaquim de moura Candelaria ', NULL, NULL, 1, '2025-11-24 17:01:57');
 
 -- --------------------------------------------------------
 
@@ -117,18 +118,29 @@ CREATE TABLE `emprestimo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Despejando dados para a tabela `emprestimo`
+--
+
+INSERT INTO `emprestimo` (`IDEmprestimo`, `RA_Aluno`, `IDLivro`, `DataEmprestimo`, `DataDevolucaoPrevista`, `DataDevolucaoReal`, `Status`) VALUES
+(6, '22009876-6', 2, '2025-11-24', '2025-12-09', NULL, 'Ativo'),
+(7, '22009876-6', 1, '2025-11-24', '2025-12-09', NULL, 'Ativo'),
+(8, '22009876-6', 5, '2025-11-24', '2025-12-09', NULL, 'Ativo');
+
+--
 -- Acionadores `emprestimo`
 --
 DELIMITER $$
 CREATE TRIGGER `after_emprestimo_insert` AFTER INSERT ON `emprestimo` FOR EACH ROW BEGIN
-    UPDATE Livro SET Status = 'Emprestado' WHERE IDLivro = NEW.IDLivro;
+    UPDATE livros SET quantidade_disponivel = quantidade_disponivel - 1 
+    WHERE id = NEW.IDLivro;
 END
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `after_emprestimo_update` AFTER UPDATE ON `emprestimo` FOR EACH ROW BEGIN
     IF NEW.Status = 'Devolvido' THEN
-        UPDATE Livro SET Status = 'Disponível' WHERE IDLivro = NEW.IDLivro;
+        UPDATE livros SET quantidade_disponivel = quantidade_disponivel + 1 
+        WHERE id = NEW.IDLivro;
     END IF;
 END
 $$
@@ -179,7 +191,11 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`id`, `numero_tombo`, `isbn`, `titulo`, `subtitulo`, `sinopse`, `autor`, `editora`, `ano_publicacao`, `numero_paginas`, `idioma`, `genero`, `area_conhecimento`, `foto`, `quantidade_total`, `quantidade_disponivel`, `disponivel`, `created_at`) VALUES
-(1, '090908', '8787', 'Como eu era Antes de você ', 'Como eu era antes', '\"Como Eu Era Antes de Você\" é um romance da autora Jojo Moyes sobre a relação entre Louisa Clark, uma jovem que perde o emprego e se torna cuidadora, e Will Traynor, um homem rico e ativo que ficou tetraplégico após um acidente de moto. O livro explora temas como deficiência, qualidade de vida e o direito à eutanásia, provocando reflexões sobre o que torna a vida digna de ser vivida, com a narrativa focando em como a chegada de Lou muda a perspectiva de Will e, por sua vez, a dele para Lou. ', ' Jojo Moyes ', ' Intrínseca        ', 2017, 322, 'Português ', 'Romance ', 'Romance ', 'fotos_livros/691df7f56a6a7_691df5811d1ce_Como eu era antes de você.jpg', 1, 1, 1, '2025-11-19 17:01:41');
+(1, '090908', '8787', 'Como eu era Antes de você ', 'Como eu era antes', '\"Como Eu Era Antes de Você\" é um romance da autora Jojo Moyes sobre a relação entre Louisa Clark, uma jovem que perde o emprego e se torna cuidadora, e Will Traynor, um homem rico e ativo que ficou tetraplégico após um acidente de moto. O livro explora temas como deficiência, qualidade de vida e o direito à eutanásia, provocando reflexões sobre o que torna a vida digna de ser vivida, com a narrativa focando em como a chegada de Lou muda a perspectiva de Will e, por sua vez, a dele para Lou. ', ' Jojo Moyes ', ' Intrínseca        ', 2017, 322, 'Português ', 'Romance ', 'Romance ', 'fotos_livros/691df7f56a6a7_691df5811d1ce_Como eu era antes de você.jpg', 1, -1, 1, '2025-11-19 17:01:41'),
+(2, '65432322', '2231', 'O cortiço ', 'O cortiço ', '\"O Cortiço\" é um romance naturalista de Aluísio Azevedo que retrata a vida em uma habitação coletiva no Rio de Janeiro do final do século XIX, mostrando a influência do meio, da raça e do momento histórico sobre os moradores. A trama acompanha a ascensão do imigrante português João Romão e o ambiente degradado e promíscuo do cortiço, que se torna um personagem vivo e pulsante, palco de paixões, brigas e a luta pela sobrevivência', 'Aluísio Azevedo ', 'Melhoramentos ', 1890, 354, 'Português ', 'Romance naturalista', 'Literatura ', 'fotos_livros/692496b9dfc5d_o_cortiço_2.jpg', 1, -1, 1, '2025-11-24 17:32:41'),
+(3, '55676', '09864', 'Dom Casmurro', 'Dom Casmurro', 'A história foca em sua infância e no seu grande amor por Capitolina, a Capitu. Eles crescem juntos, mas a mãe de Bentinho, Dona Glória, havia feito uma promessa a Deus: se engravidasse de um filho homem, ele seria padre. Com a ajuda do agregado da família, José Dias, e de seu amigo Escobar, Bentinho consegue se livrar do destino sacerdotal, casa-se com Capitu e forma-se em Direito. O casal tem um filho, Ezequiel. No entanto, a felicidade conjugal é abalada pelo ciúme doentio de Bentinho, que começa a suspeitar que Capitu o trai com seu melhor amigo, Escobar, principalmente devido à semelhança física entre Ezequiel e o amigo falecido. A narrativa, enviesada pelo ponto de vista de Bentinho, deixa a dúvida da traição em aberto, sendo o grande enigma da literatura brasileira. ', 'Machado de Assis', 'Nemo', 1899, 230, 'Português ', ' Romance, Narrativa longa em prosa.', 'Realismo', 'fotos_livros/69249aafe96c2_dom_casmurro.webp', 1, 1, 1, '2025-11-24 17:49:35'),
+(4, '64455374', '8324', 'O alienista', 'O alienista', '\"O Alienista\" é uma novela de Machado de Assis que narra a história do Dr. Simão Bacamarte, um médico renomado que retorna à cidade de Itaguaí para estudar a loucura, construindo um hospício chamado Casa Verde. Inicialmente, ele interna pessoas com desvios claros de comportamento, mas, com o tempo, amplia seus critérios para incluir até mesmo pessoas que agem de forma \"perfeitamente normal\" ou que têm dúvidas. A trama se torna irônica e crítica, culminando na auto-conclusão de Bacamarte de que ele próprio é o único louco, levando-o a se trancar na Casa Verde, onde morre 17 meses depois.', 'Machado de Assis', 'Sabedoria portatil ', 1882, 100, 'Português ', 'Conto longo', 'literatura brasileira', 'fotos_livros/69249bbe70338_o_alienista.jpg', 1, 1, 1, '2025-11-24 17:54:06'),
+(5, '9887545', '86532', 'O pequeno Príncipe ', 'O pequeno Príncipe ', 'Um piloto de avião cai no deserto do Saara e lá encontra um pequeno príncipe vindo de um asteroide distante (o B-612). Enquanto o piloto tenta consertar seu avião, o príncipe compartilha histórias de sua viagem por vários planetas, cada um habitado por um adulto solitário e com falhas (um rei, um vaidoso, um bêbado, um homem de negócios, um acendedor de lampiões e um geógrafo). Através dessas narrativas e de suas interações na Terra (especialmente com uma raposa e uma rosa), o livro explora temas profundos como a solidão, a amizade, o amor, a perda e o sentido da vida, criticando a superficialidade do mundo adulto. A mensagem central é que \"o essencial é invisível aos olhos\". ', 'Antoine de Saint-Exupéry. ', 'Agir ', 1943, 117, 'Português ', ' fábula', 'literatura infantojuvenil', 'fotos_livros/69249cbfb4022_O-pequeno-príncipe.jpg', 1, -1, 1, '2025-11-24 17:58:23');
 
 -- --------------------------------------------------------
 
@@ -233,16 +249,6 @@ CREATE TABLE `reserva` (
   `DataReserva` date NOT NULL,
   `Status` enum('Ativa','Cancelada','Concluída') DEFAULT 'Ativa'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Acionadores `reserva`
---
-DELIMITER $$
-CREATE TRIGGER `after_reserva_insert` AFTER INSERT ON `reserva` FOR EACH ROW BEGIN
-    UPDATE Livro SET Status = 'Reservado' WHERE IDLivro = NEW.IDLivro;
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -359,7 +365,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `alunos`
@@ -377,7 +383,7 @@ ALTER TABLE `atraso`
 -- AUTO_INCREMENT de tabela `emprestimo`
 --
 ALTER TABLE `emprestimo`
-  MODIFY `IDEmprestimo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDEmprestimo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `historicolivroslidos`
@@ -389,7 +395,7 @@ ALTER TABLE `historicolivroslidos`
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `login`

@@ -119,8 +119,8 @@ $notificacao = $result_notificacoes->fetch_assoc();
         <?php foreach ($livros_destaque as $livro): ?>
             <div class="book" onclick="window.location.href='detalhes_livros.php?id=<?= $livro['id'] ?>'">
                 <?php if (!empty($livro['foto'])): ?>
-                    <!-- ✅ CORREÇÃO FEITA AQUI -->
-                    <img src="fotos_livros/<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>">
+                    <!-- ✅ CORREÇÃO DEFINITIVA - REMOVIDO "fotos_livros/" DUPLICADO -->
+                    <img src="<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>">
                 <?php else: ?>
                     <div style="width: 120px; height: 160px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
                         <i class="bi bi-book" style="font-size: 24px; color: #6c757d;"></i>

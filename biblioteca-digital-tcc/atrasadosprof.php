@@ -45,7 +45,7 @@ $emprestimos = $result->fetch_all(MYSQLI_ASSOC);
 
 <body>
 
-<!-- CABEÇALHO IGUAL AO emprestimoprof.php -->
+<!-- CABEÇALHO -->
 <header>
     <h1>Empréstimos ativos</h1>
 
@@ -56,27 +56,8 @@ $emprestimos = $result->fetch_all(MYSQLI_ASSOC);
             <i class="bi bi-house-door-fill" title="Início"></i>
         </a>
 
-        <!-- NOTIFICAÇÕES -->
-        <i class="bi bi-bell-fill" id="notification-btn" style="cursor:pointer;" title="Notificações"></i>
-
         <!-- PERFIL -->
         <i class="bi bi-person-fill" id="user-icon" style="cursor:pointer;" title="Usuário"></i>
-
-        <!-- CAIXA NOTIFICAÇÕES -->
-        <div id="notification-box" style="
-            display:none;
-            position:absolute; top:40px; right:0;
-            width:220px; background:#f8c7b1; padding:10px;
-            border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
-            <div style="font-weight:bold; margin-bottom:5px; border-bottom:1px solid #0003;">
-                Notificações
-            </div>
-            <div style="background:#ffe4d6; padding:8px; border-radius:5px;">
-                Novo empréstimo solicitado<br>
-                Aluno: João Silva<br>
-                Livro: Dom Casmurro
-            </div>
-        </div>
 
         <!-- MENU DO USUÁRIO -->
         <div id="user-menu" style="
@@ -84,9 +65,11 @@ $emprestimos = $result->fetch_all(MYSQLI_ASSOC);
             position:absolute; top:40px; right:0;
             width:220px; background:#f8c7b1; padding:10px;
             border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+            
             <div style="font-weight:bold; margin-bottom:5px; border-bottom:1px solid #0003;">
                 Usuário
             </div>
+
             <div style="background:#ffe4d6; padding:8px; border-radius:5px;">
                 <p><strong>Nome: </strong><?= $professor['nome'] ?></p>
                 <p><strong>Email: </strong><?= $professor['email'] ?></p>
@@ -98,7 +81,6 @@ $emprestimos = $result->fetch_all(MYSQLI_ASSOC);
 
     </div>
 </header>
-
 
 <!-- BARRA DE PESQUISA -->
 <div class="search-container">
@@ -149,28 +131,18 @@ $emprestimos = $result->fetch_all(MYSQLI_ASSOC);
 </div>
 
 <script>
-// Notificações
-const btn = document.getElementById("notification-btn");
-const box = document.getElementById("notification-box");
-btn.onclick = () => {
-    box.style.display = box.style.display === "block" ? "none" : "block";
-    userMenu.style.display = "none";
-};
-
 // Menu usuário
 const userIcon = document.getElementById("user-icon");
 const userMenu = document.getElementById("user-menu");
+
 userIcon.onclick = () => {
     userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
-    box.style.display = "none";
 };
 
 // Fechar ao clicar fora
 document.addEventListener("click", (e) => {
-    if (!userMenu.contains(e.target) && e.target !== userIcon &&
-        !box.contains(e.target) && e.target !== btn) {
+    if (!userMenu.contains(e.target) && e.target !== userIcon) {
         userMenu.style.display = "none";
-        box.style.display = "none";
     }
 });
 

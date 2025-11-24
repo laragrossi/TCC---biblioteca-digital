@@ -43,7 +43,6 @@ $emprestimos = $result_emprestimos->fetch_all(MYSQLI_ASSOC);
     <h1>Meus Empréstimos</h1>
     <div class="icons">
         <a href="homealuno.php"><i class="bi bi-house-door" title="Início"></i></a>
-        <i class="bi bi-bell" title="Notificações"></i>
         <a href="dadosaluno.php"><i class="bi bi-person" title="Perfil"></i></a>
     </div>
 </header>

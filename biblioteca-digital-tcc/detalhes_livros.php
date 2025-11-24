@@ -23,6 +23,42 @@ $livro = $result->fetch_assoc();
 if (!$livro) {
     die("Livro não encontrado.");
 }
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $aluno_id = $_SESSION["AlunoID"];
+    $livro_id = intval($_POST["livro_id"]);
+
+    // Verificar disponibilidade
+    $sql = "SELECT quantidade_disponivel FROM livros WHERE id = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $livro_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $livro = $result->fetch_assoc();
+
+    if (!$livro || $livro["quantidade_disponivel"] < 1) {
+        header("Location: detalhes_livro.php?id=$livro_id&erro=indisponivel");
+        exit();
+    }
+
+    // Inserir empréstimo
+    $sql = "INSERT INTO emprestimos (id_aluno, id_livro, data_emprestimo, data_prevista_devolucao, status)
+            VALUES (?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 15 DAY), 'emprestado')";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("ii", $aluno_id, $livro_id);
+    $stmt->execute();
+
+    // Atualizar quantidade disponível
+    $sql = "UPDATE livros SET quantidade_disponivel = quantidade_disvenivel - 1 WHERE id = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $livro_id);
+    $stmt->execute();
+
+    header("Location: detalhes_livro.php?id=$livro_id&sucesso=1");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

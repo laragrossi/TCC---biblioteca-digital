@@ -43,7 +43,8 @@
         cursor: pointer;
     }
 
-    .notification-box {
+    /* MENU DO USUÁRIO */
+    #user-menu {
         display: none;
         position: absolute;
         top: 40px;
@@ -54,30 +55,6 @@
         width: 220px;
         box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
         z-index: 10;
-    }
-
-    .notification-box::before {
-        content: "";
-        position: absolute;
-        top: -10px;
-        right: 15px;
-        border-width: 10px;
-        border-style: solid;
-        border-color: transparent transparent #f8c7b1 transparent;
-    }
-
-    .notification-title {
-        font-weight: bold;
-        margin-bottom: 5px;
-        border-bottom: 1px solid rgba(0,0,0,0.2);
-        padding-bottom: 5px;
-    }
-
-    .notification-content {
-        background-color: #ffe4d6;
-        border-radius: 5px;
-        padding: 5px;
-        font-size: 14px;
     }
 
     .btn-logout {
@@ -167,27 +144,14 @@
                 <i class="bi bi-house-door-fill"></i>
             </a>
 
-            <!-- Notificações -->
-            <i class="bi bi-bell-fill" id="notification-btn" title="Notificações"></i>
-
             <!-- Perfil / Usuário -->
             <i class="bi bi-person-fill" id="user-icon" title="Perfil"></i>
 
             <!-- Menu do usuário -->
-            <div class="notification-box" id="user-menu" style="width:220px;">
-                    <hr>
-                    <a href="dadosprof.php" class="btn-logout">Perfil</a>
-                    <a href="logout.php" class="btn-logout">Sair</a>
-            </div>
-
-            <!-- Caixa de notificações -->
-            <div class="notification-box" id="notification-box">
-                <div class="notification-title">Notificações</div>
-                <div class="notification-content">
-                    Empréstimo em atraso<br>
-                    Livro: Dom Casmurro<br>
-                    Data: xx/xx/xxxx
-                </div>
+            <div id="user-menu">
+                <hr>
+                <a href="dadosprof.php" class="btn-logout">Perfil</a>
+                <a href="logout.php" class="btn-logout">Sair</a>
             </div>
         </div>
     </header>
@@ -225,30 +189,19 @@
     </div>
 
     <script>
-        const notificationBtn = document.getElementById('notification-btn');
-        const notificationBox = document.getElementById('notification-box');
         const userIcon = document.getElementById('user-icon');
         const userMenu = document.getElementById('user-menu');
 
-        notificationBtn.addEventListener('click', () => {
-            const isVisible = notificationBox.style.display === 'block';
-            notificationBox.style.display = isVisible ? 'none' : 'block';
-            userMenu.style.display = 'none';
-        });
-
         userIcon.addEventListener('click', () => {
-            const isVisible = userMenu.style.display === 'block';
-            userMenu.style.display = isVisible ? 'none' : 'block';
-            notificationBox.style.display = 'none';
+            userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
         });
 
         document.addEventListener('click', (e) => {
-            if (!userMenu.contains(e.target) && e.target !== userIcon &&
-                !notificationBox.contains(e.target) && e.target !== notificationBtn) {
+            if (!userMenu.contains(e.target) && e.target !== userIcon) {
                 userMenu.style.display = 'none';
-                notificationBox.style.display = 'none';
             }
         });
     </script>
+
 </body>
 </html>

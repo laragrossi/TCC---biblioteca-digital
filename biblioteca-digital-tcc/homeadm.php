@@ -186,8 +186,7 @@
                 <a href="logout.php" class="menu-link logout">Sair</a>
             </div>
         </div>
-
-    </div>
+      </div>
 </header>
 
 

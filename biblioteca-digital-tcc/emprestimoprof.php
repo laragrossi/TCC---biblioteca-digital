@@ -1,14 +1,14 @@
 <?php
 session_start();
-include "conexaoconsulta.php";  // CONEXÃO ADICIONADA
+include "conexaoconsulta.php";
 
-// Verificar se o professor está logado - CORRIGIDO
+// Verificar login
 if (!isset($_SESSION['ProfID'])) {
     header("Location: loginprof.php");
     exit();
 }
 
-// Buscar dados do professor para exibir no menu
+// Buscar dados do professor
 $professor_id = $_SESSION['ProfID'];
 $sql_professor = "SELECT nome, email FROM professor WHERE id = ?";
 $stmt_professor = $conexao->prepare($sql_professor);
@@ -17,7 +17,7 @@ $stmt_professor->execute();
 $result_professor = $stmt_professor->get_result();
 $professor = $result_professor->fetch_assoc();
 
-// Buscar empréstimos ativos do banco
+// Buscar empréstimos ativos
 $sql_emprestimos = "SELECT e.RA_Aluno, e.IDLivro, e.DataEmprestimo, e.DataDevolucaoPrevista, 
                            a.nome as nome_aluno, a.serie, a.turma,
                            l.titulo as titulo_livro,
@@ -40,7 +40,6 @@ $emprestimos = $result_emprestimos->fetch_all(MYSQLI_ASSOC);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Empréstimos Ativos</title>
 
-<!-- Importando ícones do Bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="css/emprestimoprof.css">
 
@@ -53,39 +52,12 @@ $emprestimos = $result_emprestimos->fetch_all(MYSQLI_ASSOC);
     <div class="icons" style="position: relative; display:flex; gap:15px; align-items:center;">
 
         <!-- HOME -->
-    <a href="homeprof.php" class="icon-link">
-        <i class="bi bi-house-door-fill" title="Início"></i>
-    </a>
-
-        <!-- NOTIFICAÇÕES -->
-        <i class="bi bi-bell-fill" id="notification-btn" title="Notificações" style="cursor:pointer;"></i>
+        <a href="homeprof.php" class="icon-link">
+            <i class="bi bi-house-door-fill" title="Início"></i>
+        </a>
 
         <!-- PERFIL -->
         <i class="bi bi-person-fill" id="user-icon" title="Usuário" style="cursor:pointer;"></i>
-
-        <!-- CAIXA DE NOTIFICAÇÕES -->
-        <div id="notification-box" 
-             style="
-                display:none;
-                position:absolute;
-                top:40px;
-                right:0;
-                width:220px;
-                background:#f8c7b1;
-                padding:10px;
-                border-radius:10px;
-                box-shadow:0 4px 8px rgba(0,0,0,0.2);">
-            
-            <div style="font-weight:bold; margin-bottom:5px; border-bottom:1px solid #0003; padding-bottom:5px;">
-                Notificações
-            </div>
-
-            <div style="background:#ffe4d6; padding:8px; border-radius:5px; font-size:14px;">
-                Novo empréstimo solicitado <br>
-                Aluno: João Silva <br>
-                Livro: Dom Casmurro
-            </div>
-        </div>
 
         <!-- MENU DO USUÁRIO -->
         <div id="user-menu"
@@ -109,7 +81,7 @@ $emprestimos = $result_emprestimos->fetch_all(MYSQLI_ASSOC);
                 <p><strong>Email:</strong> <?= htmlspecialchars($professor['email']) ?></p>
                 <hr>
                 <a href="dadosprof.php">Perfil</a><br><br>
-                <a href="logout.php">Sair</a>  <!--LOGOUT CORRETO -->
+                <a href="logout.php">Sair</a>
             </div>
         </div>
 
@@ -159,64 +131,44 @@ $emprestimos = $result_emprestimos->fetch_all(MYSQLI_ASSOC);
 </div>
 
 <script>
-const notificationBtn = document.getElementById('notification-btn');
-const notificationBox = document.getElementById('notification-box');
+// MENU DO USUÁRIO
 const userIcon = document.getElementById('user-icon');
 const userMenu = document.getElementById('user-menu');
-const searchInput = document.getElementById('searchInput');
-const emprestimosContainer = document.getElementById('emprestimosContainer');
 
-// Abre/fecha notificações
-notificationBtn.addEventListener('click', () => {
-    notificationBox.style.display = notificationBox.style.display === 'block' ? 'none' : 'block';
-    userMenu.style.display = 'none';
-});
-
-// Abre/fecha menu do usuário
 userIcon.addEventListener('click', () => {
     userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
-    notificationBox.style.display = 'none';
 });
 
-// Fecha tudo ao clicar fora
+// Fechar ao clicar fora
 document.addEventListener('click', (e) => {
-    if (!notificationBtn.contains(e.target) &&
-        !notificationBox.contains(e.target) &&
-        !userIcon.contains(e.target) &&
-        !userMenu.contains(e.target)) {
-
-        notificationBox.style.display = 'none';
+    if (!userMenu.contains(e.target) && e.target !== userIcon) {
         userMenu.style.display = 'none';
     }
 });
 
 // Busca em tempo real
-searchInput.addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    const cards = emprestimosContainer.getElementsByClassName('card');
-    
-    Array.from(cards).forEach(card => {
-        const alunoName = card.getAttribute('data-aluno');
-        if (alunoName.includes(searchTerm)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+document.getElementById('searchInput').addEventListener('input', function() {
+    const term = this.value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        const aluno = card.dataset.aluno;
+        card.style.display = aluno.includes(term) ? 'block' : 'none';
     });
 });
 
-// Filtro de empréstimos
+// Filtro
 function filterEmprestimos(status) {
-    const cards = emprestimosContainer.getElementsByClassName('card');
-    
-    Array.from(cards).forEach(card => {
-        if (status === 'todos' || card.getAttribute('data-status') === status) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        card.style.display =
+            status === 'todos' || card.dataset.status === status
+            ? 'block'
+            : 'none';
     });
 }
 </script>
+
 </body>
 </html>

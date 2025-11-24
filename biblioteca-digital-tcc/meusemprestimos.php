@@ -1,3 +1,27 @@
+<?php
+session_start();
+include "conexaoconsulta.php";
+
+if (!isset($_SESSION['AlunoID'])) {
+    header("Location: loginaluno.php");
+    exit();
+}
+
+// Buscar empréstimos do aluno
+$ra = $_SESSION['RA']; // seu identificador do aluno
+$sql = "SELECT e.IDEmprestimo, e.RA_Aluno, e.IDLivro, e.DataEmprestimo, e.DataDevolucaoPrevista, e.DataDevolucaoReal, e.Status,
+               l.titulo, l.autor, l.foto, l.id AS livro_id
+        FROM emprestimo e
+        INNER JOIN livros l ON e.IDLivro = l.id
+        WHERE e.RA_Aluno = ?
+        ORDER BY e.DataEmprestimo DESC";
+
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("s", $ra);
+$stmt->execute();
+$result = $stmt->get_result();
+$emprestimos = $result->fetch_all(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,39 +39,15 @@
     <h1>Biblioteca</h1>
 
     <div class="icons">
-
-        <!-- Home -->
         <a href="homealuno.php" class="icon-link">
             <i class="bi bi-house-door-fill" title="Início"></i>
         </a>
 
-        <!-- Notificações -->
-        <i class="bi bi-bell-fill" id="notification-btn" title="Notificações"></i>
-
-        <!-- Caixa de Notificações -->
-        <div class="notification-box" id="notification-box">
-            <div class="notification-title">Notificações</div>
-            <div class="notification-content">
-                <p>Nenhuma notificação no momento.</p>
-            </div>
-        </div>
-
-        <!-- Usuário -->
-        <i class="bi bi-person-fill" id="user-icon" title="Perfil"></i>
-
-        <!-- Menu do Usuário -->
-        <div class="notification-box" id="user-menu" style="width:220px;">
-            <div class="notification-content">
-                <hr>
-                <a href="dadosprof.php" class="btn-logout">Perfil</a>
-                <a href="logout.php" class="btn-logout">Sair</a>
-            </div>
-        </div>
-
+        <a href="dadosaluno.php" class="icon-link">
+            <i class="bi bi-person-fill" title="Perfil"></i>
+        </a>
     </div>
 </header>
-
-
 
 <!-- FILTROS -->
 <div class="filter-container">
@@ -62,65 +62,93 @@
     <div class="total-card">
         <div>
             <h2>Total de empréstimos</h2>
-            <p class="number">1</p>
-            <p class="label">Livro emprestado</p>
+            <p class="number"><?= count($emprestimos) ?></p>
+            <p class="label">Livro(s) emprestado(s)</p>
         </div>
         <i class="bi bi-book icon-big"></i>
     </div>
 
-    <!-- CARD DO LIVRO -->
-    <div class="loan-card">
-        <img src="https://m.media-amazon.com/images/I/81lRWMvYpKL._AC_UF1000,1000_QL80_.jpg" alt="Capa do livro">
-
-        <div class="info">
-            <h3>O Cortiço</h3>
-            <p><strong>Autor:</strong> Aluísio de Azevedo</p>
-            <p><strong>Data do empréstimo:</strong> 01/08/2025</p>
-            <p><strong>Data de devolução:</strong> 01/09/2025</p>
+    <?php if (empty($emprestimos)): ?>
+        <div style="text-align: center; padding: 40px; color: #666;">
+            <i class="bi bi-inbox" style="font-size: 48px; margin-bottom: 15px;"></i>
+            <p>Você não possui empréstimos no momento</p>
+            <a href="pesquisar_livros.php" style="color: #007bff; text-decoration: none;">
+                Buscar livros para empréstimo
+            </a>
         </div>
-    </div>
+    <?php else: ?>
+        <?php foreach ($emprestimos as $emprestimo): ?>
+            <?php
+                // Datas (verifica se existem antes de formatar)
+                $dataEmp = !empty($emprestimo['DataEmprestimo']) ? date('d/m/Y', strtotime($emprestimo['DataEmprestimo'])) : null;
+                $dataPrev = !empty($emprestimo['DataDevolucaoPrevista']) ? date('d/m/Y', strtotime($emprestimo['DataDevolucaoPrevista'])) : null;
+
+                // Status legível
+                $statusLabel = '';
+                if (isset($emprestimo['Status'])) {
+                    $s = strtolower($emprestimo['Status']);
+                    if (in_array($s, ['ativo','emprestado','em-andamento'])) $statusLabel = 'Em andamento';
+                    elseif (in_array($s, ['devolvido','concluido','concluído'])) $statusLabel = 'Concluído';
+                    else $statusLabel = ucfirst($emprestimo['Status']);
+                }
+            ?>
+            <div class="loan-card">
+                <img src="<?= !empty($emprestimo['foto']) ? htmlspecialchars($emprestimo['foto']) : 'https://via.placeholder.com/120x170?text=Sem+Capa' ?>" alt="Capa do livro">
+
+                <div class="info">
+                    <h3><?= htmlspecialchars($emprestimo['titulo']) ?></h3>
+                    <p><strong>Autor:</strong> <?= htmlspecialchars($emprestimo['autor']) ?></p>
+
+                    <?php if ($dataEmp): ?>
+                        <p><strong>Data do empréstimo:</strong> <?= $dataEmp ?></p>
+                    <?php else: ?>
+                        <p><strong>Data do empréstimo:</strong> —</p>
+                    <?php endif; ?>
+
+                    <?php if ($dataPrev): ?>
+                        <p><strong>Data de devolução:</strong> <?= $dataPrev ?></p>
+                    <?php else: ?>
+                        <p><strong>Data de devolução:</strong> —</p>
+                    <?php endif; ?>
+
+                    <p><strong>Status:</strong> <?= htmlspecialchars($statusLabel) ?></p>
+
+                    <?php if ($emprestimo['Status'] === 'Ativo'): ?>
+                        <a href="devolver.php?id=<?= $emprestimo['IDEmprestimo'] ?>"
+                           style="display:inline-block; margin-top:10px; padding:8px 14px;
+                                  background:#c0392b; color:white; border-radius:6px;
+                                  font-weight:bold; text-decoration:none;">
+                            Devolver
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
 
     <!-- CARD INFORMAÇÕES -->
     <div class="info-card">
         <h3><i class="bi bi-info-circle"></i> Informações da Biblioteca</h3>
         <p>🕒 Segunda a sexta, horário dos intervalos</p>
-        <p>📚 Prazo de empréstimo: 1 mês</p>
+        <p>📚 Prazo de empréstimo: 15 dias</p>
     </div>
 
 </main>
+
 <script>
-    const notificationBtn = document.getElementById("notification-btn");
-    const notificationBox = document.getElementById("notification-box");
-    const userIcon = document.getElementById("user-icon");
-    const userMenu = document.getElementById("user-menu");
+    // busca e filtro (mantive seu JS, caso já use)
+    document.getElementById('searchInput')?.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const cards = document.getElementById('emprestimosContainer')?.getElementsByClassName('loan-card') || [];
+        Array.from(cards).forEach(card => {
+            const titulo = card.querySelector('.info h3')?.innerText.toLowerCase() || '';
+            card.style.display = titulo.includes(searchTerm) ? 'flex' : 'none';
+        });
+    });
 
-    function closeAll() {
-        notificationBox.style.display = "none";
-        userMenu.style.display = "none";
+    function filterEmprestimos(status) {
+        // implementar se precisar
     }
-
-    notificationBtn.addEventListener("click", () => {
-        const isOpen = notificationBox.style.display === "block";
-        closeAll();
-        notificationBox.style.display = isOpen ? "none" : "block";
-    });
-
-    userIcon.addEventListener("click", () => {
-        const isOpen = userMenu.style.display === "block";
-        closeAll();
-        userMenu.style.display = isOpen ? "none" : "block";
-    });
-
-    document.addEventListener("click", (e) => {
-        if (
-            !notificationBtn.contains(e.target) &&
-            !notificationBox.contains(e.target) &&
-            !userIcon.contains(e.target) &&
-            !userMenu.contains(e.target)
-        ) {
-            closeAll();
-        }
-    });
 </script>
 </body>
 </html>

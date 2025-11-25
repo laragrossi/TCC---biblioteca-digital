@@ -2,11 +2,11 @@
 session_start();
 include "conexaoconsulta.php";
 
-if (!isset($_SESSION['AlunoID'])) {
+// Verificar se ALUNO ou PROFESSOR está logado
+if (!isset($_SESSION['AlunoID']) && !isset($_SESSION['ProfID'])) {
     header("Location: loginaluno.php");
     exit();
 }
-
 if (!isset($_GET['id'])) {
     header("Location: pesquisar_livros.php");
     exit();

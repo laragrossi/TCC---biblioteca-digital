@@ -2,12 +2,11 @@
 session_start();
 include "conexaoconsulta.php";
 
-// Verificar se o professor está logado
-if (!isset($_SESSION['ProfessorID'])) {
+// Verificar se o professor está logado - CORRIGIR AQUI
+if (!isset($_SESSION['ProfID'])) {  // Mude ProfessorID para ProfID
     header("Location: loginprof.php");
     exit();
 }
-
 // Buscar livros do banco de dados
 $livros = [];
 $sql = "SELECT id, titulo, autor, foto, quantidade_disponivel 
@@ -284,9 +283,8 @@ if (isset($_GET['pesquisa']) && !empty(trim($_GET['pesquisa']))) {
         });
 
         function verDetalhes(id) {
-            window.location.href = "detalhes_livros_prof.php?id=" + id;
-        }
-    </script>
+    window.location.href = "detalhes_livro.php?id=" + id;
+}
 
 </body>
 </html>

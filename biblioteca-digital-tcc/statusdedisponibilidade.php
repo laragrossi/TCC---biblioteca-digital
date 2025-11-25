@@ -22,7 +22,7 @@ if ($result) {
 $termo_pesquisa = "";
 if (isset($_GET['pesquisa']) && !empty(trim($_GET['pesquisa']))) {
     $termo_pesquisa = trim($_GET['pesquisa']);
-    $sql = "SELECT id, titulo, autor, foto, quantidade_disponivel 
+    $sql = "SELECT id,titulo, autor, foto, quantidade_disponivel 
             FROM livros 
             WHERE titulo LIKE ? OR autor LIKE ? 
             ORDER BY titulo";

@@ -100,9 +100,9 @@ header h1 {
 .card {
     background: white;
     border-radius: 12px;
-    padding: 14px;
+    padding: 13px;
     width: 100%;
-    max-width: 450px;
+    max-width: 440px;
     min-height: 140px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     display: flex;

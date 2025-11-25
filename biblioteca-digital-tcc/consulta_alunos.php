@@ -18,7 +18,7 @@ $result_professor = $stmt_professor->get_result();
 $professor = $result_professor->fetch_assoc();
 
 // Busca alunos cadastrados
-$sql_alunos = "SELECT ra_completo, nome, serie, turma FROM aluno ORDER BY nome ASC";
+$sql_alunos = "SELECT ra_completo, nome FROM aluno ORDER BY nome ASC";
 $result_alunos = $conexao->query($sql_alunos);
 $alunos = $result_alunos->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -71,8 +71,6 @@ $alunos = $result_alunos->fetch_all(MYSQLI_ASSOC);
             <div class="card" data-nome="<?= strtolower($aluno['nome']) ?>">
                 <h3><?= htmlspecialchars($aluno['nome']) ?></h3>
                 <p><strong>RA:</strong> <?= htmlspecialchars($aluno['ra_completo']) ?></p>
-                <p><strong>Série:</strong> <?= htmlspecialchars($aluno['serie']) ?></p>
-                <p><strong>Turma:</strong> <?= htmlspecialchars($aluno['turma']) ?></p>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>

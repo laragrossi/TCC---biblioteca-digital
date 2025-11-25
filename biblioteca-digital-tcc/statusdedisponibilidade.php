@@ -1,3 +1,39 @@
+<?php
+session_start();
+include "conexaoconsulta.php";
+
+// Verificar se o professor está logado
+if (!isset($_SESSION['ProfessorID'])) {
+    header("Location: loginprof.php");
+    exit();
+}
+
+// Buscar livros do banco de dados
+$livros = [];
+$sql = "SELECT id, titulo, autor, foto, quantidade_disponivel 
+        FROM livros 
+        ORDER BY titulo";
+$result = $conexao->query($sql);
+if ($result) {
+    $livros = $result->fetch_all(MYSQLI_ASSOC);
+}
+
+// Pesquisa
+$termo_pesquisa = "";
+if (isset($_GET['pesquisa']) && !empty(trim($_GET['pesquisa']))) {
+    $termo_pesquisa = trim($_GET['pesquisa']);
+    $sql = "SELECT id, titulo, autor, foto, quantidade_disponivel 
+            FROM livros 
+            WHERE titulo LIKE ? OR autor LIKE ? 
+            ORDER BY titulo";
+    $stmt = $conexao->prepare($sql);
+    $termo_like = "%" . $termo_pesquisa . "%";
+    $stmt->bind_param("ss", $termo_like, $termo_like);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $livros = $result->fetch_all(MYSQLI_ASSOC);
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -122,16 +158,42 @@
         flex: 1 1 160px;
         max-width: 180px;
         text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .book:hover {
+        transform: translateY(-5px);
     }
 
     .book img {
         width: 100%;
+        height: 200px;
+        object-fit: cover;
         border-radius: 5px;
     }
 
     .author {
         font-size: 12px;
         color: gray;
+    }
+
+    .status {
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .disponivel {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .indisponivel {
+        background: #f8d7da;
+        color: #721c24;
     }
 </style>
 
@@ -159,33 +221,52 @@
     <!-- Barra de pesquisa -->
     <div class="search-container">
         <div class="search-box">
-            <i class="bi bi-search"></i>
-            <input type="text" placeholder="Pesquisar livros, autores...">
+            <form method="GET" action="statusdedisponibilidade.php" style="width: 100%; display: flex; align-items: center;">
+                <i class="bi bi-search"></i>
+                <input type="text" name="pesquisa" placeholder="Pesquisar livros, autores..." 
+                       value="<?= htmlspecialchars($termo_pesquisa) ?>">
+                <button type="submit" style="background: none; border: none; color: #666; cursor: pointer;">
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </form>
         </div>
     </div>
 
-    <h2>Livros disponíveis</h2>
+    <h2>
+        <?php if (!empty($termo_pesquisa)): ?>
+            Resultados para: "<?= htmlspecialchars($termo_pesquisa) ?>"
+        <?php else: ?>
+            Livros disponíveis
+        <?php endif; ?>
+    </h2>
+
     <div class="book-list">
-        <div class="book">
-            <img src="imagens/livros/dom_casmurro.webp" alt="Dom Casmurro">
-            <p>Dom Casmurro</p>
-            <p class="author">Machado de Assis</p>
-        </div>
-        <div class="book">
-            <img src="imagens/livros/o_cortiço_2.jpg" alt="O Cortiço">
-            <p>O Cortiço</p>
-            <p class="author">Aluísio Azevedo</p>
-        </div>
-        <div class="book">
-            <img src="imagens/livros/O-pequeno-príncipe.jpg" alt="O Pequeno Príncipe">
-            <p>O Pequeno Príncipe</p>
-            <p class="author">Antoine de Saint-Exupéry</p>
-        </div>
-        <div class="book">
-            <img src="imagens/livros/o_alienista.jpg" alt="O Alienista">
-            <p>O Alienista</p>
-            <p class="author">Machado de Assis</p>
-        </div>
+        <?php if (empty($livros)): ?>
+            <div style="text-align: center; color: #666; font-size: 18px; margin-top: 50px; width: 100%;">
+                <i class="bi bi-book" style="font-size: 48px; margin-bottom: 15px;"></i>
+                <p><?php echo empty($termo_pesquisa) ? 'Nenhum livro cadastrado no sistema.' : 'Nenhum livro encontrado.' ?></p>
+            </div>
+        <?php else: ?>
+            <?php foreach ($livros as $livro): ?>
+                <div class="book" onclick="verDetalhes(<?= $livro['id'] ?>)">
+                    <?php if (!empty($livro['foto'])): ?>
+                        <img src="<?= $livro['foto'] ?>" alt="<?= htmlspecialchars($livro['titulo']) ?>"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDEyMCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiByeD0iOCIgZmlsbD0iI2Y4ZjlmYSIvPgo8cGF0aCBkPSJNNzUgNjBINDUgTTYwIDQ1Vjc1IiBzdHJva2U9IiM2Yzc1N2QiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00NSA1MEg1NVY2MEg0NVoiIGZpbGw9IiM2Yzc1N2QiLz4KPC9zdmc+'">
+                    <?php else: ?>
+                        <div style="width: 100%; height: 200px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 5px; color: #6c757d;">
+                            <i class="bi bi-book" style="font-size: 48px;"></i>
+                        </div>
+                    <?php endif; ?>
+
+                    <p><strong><?= htmlspecialchars($livro['titulo']) ?></strong></p>
+                    <p class="author"><?= htmlspecialchars($livro['autor']) ?></p>
+
+                    <div class="status <?= $livro['quantidade_disponivel'] > 0 ? 'disponivel' : 'indisponivel' ?>">
+                        <?= $livro['quantidade_disponivel'] > 0 ? 'Disponível' : 'Indisponível' ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 
     <script>
@@ -201,6 +282,10 @@
                 userMenu.style.display = 'none';
             }
         });
+
+        function verDetalhes(id) {
+            window.location.href = "detalhes_livros_prof.php?id=" + id;
+        }
     </script>
 
 </body>

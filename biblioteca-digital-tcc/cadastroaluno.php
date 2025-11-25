@@ -50,7 +50,7 @@
                 
                 <!-- TURMA DO ALUNO -->
                  <label for="turma">Turma:</label>
-                 <select id="turma" name="turma" required>]
+                 <select id="turma" name="turma" required>
                     <option value="">Selecione</option>
                     <option value="A">A</option>
                     <option value="B">B</option>

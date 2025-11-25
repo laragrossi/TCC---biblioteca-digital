@@ -85,7 +85,7 @@ $emprestimos_ativos = $result_emprestimos->fetch_assoc()['total'];
       </div>
 
       <div class="col-12 col-md-4">
-        <a href="statusdedisponibilidade.php" style="text-decoration: none; color: inherit; display: block;">
+        <a href="satusdedisponibilidade.php" style="text-decoration: none; color: inherit; display: block;">
           <div class="card-custom" style="cursor: pointer;">
             <p>Acervo de livros</p>
           </div>

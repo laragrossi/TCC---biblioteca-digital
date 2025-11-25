@@ -38,7 +38,27 @@
                     <label for="digito" class="labelInput">Digito</label>
                 </div>
                 <br><br>
-
+                
+                <!-- SÉRIE DO ALUNO -->
+                 <label for="serie">Série:</label>
+                 <select id="serie" name="serie" required>
+                    <option value="">Selecione</option>
+                    <option value="1º ano">1º ano</option>
+                    <option value="2º ano">2º ano</option>
+                    <option value="3º ano">3º ano</option>
+                </select>
+                
+                <!-- TURMA DO ALUNO -->
+                 <label for="turma">Turma:</label>
+                 <select id="turma" name="turma" required>]
+                    <option value="">Selecione</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+                <br><br>
+                
                 <!-- Campo Senha -->
                 <div class="inputBox">
                     <input type="password" name="senha" id="senha" class="inputUser" required>

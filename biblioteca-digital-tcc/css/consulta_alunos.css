@@ -1,0 +1,129 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fcefe8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d87b6d;
+    padding: 15px 20px;
+    color: rgb(0, 0, 0);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Ícones do canto direito */
+.icons {
+    display: flex;
+    gap: 15px;
+    font-size: 28px;
+}
+
+.icons i {
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+
+/* Menu do usuário */
+#user-menu {
+    display: none;
+    position: absolute;
+    top: 65px;
+    right: 20px;
+    width: 220px;
+    background-color: #f3d8d0;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 14px;
+    color: #5b2d22;
+}
+
+#user-menu a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #5b2d22;
+    font-weight: bold;
+}
+
+/* Barra de pesquisa */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 18px 0;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f3d8d0;
+    border-radius: 20px;
+    padding: 12px 50px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: none;
+    flex: 1;
+    font-size: 15px;
+}
+
+.search-box i {
+    color: gray;
+    margin-right: 8px;
+}
+
+/* Container dos cartões */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    padding: 10px;
+}
+
+/* Cartão do aluno */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 14px;
+    width: 100%;
+    max-width: 450px;
+    min-height: 140px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card p {
+    margin: 3px 0;
+    font-size: 15px;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .card {
+        max-width: 100%;
+    }
+}

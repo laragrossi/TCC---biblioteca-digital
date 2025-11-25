@@ -69,7 +69,7 @@ $emprestimos_ativos = $result_emprestimos->fetch_assoc()['total'];
     <div class="row g-3">
 
       <div class="col-12 col-md-4">
-        <a href="consulta.php" style="text-decoration: none; color: inherit; display: block;">
+        <a href="consulta_alunos.php" style="text-decoration: none; color: inherit; display: block;">
           <div class="card-custom" style="cursor: pointer;">
             <p>Consulta de alunos</p>
           </div>
